@@ -1,37 +1,30 @@
 <template>
-  <div class="tags-wrapper" ref="target">
-    <section class="tags" @click="open = !open">
-      <span>Tags:</span>
+  <div class="department-wrapper" ref="target">
+    <section class="dpt" @click="open = !open">
+      <span>Usuário/Departamento</span>
     </section>
 
-    <section class="tags__list" v-show="open">
-      <div class="tags__search-wrapper">
-        <div class="tags__icon">
+    <section class="dpt__list" v-show="open">
+      <div class="dpt__search-wrapper">
+        <div class="dpt__icon">
           <img src="../../assets/lupa2.svg" />
         </div>
-        <input
-          type="text"
-          class="tags__search-input"
-          placeholder="Pesquisar"
-          v-model="tagSearch"
-        />
+        <input type="text" class="dpt__search-input" placeholder="Pesquisar" />
       </div>
 
-      <div class="tags__options">
-        <div class="tags__not-found" v-show="!filteredItems.length">
+      <div class="dtp__options">
+        <!-- <div class="dtp__not-found">
           <span>Nenhuma tag encontrada.</span>
-        </div>
+        </div> -->
 
-        <div class="tags__items">
-          <div class="tags__single-item" v-for="item in filteredItems" :key="item.id" :style="'color:' + item.color + '; background-color:' + item.bg">
+        <div class="dpt__items">
+          <div class="dpt__single-item">
             <label>
                   <input
                     type="checkbox"
-                    :value="item.text"
-                    v-model="checkedCategories"
-                    class="tags__input"
+                    class="dpt__input"
                   />
-                  {{ item.text }}
+                  Sem usuário delegado
               </label>
           </div>
 
@@ -44,41 +37,39 @@
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { fetchTags } from '../functions/requests'
-import type { Tags } from "../functions/requests"
-import { onClickOutside } from '@vueuse/core'
+import { onClickOutside } from "@vueuse/core";
+import { fetchDpt } from "../functions/requests";
+import type { Dpt } from "../functions/requests";
 
- const data = fetchTags()
- const target = ref(null)
+const target = ref(null);
+const data = fetchDpt();
 
- // local state
- const open = ref(false);
- const tagSearch = ref("");
- let tags = ref<Tags>([]);
- const checkedCategories = ref([])
- tags = data;
+const open = ref(false);
+let departments = ref<Dpt | undefined>(undefined);
+departments = data;
 
-  const filteredItems = computed(() => {
-    let valores = tags.value;
-      valores = valores.filter((item) => {
-        return (
-          item.text.toLowerCase().indexOf(tagSearch.value.toLowerCase()) > -1
-        );
-      });
-      return valores;
-  })
+const groupsSelectFiltered = computed(() => {
+  let dpt = ref(departments?.value?.groups);
 
- // fecha ao clicar fora
- onClickOutside(target, () => open.value = false)
+  return dpt;
+});
 
+const usersSelectFiltered = computed(() => {
+  let dpt = ref(departments?.value?.users);
 
+  return dpt;
+});
+
+// fecha ao clicar fora
+onClickOutside(target, () => (open.value = false));
 </script>
 
-<style scoped lang="scss">
-.tags-wrapper {
+<style lang="scss" scoped>
+.department-wrapper {
   position: relative;
 }
-.tags {
+
+.dpt {
   display: flex;
   align-items: center;
   border: 1.6px solid #dfe1e5;
@@ -144,11 +135,6 @@ import { onClickOutside } from '@vueuse/core'
     outline: none;
   }
 
-  &__items {
-    block-size: 272px;
-    overflow: auto;
-  }
-
   &__not-found {
     text-align: center;
     font-size: 14px;
@@ -158,15 +144,17 @@ import { onClickOutside } from '@vueuse/core'
   &__single-item {
     display: flex;
     align-items: center;
+    inline-size: 100%;
     block-size: 30px;
     border-block-end: 1.6px solid #f8f8ff;
     padding-inline-start: 15px;
-
   }
 
   &__input {
     accent-color: #1ba779;
   }
+
+
 
 }
 </style>

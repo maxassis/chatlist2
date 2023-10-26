@@ -20,8 +20,20 @@
         </select>
         <input v-model="whatsNumber" type="texte" class="input" placeholder="Número Whatsapp" />
 
-        <div>
+        <div class="form__tags-wrapper">
           <Tags />
+          <select class="input">
+            <option>teste</option>
+            <option>teste2</option>
+          </select>
+        </div>
+
+        <div class="form__departments-wrapper">
+          <Department />
+          <select class="input">
+            <option>teste</option>
+            <option>teste2</option>
+          </select>
         </div>
 
       </section>
@@ -32,6 +44,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Tags from './components/tags-component.vue'
+import Department from './components/department-component.vue'
 
 const name = ref("")
 const phone = ref("")
@@ -98,12 +111,18 @@ const whatsNumber = ref("")
   padding: 12px;
   background-color: #f6f6f6;
 
-  
+  &__tags-wrapper {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 70% 30%;
+  }
+
+  &__departments-wrapper {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 70% 30%;
+  }
 }
-
-
-
-
 
 .input {
   border: 1.6px solid #dfe1e5;
@@ -114,7 +133,5 @@ const whatsNumber = ref("")
   padding-inline-start: 15px;
   background-color: #fff;
 }
-
-
 
 </style>
