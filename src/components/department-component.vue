@@ -20,15 +20,40 @@
         <div class="dpt__items">
           <div class="dpt__single-item">
             <label>
-                  <input
-                    type="checkbox"
-                    class="dpt__input"
-                  />
-                  Sem usuário delegado
-              </label>
+              <input type="checkbox" class="dpt__input" />
+              Sem usuário delegado
+            </label>
           </div>
 
+          <div class="dpt__type">
+            <span>Departamentos</span>
+          </div>
 
+          <div
+            class="dpt__single-item"
+            v-for="item in groupsSelectFiltered"
+            :key="item.id"
+          >
+            <label>
+              <input type="checkbox" class="dpt__input" />
+              {{ item.name }}
+            </label>
+          </div>
+
+          <div class="dpt__type">
+            <span>Usuários</span>
+          </div>
+
+          <div
+            class="dpt__single-item"
+            v-for="item in usersSelectFiltered"
+            :key="item.id"
+          >
+            <label>
+              <input type="checkbox" class="dpt__input" />
+              {{ item.name }}
+            </label>
+          </div>
         </div>
       </div>
     </section>
@@ -39,23 +64,22 @@
 import { ref, computed } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { fetchDpt } from "../functions/requests";
-import type { Dpt } from "../functions/requests";
+//import type { Dpt } from "../functions/requests";
 
 const target = ref(null);
 const data = fetchDpt();
 
 const open = ref(false);
-let departments = ref<Dpt | undefined>(undefined);
-departments = data;
+let departments = data;
 
 const groupsSelectFiltered = computed(() => {
-  let dpt = ref(departments?.value?.groups);
+  let dpt = departments.value?.groups;
 
   return dpt;
 });
 
 const usersSelectFiltered = computed(() => {
-  let dpt = ref(departments?.value?.users);
+  let dpt = departments?.value?.users;
 
   return dpt;
 });
@@ -141,6 +165,11 @@ onClickOutside(target, () => (open.value = false));
     margin-block-start: 15px;
   }
 
+  &__items {
+    overflow: auto;
+    block-size: 272px;
+  }
+
   &__single-item {
     display: flex;
     align-items: center;
@@ -148,13 +177,25 @@ onClickOutside(target, () => (open.value = false));
     block-size: 30px;
     border-block-end: 1.6px solid #f8f8ff;
     padding-inline-start: 15px;
+    font-size: 12px;
   }
 
   &__input {
     accent-color: #1ba779;
   }
 
+  &__type {
+    display: flex;
+    align-items: center;
+    inline-size: 100%;
+    block-size: 30px;
+    padding-inline-start: 28px;
 
-
+    span {
+      font-weight: 800;
+      font-style: italic;
+      font-size: 14px;
+    }
+  }
 }
 </style>

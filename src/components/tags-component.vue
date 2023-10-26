@@ -23,19 +23,22 @@
         </div>
 
         <div class="tags__items">
-          <div class="tags__single-item" v-for="item in filteredItems" :key="item.id" :style="'color:' + item.color + '; background-color:' + item.bg">
+          <div
+            class="tags__single-item"
+            v-for="item in filteredItems"
+            :key="item.id"
+            :style="'color:' + item.color + '; background-color:' + item.bg"
+          >
             <label>
-                  <input
-                    type="checkbox"
-                    :value="item.text"
-                    v-model="checkedCategories"
-                    class="tags__input"
-                  />
-                  {{ item.text }}
-              </label>
+              <input
+                type="checkbox"
+                :value="item.text"
+                v-model="checkedCategories"
+                class="tags__input"
+              />
+              {{ item.text }}
+            </label>
           </div>
-
-
         </div>
       </div>
     </section>
@@ -44,34 +47,29 @@
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { fetchTags } from '../functions/requests'
-import type { Tags } from "../functions/requests"
-import { onClickOutside } from '@vueuse/core'
+import { fetchTags } from "../functions/requests";
+//import type { Tags } from "../functions/requests";
+import { onClickOutside } from "@vueuse/core";
 
- const data = fetchTags()
- const target = ref(null)
+const data = fetchTags();
+const target = ref(null);
 
- // local state
- const open = ref(false);
- const tagSearch = ref("");
- let tags = ref<Tags>([]);
- const checkedCategories = ref([])
- tags = data;
+// local state
+const open = ref(false);
+const tagSearch = ref("");
+const checkedCategories = ref([]);
+let tags = data;
 
-  const filteredItems = computed(() => {
-    let valores = tags.value;
-      valores = valores.filter((item) => {
-        return (
-          item.text.toLowerCase().indexOf(tagSearch.value.toLowerCase()) > -1
-        );
-      });
-      return valores;
-  })
+const filteredItems = computed(() => {
+  let valores = tags.value;
+  valores = valores.filter((item) => {
+    return item.text.toLowerCase().indexOf(tagSearch.value.toLowerCase()) > -1;
+  });
+  return valores;
+});
 
- // fecha ao clicar fora
- onClickOutside(target, () => open.value = false)
-
-
+// fecha ao clicar fora
+onClickOutside(target, () => (open.value = false));
 </script>
 
 <style scoped lang="scss">
@@ -161,12 +159,11 @@ import { onClickOutside } from '@vueuse/core'
     block-size: 30px;
     border-block-end: 1.6px solid #f8f8ff;
     padding-inline-start: 15px;
-
+    font-size: 12px;
   }
 
   &__input {
     accent-color: #1ba779;
   }
-
 }
 </style>
