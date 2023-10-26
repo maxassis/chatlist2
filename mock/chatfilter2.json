@@ -1,0 +1,3637 @@
+{
+  "chats": [
+    {
+      "id": "6185682aa967788c4a997bb4",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5511932811050",
+      "name": "João",
+      "kind": "chat",
+      "picture": null,
+      "status": "RESOLVIDO",
+      "favorite": true,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-11-05 17:21:46.723000",
+      "created": "2021-11-05 17:21:46.723000",
+      "last_message": {
+        "text": "VIDEO",
+        "date": "2021-08-19 10:57:47"
+      },
+      "users_delegated_ids": [
+        "620d39e3790fb757cefab5c5"
+      ],
+      "groups_delegated_ids": [
+        "5ef4eae634c966b1fd1d99ee"
+      ],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "6185682aa967788c4a997bae",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5511976254263",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": "EM ATENDIMENTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-11-05 17:21:46.329000",
+      "created": "2021-11-05 17:21:46.329000",
+      "last_message": {
+        "text": "PTT",
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "61083a707c2505ba93e3357c",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "553132726646",
+      "name": "Grupo Zayn Educacional",
+      "kind": "chat",
+      "picture": null,
+      "status": "RESOLVIDO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-08-02 18:33:20.458000",
+      "created": "2021-08-02 18:33:20.458000",
+      "last_message": {
+        "text": "IMAGE",
+        "date": "2021-07-21 18:28:08"
+      },
+      "users_delegated_ids": [
+        "5ef4df3d3f9347dd1d41f288"
+      ],
+      "groups_delegated_ids": [
+        "5ef4eacb8907774f6a9b546e"
+      ],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "6103fa95cdcbda7a0d649e09",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558185977810",
+      "name": "Jessica de Xande",
+      "kind": "chat",
+      "picture": null,
+      "status": "EM ATENDIMENTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-07-30 14:24:55.627000",
+      "created": "2021-07-30 13:11:49.288000",
+      "last_message": {
+        "text": "AUDIO",
+        "date": "2021-07-30 14:24:57"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "6103fa94cdcbda7a0d649e03",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5511964916531",
+      "name": "Jem",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-07-30 13:11:48.809000",
+      "created": "2021-07-30 13:11:48.809000",
+      "last_message": {
+        "text": "DOCUMENT",
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "60f2cf56b65ff2d6025f3d30",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "556232260200",
+      "name": "INGOH",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_556232260200@c.us.jpg",
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 2,
+      "updated": "2021-07-17 12:38:49.562000",
+      "created": "2021-07-17 12:38:46.036000",
+      "last_message": {
+        "text": "VCARD",
+        "date": "2021-07-16 13:02:38"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "60e84c2b4c0a0e7b1d5b2379",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "342343251912823237",
+      "name": "Iaron",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 1,
+      "updated": "2021-07-09 13:16:33.064000",
+      "created": "2021-07-09 13:16:27.795000",
+      "last_message": {
+        "text": "MULTI_VCARD",
+        "date": "2021-07-09 13:16:22"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "60e8485b38d274f9e49383f9",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "111351912823237",
+      "name": "Iaron",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-07-09 13:00:11.542000",
+      "created": "2021-07-09 13:00:11.541000",
+      "last_message": {
+        "text": "LOCATION",
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "60e70e8c17c999465ec97ec6",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "22222351912823237",
+      "name": "Iaron",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 1,
+      "updated": "2021-07-08 14:41:17.301000",
+      "created": "2021-07-08 14:41:16.873000",
+      "last_message": {
+        "text": "CALL_LOG",
+        "date": "2021-07-08 14:41:11"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "60dc90f0a8250cf855f21655",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "3512222912823237",
+      "name": "Iaron",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_351912823237@c.us.jpg",
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-07-01 17:20:08.829000",
+      "created": "2021-06-30 15:42:40.240000",
+      "last_message": {
+        "text": "STICKER",
+        "date": "2021-07-01 17:20:11"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "606df9f0548bba717ff4d310",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558433231212",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_558433231212@c.us.jpg",
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 3,
+      "updated": "2021-06-30 20:07:45.952000",
+      "created": "2021-04-07 18:29:04.076000",
+      "last_message": {
+        "text": "CIPHERTEXT",
+        "date": "2021-04-11 17:19:18"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "607f0e2e7a2c74dcc5ca286a",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "18057684850",
+      "name": "Webgerencial",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_18057684850@c.us.jpg",
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-06-30 20:07:38.111000",
+      "created": "2021-04-20 17:23:58.181000",
+      "last_message": {
+        "text": "*Sérgio:* \nok, obrigado",
+        "date": "2021-04-07 19:12:35"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "60dc8ed8a8250cf855f21641",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "3333333351912823237",
+      "name": "Iaron",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-06-30 15:33:44.081000",
+      "created": "2021-06-30 15:33:44.080000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "60db4d81eca80fa43ca76ab7",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "311151912823237",
+      "name": "Iaron",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_351912823237@c.us.jpg",
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 4,
+      "updated": "2021-06-29 16:42:45.294000",
+      "created": "2021-06-29 16:42:41.120000",
+      "last_message": {
+        "text": "oi4",
+        "date": "2021-06-29 16:04:31"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "60db4437eca80fa43ca76aab",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "355551912823237",
+      "name": "Iaron",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 3,
+      "updated": "2021-06-29 16:04:35.672000",
+      "created": "2021-06-29 16:03:03.772000",
+      "last_message": {
+        "text": "oi4",
+        "date": "2021-06-29 16:04:31"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "60a5c7011cdc632fc6a80dcc",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "3351912823237",
+      "name": "Iaron addchat",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_351912823237@c.us.jpg",
+      "status": "EM ATENDIMENTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 1,
+      "updated": "2021-06-29 16:02:02.488000",
+      "created": "2021-05-20 02:18:41.139000",
+      "last_message": {
+        "text": "oi",
+        "date": "2021-06-29 16:01:59"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "60cca56595cc08c7178d138f",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "551130444292",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-06-18 13:56:09.096000",
+      "created": "2021-06-18 13:53:41.412000",
+      "last_message": {
+        "text": "Teste 1",
+        "date": "2021-06-18 13:56:06"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "60a55d5a08ad3f5907526b07",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "0000351920478625",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-05-19 18:47:54.682000",
+      "created": "2021-05-19 18:47:54.682000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "60a55aaad08f5a32242114bb",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558188811000",
+      "name": "Fernando",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-05-19 18:36:26.225000",
+      "created": "2021-05-19 18:36:26.224000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "60a5594a7301b5293d8a3c08",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "8888558188811000",
+      "name": "Fernando",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-05-19 18:30:34.421000",
+      "created": "2021-05-19 18:30:34.421000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "60a558307301b5293d8a3c02",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "66666558188811000",
+      "name": "Fernando",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_558188811000@c.us.jpg",
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-05-19 18:25:52.174000",
+      "created": "2021-05-19 18:25:52.173000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "61d7019f0b5298ef2b479f45"
+      ],
+      "tags": []
+    },
+    {
+      "id": "60a3e068e5772f19fa8c7105",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "888558188811000",
+      "name": "Fernando",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_558188811000@c.us.jpg",
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-05-18 15:42:31.970000",
+      "created": "2021-05-18 15:42:31.970000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "603cee4f534ff58517fa497f",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "0351912823237",
+      "name": "Iaron Simis",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_351912823237@c.us.jpg",
+      "status": "EM ATENDIMENTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 21,
+      "updated": "2021-05-12 11:35:46.130000",
+      "created": "2021-03-01 13:38:23.332000",
+      "last_message": {
+        "text": "teste",
+        "date": "2021-05-12 11:35:42"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "5ef4dc798907774f6a9b5428",
+        "5ef4dcac8907774f6a9b542e",
+        "5ef4dcd534c966b1fd1d999d"
+      ],
+      "tags": [
+        {
+          "text": "APP1",
+          "color": "#000000",
+          "bg": "#50ee44"
+        },
+        {
+          "text": "ONB ERNANDO 👨‍💻",
+          "color": "#ffffff",
+          "bg": "#0096ff"
+        },
+        {
+          "text": "PayPal",
+          "color": "#007bff",
+          "bg": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "5fff6165a919e62629a8b038",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "556699965562",
+      "name": "Elaine Guilherme Salon",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-04-24 12:52:33.118000",
+      "created": "2021-01-13 21:08:53.806000",
+      "last_message": {
+        "text": "IMAGE",
+        "date": "2021-04-24 12:52:23"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "606e0181548bba717ff4d31c",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "553171579070",
+      "name": "Moving Foward",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_553171579070@c.us.jpg",
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 1,
+      "updated": "2021-04-07 19:01:21.357000",
+      "created": "2021-04-07 19:01:21.188000",
+      "last_message": {
+        "text": "Boa tarde, com quem falo?\nMe chamo Sérgio sou da Webgerencial",
+        "date": "2021-04-07 19:01:11"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "606df8b0548bba717ff4d305",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5521996415670",
+      "name": "Lucas Gusmão",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 8,
+      "updated": "2021-04-07 18:34:44.559000",
+      "created": "2021-04-07 18:23:44.733000",
+      "last_message": {
+        "text": "IMAGE",
+        "date": "2021-04-07 18:34:39"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "606c76bc548bba717ff4d2fc",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "556291722565",
+      "name": "Go Imports",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_556291722565@c.us.jpg",
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-04-06 14:57:00.039000",
+      "created": "2021-04-06 14:57:00.039000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "605b945ff92bcef54211d4fd",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "554188125095",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_554188125095@c.us.jpg",
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 2,
+      "updated": "2021-03-24 19:47:07.865000",
+      "created": "2021-03-24 19:34:55.872000",
+      "last_message": {
+        "text": "obrigada",
+        "date": "2021-03-24 19:47:05"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "604d467350eb4b82eeae1ae8",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "554488242106",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_554488242106@c.us.jpg",
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 8,
+      "updated": "2021-03-15 15:06:53.075000",
+      "created": "2021-03-13 23:10:43.490000",
+      "last_message": {
+        "text": "IMAGE",
+        "date": "2021-03-15 15:06:34"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "604d3bfa50eb4b82eeae1ad4",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5511980492541",
+      "name": "Ednei Camilo",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_5511980492541@c.us.jpg",
+      "status": "EM ATENDIMENTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 13,
+      "updated": "2021-03-13 23:57:32.625000",
+      "created": "2021-03-13 22:26:02.055000",
+      "last_message": {
+        "text": "Pronto, essa é uma",
+        "date": "2021-03-13 23:57:32"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "6039561e7b2cfc253e551dfa",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "351920098705",
+      "name": "Zapguru Aprendizado",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_351920098705@c.us.jpg",
+      "status": "EM ATENDIMENTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 1,
+      "updated": "2021-03-12 03:26:47.744000",
+      "created": "2021-02-26 20:12:14.007000",
+      "last_message": {
+        "text": "Renavam inválido",
+        "date": "2021-03-12 03:26:45"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "60396bf24f8587e799ff04c0",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5522981228256",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_5511932258480@c.us.jpg",
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-02-26 21:45:22.117000",
+      "created": "2021-02-26 21:45:22.117000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "60396bf14f8587e799ff04ba",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558197754514",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_558197754514@c.us.jpg",
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-02-26 21:45:21.902000",
+      "created": "2021-02-26 21:45:21.902000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "600b1790baf103d940d671a7",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558140420299",
+      "name": "Zg Comercial",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-02-24 14:41:11.748000",
+      "created": "2021-01-22 18:21:04.921000",
+      "last_message": {
+        "text": "Qual a sua dúvida e como posso lhe ajudar?",
+        "date": "2021-01-22 18:21:11"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "6009c8cc3345f61a08e17c15",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "351920522952",
+      "name": "Zapguru",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-02-24 14:37:58.311000",
+      "created": "2021-01-21 18:32:44.250000",
+      "last_message": {
+        "text": "Vou te passar o roteiro de 4 dias! \r\n\r\nInício do percurso: estação de metrô de Westminster (linhas Circle, District e Jubilee). Sugiro que você comece o dia cedo e esteja na estação de Westminster às 9:00.\r\n\r\nSaindo da estação de Westminster, você já dá de cara com o prédio do parlamento inglês e o famoso Big Ben estará lá pronto para brilhar nas fotos (infelizmente em reforma até 2020). Atravesse a rua e vá caminhando até a Abadia de Westminster.\r\n\r\nDistância: 500 metros\r\n\r\n\r\n*9* - Voltar ao menu anterior",
+        "date": "2021-01-22 18:21:35"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "602fd3c3885fea419f3d9e7e",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5511940365534",
+      "name": "Anderson Colaço",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_5511940365534@c.us.jpg",
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-02-23 19:51:27.738000",
+      "created": "2021-02-19 15:05:39.756000",
+      "last_message": {
+        "text": "DOCUMENT",
+        "date": "2021-02-19 15:05:57"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [
+        "5ef4dc798907774f6a9b5427"
+      ],
+      "tags": []
+    },
+    {
+      "id": "60340b38bc67c5cfe98644a2",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "556194197802",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_556194197802@c.us.jpg",
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 1,
+      "updated": "2021-02-22 19:51:21.125000",
+      "created": "2021-02-22 19:51:20.812000",
+      "last_message": {
+        "text": "Teste adicionar chat - ChatGuru",
+        "date": "2021-02-22 19:51:17"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "6022ce9b069e2b255d44a78a",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558199986665",
+      "name": "Luis Folheto",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-02-17 19:47:03.474000",
+      "created": "2021-02-09 18:04:10.969000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": [
+        {
+          "text": "PayPal",
+          "color": "#007bff",
+          "bg": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "60200d6c3e6b22d62770aee0",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558191631460",
+      "name": "Tereza",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_558191631460@c.us.jpg",
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-02-17 01:19:05.047000",
+      "created": "2021-02-07 15:55:24.866000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "60228263069e2b255d44a772",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "553499901945",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-02-09 13:05:49.358000",
+      "created": "2021-02-09 12:38:59.592000",
+      "last_message": {
+        "text": "*Vendedora Kelly - Imperial Brindes:* \nOK",
+        "date": "2021-02-09 13:05:46"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "60155855c19303f9b27256c4",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558299192824",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 14,
+      "updated": "2021-01-30 13:39:07.249000",
+      "created": "2021-01-30 13:00:05.596000",
+      "last_message": {
+        "text": "❌ *Atendimento Encerrado!* ❌\r\n_(Não é necessário responder esta mensagem)_",
+        "date": "2021-01-30 13:39:06"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6160a919e62629a8afa7",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "551535009332",
+      "name": "Zion",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 3,
+      "updated": "2021-01-29 19:56:46.303000",
+      "created": "2021-01-13 21:08:48.608000",
+      "last_message": {
+        "text": "TESTE 4",
+        "date": "2021-01-29 19:56:43"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "600eb77bf134c1ebb14794d4",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5519984340526",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 2,
+      "updated": "2021-01-25 12:20:19.778000",
+      "created": "2021-01-25 12:20:11.138000",
+      "last_message": {
+        "text": "Olá , tudo bem? \r\nBem vindo a empresa *Formaza Máquinas*. Sobre que assunto deseja conversar? \r\n\r\nDigite o *número* da opção desejada para que possamos dar seguimento ao seu atendimento.\r\n\r\n*1.* Vendas \r\n*2.* Assistência Técnica \r\n*3.* Departamento de SAC\r\n*4.* Nosso Endereço",
+        "date": "2021-01-25 12:20:17"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6163a919e62629a8affd",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558198734783",
+      "name": "teste 1",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_558198734783@c.us.jpg",
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-23 20:00:01.486000",
+      "created": "2021-01-13 21:08:51.755000",
+      "last_message": {
+        "text": "apenas um teste, ignorar",
+        "date": "2021-01-23 19:59:58"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "600c802dd91280ec96e66093",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558599964896",
+      "name": "teste 1",
+      "kind": "chat",
+      "picture": "https://zapguruusers.s3.ca-central-1.amazonaws.com/5ef4d9c78907774f6a9b5421/profiles/profile_558599964896@c.us.jpg",
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-23 19:59:44.352000",
+      "created": "2021-01-23 19:59:41.120000",
+      "last_message": {
+        "text": "apenas um teste, ignorar",
+        "date": "2021-01-23 19:59:40"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "600b1be722f98b656e2a6b7c",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558181888805",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-22 18:39:35.041000",
+      "created": "2021-01-22 18:39:35.040000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "600b184222f98b656e2a6b76",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "351920539500",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-22 18:24:02.315000",
+      "created": "2021-01-22 18:24:02.315000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "600b1696baf103d940d671a2",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "551132807642",
+      "name": "Integra Ninja",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 1,
+      "updated": "2021-01-22 18:16:55.159000",
+      "created": "2021-01-22 18:16:54.864000",
+      "last_message": {
+        "text": "Olá , Boa tarde!\r\n\r\nFicamos felizes pelo seu interesse no IntegraNinja, assim que possível um de nossos consultores irá te atender.",
+        "date": "2021-01-22 18:16:53"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "600abce24a3aabd59461054f",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "554834612525",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-22 11:54:10.740000",
+      "created": "2021-01-22 11:54:10.740000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "6009c6213345f61a08e17c11",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558198881100000",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-21 18:21:21.953000",
+      "created": "2021-01-21 18:21:21.953000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "600998e953ef707dde5be54b",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558183254145",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-21 15:08:25.133000",
+      "created": "2021-01-21 15:08:25.133000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "6003803446c607cb828fbead",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "undefined",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-17 00:09:24.399000",
+      "created": "2021-01-17 00:09:24.398000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "6003803446c607cb828fbeac",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "[object Object]",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-17 00:09:24.263000",
+      "created": "2021-01-17 00:09:24.263000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "6003803446c607cb828fbeab",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558199715761",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-17 00:09:24.167000",
+      "created": "2021-01-17 00:09:24.166000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "6003803446c607cb828fbeaa",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558188811001",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-17 00:09:24.083000",
+      "created": "2021-01-17 00:09:24.082000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "6003803346c607cb828fbea5",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "351938705820",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-17 00:09:23.791000",
+      "created": "2021-01-17 00:09:23.790000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6164a919e62629a8b007",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "0558187670853",
+      "name": "Xandinho",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-15 19:23:55.704000",
+      "created": "2021-01-13 21:08:52.078000",
+      "last_message": {
+        "text": "teste",
+        "date": "2021-01-15 19:23:53"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "60004890bfbbf8e2c606b51e",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5511957784835",
+      "name": "Clavis",
+      "kind": "chat",
+      "picture": null,
+      "status": "ABERTO",
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-14 13:35:12.267000",
+      "created": "2021-01-14 13:35:12.267000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6165a919e62629a8b028",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "556533598889",
+      "name": "Customize Sua Marca",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:09:02.676000",
+      "created": "2021-01-13 21:08:53.244000",
+      "last_message": {
+        "text": "Teste 5",
+        "date": "2020-10-21 20:26:16"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6164a919e62629a8b01f",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5521992244016",
+      "name": "Thiago Cesario Alvim #Equipe",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:09:00.963000",
+      "created": "2021-01-13 21:08:52.960000",
+      "last_message": {
+        "text": "Teste Zapguru 1",
+        "date": "2020-09-24 21:48:07"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6164a919e62629a8b015",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "559140063010",
+      "name": "Sococo",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:59.655000",
+      "created": "2021-01-13 21:08:52.646000",
+      "last_message": {
+        "text": "Teste ZapGuru,  favor ignorar.",
+        "date": "2020-09-11 16:06:39"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6165a919e62629a8b03c",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "555135416030",
+      "name": "Heidrich Monitoramento",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:53.931000",
+      "created": "2021-01-13 21:08:53.930000",
+      "last_message": {
+        "text": "IMAGE",
+        "date": "2020-12-31 00:25:20"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6165a919e62629a8b034",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5511982683123",
+      "name": "Daniel Bertoni",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:53.659000",
+      "created": "2021-01-13 21:08:53.659000",
+      "last_message": {
+        "text": "Vou testar novamente",
+        "date": "2020-12-09 13:26:06"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6165a919e62629a8b032",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5511991463310",
+      "name": "AprovaBancários.com",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:53.599000",
+      "created": "2021-01-13 21:08:53.599000",
+      "last_message": {
+        "text": "*Atendimento Finalizado*\r\n_Não é preciso responder essa mensagem._",
+        "date": "2020-11-23 15:18:02"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6165a919e62629a8b030",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "554199940056",
+      "name": "Miguel Zagonel",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:53.516000",
+      "created": "2021-01-13 21:08:53.516000",
+      "last_message": {
+        "text": "https://fb.me/36alPXbG2",
+        "date": "2020-11-17 12:53:08"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6165a919e62629a8b02e",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5511987031121",
+      "name": "Empório do Celular",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:53.445000",
+      "created": "2021-01-13 21:08:53.445000",
+      "last_message": {
+        "text": "O Empório do Celular agradece seu contato. Como podemos ajudar?",
+        "date": "2020-11-09 14:38:17"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6165a919e62629a8b02c",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5521975175550",
+      "name": "Coco Legal",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:53.382000",
+      "created": "2021-01-13 21:08:53.382000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6165a919e62629a8b02a",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "554188794709",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:53.312000",
+      "created": "2021-01-13 21:08:53.312000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6165a919e62629a8b026",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558597984722",
+      "name": "Danashe1",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:53.186000",
+      "created": "2021-01-13 21:08:53.186000",
+      "last_message": {
+        "text": "Oi , Tudo bem? 😊\r\n\r\nVocê gostaria de ser informado aqui pelo whatsapp sobre as nossas Promoções, Novidades e o seu saldo de pontos MeAmo 😍? \r\n\r\nDigite 1 para SIM e 2 para NÃO.\r\n\r\nLembrando que você poderá se descadastrar facilmente a qualquer momento😉, basta digitar a palavra EXIT.",
+        "date": "2020-10-07 16:03:47"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6165a919e62629a8b024",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5511985155856",
+      "name": "Concierge",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:53.116000",
+      "created": "2021-01-13 21:08:53.116000",
+      "last_message": {
+        "text": "teste",
+        "date": "2020-10-01 20:51:35"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6165a919e62629a8b022",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "13308994358",
+      "name": "Rappi",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:53.041000",
+      "created": "2021-01-13 21:08:53.041000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6164a919e62629a8b01d",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "12565593008",
+      "name": "ZapGuru",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:52.902000",
+      "created": "2021-01-13 21:08:52.901000",
+      "last_message": {
+        "text": "oi",
+        "date": "2020-09-19 15:46:45"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6164a919e62629a8b01b",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558591679487",
+      "name": "Thays & Thamires",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:52.842000",
+      "created": "2021-01-13 21:08:52.842000",
+      "last_message": {
+        "text": "*Atendimento Encerrado*\r\n_( Não precisa responder essa mensagem. )_",
+        "date": "2020-09-17 16:35:34"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6164a919e62629a8b019",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5511932179087",
+      "name": "Fundacao Getulio Vargas Strong",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:52.781000",
+      "created": "2021-01-13 21:08:52.781000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6164a919e62629a8b017",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558191992067",
+      "name": "Auto Oriente",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:52.714000",
+      "created": "2021-01-13 21:08:52.714000",
+      "last_message": {
+        "text": "*Karina Lucena - Gerente Comercial Novos:* \nok",
+        "date": "2020-09-12 11:35:10"
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6164a919e62629a8b011",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558598340001",
+      "name": "Grupo Russo de Negócios",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:52.494000",
+      "created": "2021-01-13 21:08:52.493000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6164a919e62629a8b00f",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5511985514856",
+      "name": "Familytv",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:52.416000",
+      "created": "2021-01-13 21:08:52.416000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6164a919e62629a8b00d",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "551141184554",
+      "name": "Viva Vida Seguros",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:52.344000",
+      "created": "2021-01-13 21:08:52.344000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6164a919e62629a8b00b",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5511990076844",
+      "name": "Fm Musical",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:52.259000",
+      "created": "2021-01-13 21:08:52.258000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6164a919e62629a8b009",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "557182545347",
+      "name": "Obras Sociais Irmã Dulce",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:52.158000",
+      "created": "2021-01-13 21:08:52.158000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6164a919e62629a8b005",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558187346192",
+      "name": "Essências E Cia",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:51.992000",
+      "created": "2021-01-13 21:08:51.992000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6163a919e62629a8b003",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5512997842568",
+      "name": "Fazenda Santa Vitória",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:51.930000",
+      "created": "2021-01-13 21:08:51.929000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6163a919e62629a8b001",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "551130420035",
+      "name": "Zapguru",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:51.872000",
+      "created": "2021-01-13 21:08:51.872000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6163a919e62629a8afff",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "351912194175",
+      "name": "Fernando Cavalcanti",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:51.813000",
+      "created": "2021-01-13 21:08:51.813000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6163a919e62629a8affb",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "555195914372",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:51.693000",
+      "created": "2021-01-13 21:08:51.693000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6163a919e62629a8aff9",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "551140636505",
+      "name": "Central do Usuário",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:51.632000",
+      "created": "2021-01-13 21:08:51.632000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6163a919e62629a8aff7",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "557988612565",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:51.566000",
+      "created": "2021-01-13 21:08:51.566000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6163a919e62629a8aff5",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558005800677",
+      "name": "Mobbi Brasil",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:51.500000",
+      "created": "2021-01-13 21:08:51.500000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6163a919e62629a8aff3",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "553141411962",
+      "name": "Academia Pratique Fitness",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:51.421000",
+      "created": "2021-01-13 21:08:51.421000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6163a919e62629a8aff1",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5511969223443",
+      "name": "Planos de Celular",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:51.359000",
+      "created": "2021-01-13 21:08:51.359000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6163a919e62629a8afef",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "554132131580",
+      "name": "Agendamento Florença",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:51.289000",
+      "created": "2021-01-13 21:08:51.289000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6163a919e62629a8afec",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558591662774",
+      "name": "Victa Engenharia",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:51.202000",
+      "created": "2021-01-13 21:08:51.201000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6163a919e62629a8afea",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "12566641481-1575400757",
+      "name": "Instalação Add Chats",
+      "kind": "group",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:51.132000",
+      "created": "2021-01-13 21:08:51.132000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6163a919e62629a8afe8",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "553197401964",
+      "name": "Plonu Atendimento",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:51.061000",
+      "created": "2021-01-13 21:08:51.061000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6163a919e62629a8afe6",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "552121472488",
+      "name": "Geo Sem Fronteiras",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:50.984000",
+      "created": "2021-01-13 21:08:50.984000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6162a919e62629a8afe4",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "558586280062",
+      "name": "J. Simões - Vendas",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:50.904000",
+      "created": "2021-01-13 21:08:50.904000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6162a919e62629a8afe2",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5521985664941",
+      "name": "Casas Pedro",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:50.832000",
+      "created": "2021-01-13 21:08:50.832000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6162a919e62629a8afe0",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5511993113154",
+      "name": "Não Disponível",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:50.757000",
+      "created": "2021-01-13 21:08:50.757000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6162a919e62629a8afde",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "559181233452",
+      "name": "Cobrança American Farma",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:50.676000",
+      "created": "2021-01-13 21:08:50.676000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "id": "5fff6162a919e62629a8afdc",
+      "phone_id": "5fa38441165b7a132759c765",
+      "wa_chat_id": "5516996025664",
+      "name": "Mariana Tupan",
+      "kind": "chat",
+      "picture": null,
+      "status": null,
+      "favorite": false,
+      "archived": false,
+      "new_messages": 0,
+      "updated": "2021-01-13 21:08:50.600000",
+      "created": "2021-01-13 21:08:50.600000",
+      "last_message": {
+        "text": null,
+        "date": null
+      },
+      "users_delegated_ids": [],
+      "groups_delegated_ids": [],
+      "funnel_steps_ids": [],
+      "tags": []
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "EBLi3GZ"
+    },
+    {
+      "page_num": 1,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "yXZ2cRr"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "UPwafaO"
+    },
+    {
+      "page_num": 1,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "W05APjH"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "6AUn0GK"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "IN5GZo-"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "True",
+      "id": "-lSLh_G"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "xhB4hfi"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "M6dkGHE"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "FcYDhFP"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "6061fc08b2f1e4ca9ef89ff3",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "yaHPL7t"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "6061fc08b2f1e4ca9ef89ff3",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "True",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "qVCsxH7"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "6061fc08b2f1e4ca9ef89ff3",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "n6I90-Z"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "6061fc08b2f1e4ca9ef89ff3",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "True",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "HGrtiBG"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "6061fc08b2f1e4ca9ef89ff3",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "489U7J6"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "2WABl9m"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "hSyqF-_"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "cN4NsMX"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "hDmqTWE"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "vEU7uJG"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "True",
+      "id": "UXkuBR4"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "Bk8kYSu"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "hLEhtGI"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "True",
+      "id": "lHWjukR"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "lOgARKt"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "True",
+      "id": "sGDB5Wh"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "MvDG7Uh"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "True",
+      "id": "xC_ql_P"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "EsYI97M"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "pWLjabV"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "True",
+      "id": "QUruj-B"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "VC1YmBz"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "True",
+      "id": "78t0T1A"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "BoK3Npo"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "True",
+      "filter_favorited": "",
+      "id": "IRCBuqQ"
+    },
+    {
+      "page_num": 0,
+      "filter_order_by": "",
+      "filter_tag": [],
+      "filter_tag_rule": "or",
+      "filter_user": "",
+      "filter_phone": "",
+      "filter_funnel_step": [],
+      "filter_status": "",
+      "filter_search_number": "",
+      "filter_search_name": "",
+      "filter_new_messages": "",
+      "filter_archived": "",
+      "filter_broadcast": "",
+      "filter_favorited": "",
+      "id": "0dMV0-X"
+    }
+  ],
+  "devices": [
+    {
+      "id": "6166c2f7a610e9d81e361a28",
+      "description": "API Oficial 360Dialog",
+      "owner_wa_id": "19852009545@c.us"
+    },
+    {
+      "id": "60abc783933894b9b30f8c45",
+      "description": "Dialog - +19852009545",
+      "owner_wa_id": "19852009545@c.us"
+    },
+    {
+      "id": "6061fc08b2f1e4ca9ef89ff3",
+      "description": "GupshupTeste - +12105987543",
+      "owner_wa_id": "12105987543@c.us"
+    },
+    {
+      "id": "5ff6c7de757c0f9f8065d8aa",
+      "description": "API OFICIAL GUPSHUP",
+      "owner_wa_id": "12565593008@c.us"
+    },
+    {
+      "id": "5fc5b335c4d61019a5517e10",
+      "description": "Iaron",
+      "owner_wa_id": "12566641481@c.us"
+    },
+    {
+      "id": "5fa38441165b7a132759c765",
+      "description": "local",
+      "owner_wa_id": "15703251950@c.us"
+    }
+  ],
+  "tags": [
+    {
+      "id": "5f6734001fe24589aed730c2",
+      "text": "Boleto",
+      "color": "#007bff",
+      "bg": "#ffffff"
+    },
+    {
+      "id": "5f6734057b063650c474a68c",
+      "text": "PayPal",
+      "color": "#007bff",
+      "bg": "#ffffff"
+    },
+    {
+      "id": "5f4fb8603565fd4b0436bbf1",
+      "text": "Interessado em Alocação  📲",
+      "color": "#007bff",
+      "bg": "#ffffff"
+    },
+    {
+      "id": "5f22ae19f172339480d1b971",
+      "text": "ONB CAIO 👨‍💻",
+      "color": "#ffffff",
+      "bg": "#0096ff"
+    },
+    {
+      "id": "5f3f25f906eb4955bf6e4183",
+      "text": "ONB DANIEL 👨‍💻",
+      "color": "#ffffff",
+      "bg": "#0096ff"
+    },
+    {
+      "id": "5f32ec9570ccba1e8c0bcc37",
+      "text": "ONB EDUARDO👨‍💻",
+      "color": "#ffffff",
+      "bg": "#0096ff"
+    },
+    {
+      "id": "5f32ecfa5ddd9e8b1e85b609",
+      "text": "ONB ERNANDO 👨‍💻",
+      "color": "#ffffff",
+      "bg": "#0096ff"
+    },
+    {
+      "id": "5f2b0a5a144ff9863b32a92e",
+      "text": "ONB HUGO 👨‍💻",
+      "color": "#f5f5f5",
+      "bg": "#0096ff"
+    },
+    {
+      "id": "5f22ae6e450872eebf054309",
+      "text": "ONB JOSUÉ 👨‍💻",
+      "color": "#ffffff",
+      "bg": "#0096ff"
+    },
+    {
+      "id": "5f32ed4c453db37ea39dc9f0",
+      "text": "ONB LUCAS AN 👨‍💻",
+      "color": "#ffffff",
+      "bg": "#0096ff"
+    },
+    {
+      "id": "5f32ed36c49ac5e835c1ab63",
+      "text": "ONB LUCAS FA 👨‍💻",
+      "color": "#ffffff",
+      "bg": "#0096ff"
+    },
+    {
+      "id": "5f22ae35c5c91297145f03e2",
+      "text": "ONB LUIZ 👨‍💻",
+      "color": "#ffffff",
+      "bg": "#0096ff"
+    },
+    {
+      "id": "5f22ae438d742ccd242bd8f7",
+      "text": "ONB MARK 👨‍💻",
+      "color": "#ffffff",
+      "bg": "#0096ff"
+    },
+    {
+      "id": "5f2adf234b41c094ce756018",
+      "text": "Deseja Testar",
+      "color": "#000000",
+      "bg": "#ffffff"
+    },
+    {
+      "id": "5f2adf16e4dc4c15deb87baf",
+      "text": "🤖Zap.Guru",
+      "color": "#000000",
+      "bg": "#ffffff"
+    },
+    {
+      "id": "5f2adf0c1525d6140d1c34c0",
+      "text": "🇧🇷 ZapGuru",
+      "color": "#000000",
+      "bg": "#ffffff"
+    },
+    {
+      "id": "5f2adf0305f88fbb276bdcb0",
+      "text": "✅ Salvou!",
+      "color": "#000000",
+      "bg": "#00ff00"
+    },
+    {
+      "id": "5f2adef62f60e6f6c2f250cb",
+      "text": "✅ Fechado e Ganho",
+      "color": "#000000",
+      "bg": "#00ff00"
+    },
+    {
+      "id": "5f2adee00e0b40322e9cb09c",
+      "text": "Fecnadl",
+      "color": "#000000",
+      "bg": "#00ff00"
+    },
+    {
+      "id": "5ef4dbbbf95afec9adaa2ebb",
+      "text": "Chatbot Implantado",
+      "color": "#ffffff",
+      "bg": "#a09ca0"
+    },
+    {
+      "id": "5ef4db833f9347dd1d41f279",
+      "text": "Add chats Instalado",
+      "color": "#ffffff",
+      "bg": "#32aac8"
+    },
+    {
+      "id": "5ef4da7a8907774f6a9b5422",
+      "text": "APP1",
+      "color": "#000000",
+      "bg": "#50ee44"
+    },
+    {
+      "id": "5ef4da8f3f9347dd1d41f275",
+      "text": "APP2",
+      "color": "#000000",
+      "bg": "#50ee44"
+    },
+    {
+      "id": "5ef4da953f9347dd1d41f277",
+      "text": "APP3",
+      "color": "#000000",
+      "bg": "#50ee44"
+    },
+    {
+      "id": "5ef4daa2f95afec9adaa2eb7",
+      "text": "APP5",
+      "color": "#000000",
+      "bg": "#50ee44"
+    },
+    {
+      "id": "5ef4da9cf95afec9adaa2eb5",
+      "text": "APP4",
+      "color": "#000000",
+      "bg": "#50f044"
+    },
+    {
+      "id": "5f60df3ad0aafb96e71afe69",
+      "text": "APP6",
+      "color": "#000000",
+      "bg": "#00ff00"
+    },
+    {
+      "id": "5efb30bffc3d463b67adaf17",
+      "text": "📶 Alocado no ZapGuru",
+      "color": "#000000",
+      "bg": "#8fff33"
+    },
+    {
+      "id": "5f06dfb89609654d407880eb",
+      "text": "🤬  Palavrão",
+      "color": "#007bff",
+      "bg": "#ffffff"
+    },
+    {
+      "id": "5efb2c058175136c640c2966",
+      "text": "Troca Cortesia",
+      "color": "#d8dee3",
+      "bg": "#57255b"
+    },
+    {
+      "id": "5ef9e1f903b7e594938eaa1d",
+      "text": "Autorizado",
+      "color": "#000000",
+      "bg": "#ffea80"
+    },
+    {
+      "id": "5ef4dbcd34c966b1fd1d9998",
+      "text": "Banido",
+      "color": "#ffffff",
+      "bg": "#100f0f"
+    },
+    {
+      "id": "5f1ffa56dd95973cb82c6c1b",
+      "text": "Cancelado",
+      "color": "#fcfcfc",
+      "bg": "#e72323"
+    }
+  ],
+  "users_and_groups": {
+    "users": [
+      {
+        "id": "5ef4e0308907774f6a9b5444",
+        "type": "normal",
+        "name": "Mark",
+        "email": "mark@zapguru.com.br"
+      },
+      {
+        "id": "5eff2d72d2b503a390351e16",
+        "type": "normal",
+        "name": "Luiz Modestino",
+        "email": "luiz@zapguru.com.br"
+      },
+      {
+        "id": "5f1b899b41b7a3182d553373",
+        "type": "normal",
+        "name": "Josué Dionizio",
+        "email": "josue@zapguru.com.br"
+      },
+      {
+        "id": "5f1b899b41b7a3182d553373",
+        "type": "normal",
+        "name": "Lucas Andrade",
+        "email": "lucas@zapguru.com.br"
+      },
+      {
+        "id": "5ca21ed1cda19e2008ebed0c",
+        "type": "admin",
+        "name": "Fernando",
+        "email": "fernando@zap.guru"
+      },
+      {
+        "id": "5f22b6adf50d6882a859ee68",
+        "type": "normal",
+        "name": "Ernando Neto",
+        "email": "ernando@zapguru.com.br"
+      },
+      {
+        "id": "5f2548929626cf2c6255baba",
+        "type": "normal",
+        "name": "Hugo",
+        "email": "hugo@zapguru.com.br"
+      },
+      {
+        "id": "5f312a071e4d1bbddd55a24c",
+        "type": "normal",
+        "name": "Eduardo Victor",
+        "email": "eduardo.victor@zapguru.com.br"
+      },
+      {
+        "id": "5f3d545dfabfd3d0343b3e9f",
+        "type": "normal",
+        "name": "Daniel Bertoni",
+        "email": "daniel.bertoni@zapguru.com.br"
+      },
+      {
+        "id": "5f1426b8286566421febe6d2",
+        "type": "normal",
+        "name": "Bruna Lira",
+        "email": "financeiro@zapguru.com.br"
+      },
+      {
+        "id": "5f58e694c915e9fdf5ac10aa",
+        "type": "normal",
+        "name": "Rodrigo Lacerda",
+        "email": "rodrigo.lacerda@zapguru.com.br"
+      },
+      {
+        "id": "5ed3ccd48de9df0e9f44d23c",
+        "type": "normal",
+        "name": "IARON SIMIS",
+        "email": "iaron12@gmail.com"
+      },
+      {
+        "id": "5ef4e06334c966b1fd1d99c0",
+        "type": "admin",
+        "name": "Alexandre Magno",
+        "email": "alexandre@zapguru.com.br"
+      },
+      {
+        "id": "5ef4df3d3f9347dd1d41f288",
+        "type": "normal",
+        "name": "Caio Falcão",
+        "email": "caio@zapguru.com.br"
+      }
+    ],
+    "groups": [
+      {
+        "id": "5ef4eae634c966b1fd1d99ee",
+        "name": "Financeiro"
+      },
+      {
+        "id": "5ef4eacb8907774f6a9b546e",
+        "name": "Suporte N1"
+      }
+    ]
+  },
+  "funnels": [
+    {
+      "id": "618ec412bbf6dd0cdf1e6d2f",
+      "name": "teste",
+      "steps": [
+        {
+          "id": "618ec412bbf6dd0cdf1e6d30",
+          "name": "1"
+        },
+        {
+          "id": "618ec412bbf6dd0cdf1e6d31",
+          "name": "2"
+        },
+        {
+          "id": "618ec412bbf6dd0cdf1e6d32",
+          "name": "3"
+        },
+        {
+          "id": "618ec412bbf6dd0cdf1e6d33",
+          "name": "4"
+        }
+      ]
+    },
+    {
+      "id": "5ef4dcd534c966b1fd1d999a",
+      "name": "📳🛠 Instalar Add Chats",
+      "steps": [
+        {
+          "id": "5ef4dcd534c966b1fd1d999b",
+          "name": "Marcar agendamento"
+        },
+        {
+          "id": "5ef4dcd534c966b1fd1d999c",
+          "name": "Instalar"
+        },
+        {
+          "id": "5ef4dcd534c966b1fd1d999d",
+          "name": "Instalado"
+        }
+      ]
+    },
+    {
+      "id": "5ef4dcac8907774f6a9b542b",
+      "name": "🛠 Onboarding",
+      "steps": [
+        {
+          "id": "5ef4dcac8907774f6a9b542c",
+          "name": "Configurar Add Chats"
+        },
+        {
+          "id": "5ef4dcac8907774f6a9b542d",
+          "name": "Agendar Primeira Call"
+        },
+        {
+          "id": "5ef4dcac8907774f6a9b542e",
+          "name": "Configurar ChatBot"
+        },
+        {
+          "id": "5ef4dcac8907774f6a9b542f",
+          "name": "Agendar Segunda Call"
+        }
+      ]
+    }
+  ],
+  "online": {
+    "groups": [
+      {
+        "id": "5ef4eae634c966b1fd1d99ee",
+        "is_online": false,
+        "name": "Financeiro",
+        "users": [
+          "5f1b899b41b7a3182d553373",
+          "5ca21ed1cda19e2008ebed0c",
+          "5f1426b8286566421febe6d2"
+        ]
+      },
+      {
+        "id": "5ef4eacb8907774f6a9b546e",
+        "is_online": true,
+        "name": "Suporte N1",
+        "users": [
+          "5ef4e0308907774f6a9b5444",
+          "5eff2d72d2b503a390351e16",
+          "5f1b88b7a00159ca51477935",
+          "5f1b899b41b7a3182d553373",
+          "5f2548929626cf2c6255baba",
+          "5f312a071e4d1bbddd55a24c",
+          "5f3d545dfabfd3d0343b3e9f",
+          "5f58e694c915e9fdf5ac10aa",
+          "5ef4df3d3f9347dd1d41f288",
+          "5f22b6adf50d6882a859ee68",
+          "620d39e3790fb757cefab5c5"
+        ]
+      }
+    ],
+    "users": [
+      {
+        "email": "mark@zapguru.com.br",
+        "id": "5ef4e0308907774f6a9b5444",
+        "is_online": false,
+        "name": "Mark"
+      },
+      {
+        "email": "luiz@zapguru.com.br",
+        "id": "5eff2d72d2b503a390351e16",
+        "is_online": false,
+        "name": "Luiz Modestino"
+      },
+      {
+        "email": "josue@zapguru.com.br",
+        "id": "5f1b88b7a00159ca51477935",
+        "is_online": false,
+        "name": "Josué Dionizio"
+      },
+      {
+        "email": "lucas@zapguru.com.br",
+        "id": "5f1b899b41b7a3182d553373",
+        "is_online": false,
+        "name": "Lucas Andrade"
+      },
+      {
+        "email": "fernando@zap.guru",
+        "id": "5ca21ed1cda19e2008ebed0c",
+        "is_online": true,
+        "name": "Fernando"
+      },
+      {
+        "email": "hugo@zapguru.com.br",
+        "id": "5f2548929626cf2c6255baba",
+        "is_online": false,
+        "name": "Hugo"
+      },
+      {
+        "email": "eduardo.victor@zapguru.com.br",
+        "id": "5f312a071e4d1bbddd55a24c",
+        "is_online": false,
+        "name": "Eduardo Victor"
+      },
+      {
+        "email": "daniel.bertoni@zapguru.com.br",
+        "id": "5f3d545dfabfd3d0343b3e9f",
+        "is_online": false,
+        "name": "Daniel Bertoni"
+      },
+      {
+        "email": "financeiro@zapguru.com.br",
+        "id": "5f1426b8286566421febe6d2",
+        "is_online": false,
+        "name": "Bruna Lira"
+      },
+      {
+        "email": "rodrigo.lacerda@zapguru.com.br",
+        "id": "5f58e694c915e9fdf5ac10aa",
+        "is_online": false,
+        "name": "Rodrigo Lacerda"
+      },
+      {
+        "email": "iaron12@gmail.com",
+        "id": "5ed3ccd48de9df0e9f44d23c",
+        "is_online": false,
+        "name": "IARON SIMIS"
+      },
+      {
+        "email": "alexandre@zapguru.com.br",
+        "id": "5ef4e06334c966b1fd1d99c0",
+        "is_online": false,
+        "name": "Alexandre Magno"
+      },
+      {
+        "email": "caio@zapguru.com.br",
+        "id": "5ef4df3d3f9347dd1d41f288",
+        "is_online": false,
+        "name": "Caio Falcão"
+      },
+      {
+        "email": "ernando@zapguru.com.br",
+        "id": "5f22b6adf50d6882a859ee68",
+        "is_online": false,
+        "name": "Ernando Neto"
+      },
+      {
+        "email": "max.assis@chatguru.com.br",
+        "id": "620d39e3790fb757cefab5c5",
+        "is_online": false,
+        "name": "Max Assis"
+      }
+    ]
+  },
+  "unresolved": {
+    "noDelegated": [
+      {
+        "total_groups_and_users": 17,
+        "undelegated": {
+          "open": 1,
+          "oncall": 2,
+          "waiting": 0
+        }
+      }
+    ],
+    "groups": [
+      {
+        "id": "5ef4eae634c966b1fd1d99ee",
+        "user_type": "group",
+        "is_online": false,
+        "name": "Financeiro",
+        "status": {
+          "open": 1,
+          "oncall": 3,
+          "waiting": 2
+        }
+      },
+      {
+        "id": "5ef4eae634c966b1fd1d99ef",
+        "user_type": "group",
+        "is_online": true,
+        "name": "Suporte N1",
+        "status": {
+          "open": 3,
+          "oncall": 1,
+          "waiting": 4
+        }
+      },
+      {
+        "id": "5ef4eae634c966b1fd1d99f0",
+        "user_type": "group",
+        "is_online": false,
+        "name": "Comercial",
+        "status": {
+          "open": 1,
+          "oncall": 0,
+          "waiting": 2
+        }
+      }
+    ],
+    "users": [
+      {
+        "email": "mark@zapguru.com.br",
+        "id": "5ef4e0308907774f6a9b5444",
+        "user_type": "normal",
+        "is_online": false,
+        "name": "Mark",
+        "status": {
+          "open": 1,
+          "oncall": 0,
+          "waiting": 2
+        }
+      },
+      {
+        "email": "luiz@zapguru.com.br",
+        "id": "5eff2d72d2b503a390351e16",
+        "user_type": "normal",
+        "is_online": false,
+        "name": "Luiz Modestino",
+        "status": {
+          "open": 2,
+          "oncall": 1,
+          "waiting": 3
+        }
+      },
+      {
+        "email": "josue@zapguru.com.br",
+        "id": "5f1b88b7a00159ca51477935",
+        "user_type": "normal",
+        "is_online": true,
+        "name": "Josué Dionizio",
+        "status": {
+          "open": 4,
+          "oncall": 0,
+          "waiting": 3
+        }
+      },
+      {
+        "email": "lucas@zapguru.com.br",
+        "id": "5f1b899b41b7a3182d553373",
+        "user_type": "normal",
+        "is_online": false,
+        "name": "Lucas Andrade",
+        "status": {
+          "open": 1,
+          "oncall": 0,
+          "waiting": 2
+        }
+      },
+      {
+        "email": "fernando@zap.guru",
+        "id": "5ca21ed1cda19e2008ebed0c",
+        "user_type": "super",
+        "is_online": true,
+        "name": "Fernando",
+        "status": {
+          "open": 0,
+          "oncall": 3,
+          "waiting": 2
+        }
+      },
+      {
+        "email": "hugo@zapguru.com.br",
+        "id": "5f2548929626cf2c6255baba",
+        "user_type": "normal",
+        "is_online": false,
+        "name": "Hugo",
+        "status": {
+          "open": 1,
+          "oncall": 0,
+          "waiting": 2
+        }
+      },
+      {
+        "email": "eduardo.victor@zapguru.com.br",
+        "id": "5f312a071e4d1bbddd55a24c",
+        "user_type": "normal",
+        "is_online": false,
+        "name": "Eduardo Victor",
+        "status": {
+          "open": 1,
+          "oncall": 0,
+          "waiting": 2
+        }
+      },
+      {
+        "email": "daniel.bertoni@zapguru.com.br",
+        "id": "5f3d545dfabfd3d0343b3e9f",
+        "user_type": "normal",
+        "is_online": false,
+        "name": "Daniel Bertoni",
+        "status": {
+          "open": 1,
+          "oncall": 0,
+          "waiting": 2
+        }
+      },
+      {
+        "email": "financeiro@zapguru.com.br",
+        "id": "5f1426b8286566421febe6d2",
+        "user_type": "super",
+        "is_online": false,
+        "name": "Bruna Lira",
+        "status": {
+          "open": 1,
+          "oncall": 0,
+          "waiting": 2
+        }
+      },
+      {
+        "email": "rodrigo.lacerda@zapguru.com.br",
+        "id": "5f58e694c915e9fdf5ac10aa",
+        "user_type": "normal",
+        "is_online": false,
+        "name": "Rodrigo Lacerda",
+        "status": {
+          "open": 1,
+          "oncall": 0,
+          "waiting": 2
+        }
+      },
+      {
+        "email": "iaron12@gmail.com",
+        "id": "5ed3ccd48de9df0e9f44d23c",
+        "user_type": "super",
+        "is_online": false,
+        "name": "IARON SIMIS",
+        "status": {
+          "open": 1,
+          "oncall": 0,
+          "waiting": 2
+        }
+      },
+      {
+        "email": "alexandre@zapguru.com.br",
+        "id": "5ef4e06334c966b1fd1d99c0",
+        "user_type": "normal",
+        "is_online": false,
+        "name": "Alexandre Magno",
+        "status": {
+          "open": 1,
+          "oncall": 0,
+          "waiting": 2
+        }
+      },
+      {
+        "email": "caio@zapguru.com.br",
+        "id": "5ef4df3d3f9347dd1d41f288",
+        "user_type": "normal",
+        "is_online": false,
+        "name": "Caio Falcão",
+        "status": {
+          "open": 1,
+          "oncall": 0,
+          "waiting": 2
+        }
+      },
+      {
+        "email": "ernando@zapguru.com.br",
+        "id": "5f22b6adf50d6882a859ee68",
+        "user_type": "normal",
+        "is_online": false,
+        "name": "Ernando Neto",
+        "status": {
+          "open": 1,
+          "oncall": 0,
+          "waiting": 2
+        }
+      },
+      {
+        "email": "max.assis@chatguru.com.br",
+        "id": "620d39e3790fb757cefab5c5",
+        "user_type": "normal",
+        "is_online": false,
+        "name": "Max Assis",
+        "status": {
+          "open": 1,
+          "oncall": 0,
+          "waiting": 2
+        }
+      }
+    ]
+  }
+}
