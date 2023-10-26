@@ -1,4 +1,4 @@
-<template>
+<template> 
   <div class="department-wrapper" ref="target">
     <section class="dpt" @click="open = !open">
       <span>Usuário/Departamento</span>
@@ -31,12 +31,13 @@
 
           <div
             class="dpt__single-item"
-            v-for="item in groupsSelectFiltered"
-            :key="item.id"
+            v-for="department in groupsSelectFiltered"
+            :key="department.id"
+            
           >
             <label>
-              <input type="checkbox" class="dpt__input" />
-              {{ item.name }}
+              <input type="checkbox" class="dpt__input" v-model="checkedItems.groups" :value="department.id" />
+              {{ department.name }}
             </label>
           </div>
 
@@ -46,12 +47,13 @@
 
           <div
             class="dpt__single-item"
-            v-for="item in usersSelectFiltered"
-            :key="item.id"
+            v-for="user in usersSelectFiltered"
+            :key="user.id"
+            
           >
             <label>
-              <input type="checkbox" class="dpt__input" />
-              {{ item.name }}
+              <input type="checkbox" class="dpt__input" v-model="checkedItems.users" :value="user.id"/>
+              {{ user.name }}
             </label>
           </div>
         </div>
@@ -61,16 +63,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, reactive } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { fetchDpt } from "../functions/requests";
-//import type { Dpt } from "../functions/requests";
 
 const target = ref(null);
 const data = fetchDpt();
 
 const open = ref(false);
-let departments = data;
+const departments = data;
+const checkedItems = reactive({
+  groups: [],
+  users: [],
+  noDelegated: false,
+});
 
 const groupsSelectFiltered = computed(() => {
   let dpt = departments.value?.groups;
@@ -91,6 +97,7 @@ onClickOutside(target, () => (open.value = false));
 <style lang="scss" scoped>
 .department-wrapper {
   position: relative;
+  block-size: 28.8px;
 }
 
 .dpt {
@@ -161,7 +168,7 @@ onClickOutside(target, () => (open.value = false));
 
   &__not-found {
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
     margin-block-start: 15px;
   }
 
@@ -189,7 +196,7 @@ onClickOutside(target, () => (open.value = false));
     align-items: center;
     inline-size: 100%;
     block-size: 30px;
-    padding-inline-start: 28px;
+    padding-inline-start: 15px;
 
     span {
       font-weight: 800;

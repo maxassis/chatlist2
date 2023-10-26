@@ -1,83 +1,70 @@
 <template>
-  <div class="tags-wrapper" ref="target">
-    <section class="tags" @click="open = !open">
-      <span>Tags:</span>
+  <div class="funnel-wrapper" ref="target">
+    <section class="funnel" @click="open = !open">
+      <span>Etapa do Funil:</span>
     </section>
 
-    <section class="tags__list" v-show="open">
-      <div class="tags__search-wrapper">
-        <div class="tags__icon">
+    <section class="funnel__list" v-show="open">
+      <div class="funnel__search-wrapper">
+        <div class="funnel__icon">
           <img src="../../assets/lupa2.svg" />
         </div>
         <input
           type="text"
-          class="tags__search-input"
+          class="funnel__search-input"
           placeholder="Pesquisar"
-          v-model="tagSearch"
         />
       </div>
 
-      <div class="tags__options">
-        <div class="tags__not-found" v-show="!filteredItems.length">
+      <div class="funnel__options">
+        <!-- <div class="funnel__not-found">
           <span>Nenhuma tag encontrada.</span>
-        </div>
+        </div> -->
 
-        <div class="tags__items">
+        <div class="funnel__set" v-for="item in data" :key="item.id">
+          
+          <div class="funnel__type">
+            <span>{{ item.name }}</span>
+          </div>
+
           <div
-            class="tags__single-item"
-            v-for="item in filteredItems"
-            :key="item.id"
-            :style="'color:' + item.color + '; background-color:' + item.bg"
+            class="funnel__single-item"
+            v-for="funnel in item.steps"
+            :key="funnel.id"
           >
             <label>
-              <input
-                type="checkbox"
-                :value="item.text"
-                v-model="checkedCategories"
-                class="tags__input"
-              />
-              {{ item.text }}
+              <input type="checkbox" class="funnel__input " />
+              {{ funnel.name }}
             </label>
           </div>
+
         </div>
+
       </div>
     </section>
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref, computed } from "vue";
-import { fetchTags } from "../functions/requests";
-//import type { Tags } from "../functions/requests";
+<script lang="ts" setup>
+import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
+import { fetchFunnels } from "../functions/requests";
 
-const data = fetchTags();
+const data = fetchFunnels();
 const target = ref(null);
-
-// local state
 const open = ref(false);
-const tagSearch = ref("");
-const checkedCategories = ref([]);
-let tags = data;
-
-const filteredItems = computed(() => {
-  let valores = tags.value;
-  valores = valores.filter((item) => {
-    return item.text.toLowerCase().indexOf(tagSearch.value.toLowerCase()) > -1;
-  });
-  return valores;
-});
 
 // fecha ao clicar fora
 onClickOutside(target, () => (open.value = false));
 </script>
 
-<style scoped lang="scss">
-.tags-wrapper {
+<style lang="scss" scoped>
+.funnel-wrapper {
   position: relative;
   block-size: 28.8px;
 }
-.tags {
+
+.funnel {
   display: flex;
   align-items: center;
   border: 1.6px solid #dfe1e5;
@@ -143,24 +130,33 @@ onClickOutside(target, () => (open.value = false));
     outline: none;
   }
 
-  &__items {
-    block-size: 272px;
-    overflow: auto;
-  }
-
-  &__not-found {
-    text-align: center;
-    font-size: 12px;
-    margin-block-start: 15px;
-  }
-
   &__single-item {
     display: flex;
     align-items: center;
+    inline-size: 100%;
     block-size: 30px;
     border-block-end: 1.6px solid #f8f8ff;
     padding-inline-start: 15px;
     font-size: 12px;
+  }
+
+  &__type {
+    display: flex;
+    align-items: center;
+    inline-size: 100%;
+    block-size: 30px;
+    padding-inline-start: 15px;
+
+    span {
+      font-weight: 800;
+      font-style: italic;
+      font-size: 14px;
+    }
+  }
+
+  &__options {
+    overflow: auto;
+    block-size: 272px;
   }
 
   &__input {

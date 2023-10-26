@@ -36,6 +36,13 @@
           </select>
         </div>
 
+        <div class="form__funnel-wrapper">
+          <Funnel />
+        </div>
+
+
+
+
       </section>
   </div>
  
@@ -45,6 +52,7 @@
 import { ref } from 'vue'
 import Tags from './components/tags-component.vue'
 import Department from './components/department-component.vue'
+import Funnel from './components/funnel-component.vue'
 
 const name = ref("")
 const phone = ref("")
