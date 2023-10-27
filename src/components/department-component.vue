@@ -1,7 +1,33 @@
 <template>
   <div class="department-wrapper" ref="target">
-    <section class="dpt" @click="open = !open">
-      <span>Usuário/Departamento</span>
+    <section
+      class="dpt"
+      @click="open = !open"
+      :class="[
+        getNames.length != 0 || checkedItems.noDelegated ? 'dpt--blue' : null,
+      ]"
+    >
+    <span
+        v-if="checkedItems.noDelegated && getNames.length <= 3"
+        >Sem delegado</span
+      >
+      <span
+        v-if="getNames.length == 0 && checkedItems.noDelegated == false"
+        >Usuário/Departamento:</span
+      >
+      <span
+        v-else-if="getNames.length <= 3"
+        v-for="name in getNames"
+        :key="name"
+        class="dpt__names"
+        >{{ name }}</span
+      >
+      <span v-else
+        >{{
+          checkedItems.noDelegated ? getNames.length + 1 : getNames.length
+        }}
+        Usuário/Departamento selecionados</span
+      >
     </section>
 
     <section class="dpt__list" v-show="open">
@@ -30,7 +56,10 @@
               <input
                 type="checkbox"
                 class="dpt__input"
-                @change="selectNoDelegated(); emit('sendDepartments', checkedItems)"
+                @change="
+                  selectNoDelegated();
+                  emit('sendDepartments', checkedItems);
+                "
                 v-model="checkedItems.noDelegated"
               />
               Sem usuário delegado
@@ -57,7 +86,10 @@
                 ]"
                 v-model="checkedItems.groups"
                 :value="department.id"
-                @change="checkDepartment(); emit('sendDepartments', checkedItems)"
+                @change="
+                  checkDepartment();
+                  emit('sendDepartments', checkedItems);
+                "
               />
               {{ department.name }}
             </label>
@@ -83,7 +115,10 @@
                 ]"
                 v-model="checkedItems.users"
                 :value="user.id"
-                @change="checkDepartment(); emit('sendDepartments', checkedItems)"
+                @change="
+                  checkDepartment();
+                  emit('sendDepartments', checkedItems);
+                "
               />
               {{ user.name }}
             </label>
@@ -102,7 +137,7 @@ import type { checkedDptItems } from "../types";
 
 const target = ref(null);
 const data = fetchDpt();
-const emit = defineEmits(['sendDepartments'])
+const emit = defineEmits(["sendDepartments"]);
 
 // LOCAL STATE
 const departments = data;
@@ -126,6 +161,22 @@ const usersSelectFiltered = computed(() => {
   let dpt = departments?.value?.users;
 
   return dpt;
+});
+
+const getNames = computed(() => {
+  let names: string[] = [];
+  let dpts = departments;
+  const selectedDpts = checkedItems.users.concat(checkedItems.groups);
+
+  dpts.value?.users?.forEach((item) => {
+    if (selectedDpts.includes(item.id)) names.push(item.name);
+  });
+
+  dpts.value?.groups?.forEach((item) => {
+    if (selectedDpts.includes(item.id)) names.push(item.name);
+  });
+
+  return names;
 });
 
 // FUNCTIONS
@@ -170,6 +221,15 @@ onClickOutside(target, () => (open.value = false));
   padding-inline-start: 15px;
   background-color: #fff;
   cursor: pointer;
+
+  &--blue {
+    background-color: #ccdbfd;
+    border-color: #abc4ff;
+  }
+  
+  &__names {
+    margin-inline-start: 6px
+  }
 
   &__list {
     position: absolute;
