@@ -1,7 +1,18 @@
 <template>
+  {{ itemNames }}
   <div class="funnel-wrapper" ref="target">
-    <section class="funnel" @click="open = !open">
-      <span>Etapa do Funil:</span>
+    <section
+      class="funnel"
+      @click="open = !open"
+      :class="[checkedFunnels.length > 0 ? 'funnel--blue' : null]"
+    >
+      <span v-if="itemNames.length == 0">Etapa do Funil:</span>
+      <span v-else-if="itemNames.length <= 2">
+        <span v-for="item in itemNames" :key="item" class="funnel__names">{{ item }}</span>
+      </span>
+      <span v-else>
+        <span>{{ itemNames.length }} funis selecionados</span>
+      </span>
     </section>
 
     <section class="funnel__list" v-show="open">
@@ -13,6 +24,7 @@
           type="text"
           class="funnel__search-input"
           placeholder="Pesquisar"
+          v-model="funnelSearch"
         />
       </div>
 
@@ -22,7 +34,6 @@
         </div> -->
 
         <div class="funnel__set" v-for="item in data" :key="item.id">
-          
           <div class="funnel__type">
             <span>{{ item.name }}</span>
           </div>
@@ -33,26 +44,69 @@
             :key="funnel.id"
           >
             <label>
-              <input type="checkbox" class="funnel__input " />
+              <input
+                type="checkbox"
+                class="funnel__input"
+                v-model="checkedFunnels"
+                :value="funnel.id"
+                @change="getNameItem(funnel.name, funnel.id)"
+              />
               {{ funnel.name }}
             </label>
           </div>
-
         </div>
-
       </div>
     </section>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { fetchFunnels } from "../functions/requests";
 
+// LOCAL STATE
 const data = fetchFunnels();
 const target = ref(null);
 const open = ref(false);
+const funnelSearch = ref("");
+const checkedFunnels = ref<Array<string>>([]);
+const itemNames = ref<Array<string>>([]);
+
+// COMPUTED
+
+const itemsSelectFiltered = computed(() => {
+  let funnels = data.value;
+
+  funnels = funnels.filter((item) => {
+    const pluck = <T extends Record<string, unknown>>(
+      objs: T[],
+      property: keyof T
+    ): T[keyof T][] => objs.map((obj) => obj[property]);
+
+    const result = pluck(item.steps, "name");
+
+    let tt = false;
+    result.forEach((item: string) => {
+      if (item.toLowerCase().indexOf(funnelSearch.value.toLowerCase()) > -1) {
+        tt = true;
+      }
+    });
+
+    return tt;
+  });
+
+  return funnels;
+});
+
+// FUNCTIONS
+function getNameItem(nome: string, id: string) {
+  if (checkedFunnels.value.includes(id)) {
+    itemNames.value.push(nome);
+  } else {
+    itemNames.value.splice(itemNames.value.indexOf(nome), 1);
+  }
+}
 
 // fecha ao clicar fora
 onClickOutside(target, () => (open.value = false));
@@ -75,6 +129,15 @@ onClickOutside(target, () => (open.value = false));
   padding-inline-start: 15px;
   background-color: #fff;
   cursor: pointer;
+
+  &--blue {
+    background-color: #ccdbfd;
+    border-color: #abc4ff;
+  }
+
+  &__names {
+    margin-inline-start: 6px
+  }
 
   &__list {
     position: absolute;
