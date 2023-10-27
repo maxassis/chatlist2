@@ -76,7 +76,7 @@ export const schemaFunnels = z.array(
 export type Funis = z.infer<typeof schemaFunnels>;
 
 export function fetchFunnels() {
-  const dt = ref<Funis | undefined>(undefined);
+  const dt = ref<Funis | []>([]);
   const url = "http://localhost:3000/funnels";
 
   fetcher(schemaFunnels, url)
@@ -94,7 +94,7 @@ export const schemaChats = z.object({
   page_num: z.number(),
   chats: z.array(
     z.object({
-      id: z.string(),
+      id: z.string().min(1),
       phone_id: z.string(),
       account_id: z.string(),
       wa_chat_id: z.string(),

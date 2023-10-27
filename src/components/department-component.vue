@@ -1,5 +1,4 @@
 <template>
-  {{ checkedItems }}
   <div class="department-wrapper" ref="target">
     <section class="dpt" @click="open = !open">
       <span>Usuário/Departamento</span>

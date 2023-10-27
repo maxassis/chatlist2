@@ -1,7 +1,15 @@
 <template>
   <div class="tags-wrapper" ref="target">
-    <section class="tags" @click="open = !open">
-      <span>Tags:</span>
+    <section class="tags" :class="[checkedCategories.length > 0 ? 'tags--blue' : null]" @click="open = !open">
+      <span v-if="checkedCategories.length == 0"
+        >Tags:</span
+      >
+      <span v-else-if="checkedCategories.length <= 2">
+        <span v-for="tag in checkedCategories" :key="tag" class="tags__names">{{ tag }}</span></span
+      >
+      <span v-else
+        ><span>{{ checkedCategories.length }} tags selecionadas</span>
+      </span>
     </section>
 
     <section class="tags__list" v-show="open">
@@ -58,7 +66,7 @@ const emit = defineEmits(['sendTags'])
 // local state
 const open = ref(false);
 const tagSearch = ref("");
-const checkedCategories = ref([]);
+const checkedCategories = ref<Array<string>>([]);
 let tags = data;
 
 
@@ -79,6 +87,7 @@ onClickOutside(target, () => (open.value = false));
   position: relative;
   block-size: 28.8px;
 }
+
 .tags {
   display: flex;
   align-items: center;
@@ -90,6 +99,15 @@ onClickOutside(target, () => (open.value = false));
   padding-inline-start: 15px;
   background-color: #fff;
   cursor: pointer;
+
+  &--blue {
+    background-color: #ccdbfd ;
+    border-color: #abc4ff ;
+  }
+
+  &__names {
+    margin-inline-start: 6px
+  }
 
   &__list {
     position: absolute;
