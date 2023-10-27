@@ -86,3 +86,36 @@ export function fetchFunnels() {
   return dt;
 }
 
+
+// REQUISIÇÂO CHATS
+export const schemaChats = z.object({
+  total_chats: z.number(),
+  total_returned: z.number(),
+  page_num: z.number(),
+  chats: z.array(
+    z.object({
+      id: z.string(),
+      phone_id: z.string(),
+      account_id: z.string(),
+      wa_chat_id: z.string(),
+      name: z.string(),
+      kind: z.string(),
+      picture: z.string(),
+      status: z.string(),
+      favorite: z.boolean(),
+      archived: z.boolean(),
+      scheduled: z.boolean(),
+      new_messages: z.number(),
+      updated: z.string(),
+      created: z.string(),
+      last_message: z.object({ text: z.string(), date: z.string() }),
+      users_delegated_ids: z.array(z.string()),
+      groups_delegated_ids: z.array(z.string()),
+      funnel_steps_ids: z.array(z.string()),
+      tags: z.array(
+        z.object({ text: z.string(), color: z.string(), bg: z.string() })
+      )
+    })
+  )
+})
+

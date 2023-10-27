@@ -35,6 +35,7 @@
                 :value="item.text"
                 v-model="checkedCategories"
                 class="tags__input"
+                @change="emit('sendTags', checkedCategories)"
               />
               {{ item.text }}
             </label>
@@ -46,19 +47,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, defineEmits } from "vue";
 import { fetchTags } from "../functions/requests";
-//import type { Tags } from "../functions/requests";
 import { onClickOutside } from "@vueuse/core";
 
 const data = fetchTags();
 const target = ref(null);
+const emit = defineEmits(['sendTags'])
 
 // local state
 const open = ref(false);
 const tagSearch = ref("");
 const checkedCategories = ref([]);
 let tags = data;
+
 
 const filteredItems = computed(() => {
   let valores = tags.value;

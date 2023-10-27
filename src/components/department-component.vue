@@ -1,4 +1,5 @@
-<template> 
+<template>
+  {{ checkedItems }}
   <div class="department-wrapper" ref="target">
     <section class="dpt" @click="open = !open">
       <span>Usuário/Departamento</span>
@@ -18,9 +19,21 @@
         </div> -->
 
         <div class="dpt__items">
-          <div class="dpt__single-item">
+          <div
+            class="dpt__single-item"
+            :class="[
+              noDelegatedSelected && !departmentSelected
+                ? 'dpt__single-item--disabled'
+                : null,
+            ]"
+          >
             <label>
-              <input type="checkbox" class="dpt__input" />
+              <input
+                type="checkbox"
+                class="dpt__input"
+                @change="selectNoDelegated(); emit('sendDepartments', checkedItems)"
+                v-model="checkedItems.noDelegated"
+              />
               Sem usuário delegado
             </label>
           </div>
@@ -33,10 +46,20 @@
             class="dpt__single-item"
             v-for="department in groupsSelectFiltered"
             :key="department.id"
-            
           >
             <label>
-              <input type="checkbox" class="dpt__input" v-model="checkedItems.groups" :value="department.id" />
+              <input
+                type="checkbox"
+                class="dpt__input"
+                :class="[
+                  departmentSelected && !noDelegatedSelected
+                    ? 'dpt__single-item--disabled'
+                    : null,
+                ]"
+                v-model="checkedItems.groups"
+                :value="department.id"
+                @change="checkDepartment(); emit('sendDepartments', checkedItems)"
+              />
               {{ department.name }}
             </label>
           </div>
@@ -49,10 +72,20 @@
             class="dpt__single-item"
             v-for="user in usersSelectFiltered"
             :key="user.id"
-            
           >
             <label>
-              <input type="checkbox" class="dpt__input" v-model="checkedItems.users" :value="user.id"/>
+              <input
+                type="checkbox"
+                class="dpt__input"
+                :class="[
+                  departmentSelected && !noDelegatedSelected
+                    ? 'dpt__single-item--disabled'
+                    : null,
+                ]"
+                v-model="checkedItems.users"
+                :value="user.id"
+                @change="checkDepartment(); emit('sendDepartments', checkedItems)"
+              />
               {{ user.name }}
             </label>
           </div>
@@ -63,21 +96,27 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, reactive } from "vue";
+import { ref, computed, reactive, defineEmits } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { fetchDpt } from "../functions/requests";
+import type { checkedDptItems } from "../types";
 
 const target = ref(null);
 const data = fetchDpt();
+const emit = defineEmits(['sendDepartments'])
 
-const open = ref(false);
+// LOCAL STATE
 const departments = data;
-const checkedItems = reactive({
+const open = ref(false);
+const noDelegatedSelected = ref(false);
+const departmentSelected = ref(false);
+const checkedItems = reactive<checkedDptItems>({
   groups: [],
   users: [],
   noDelegated: false,
 });
 
+// COMPUTED
 const groupsSelectFiltered = computed(() => {
   let dpt = departments.value?.groups;
 
@@ -89,6 +128,27 @@ const usersSelectFiltered = computed(() => {
 
   return dpt;
 });
+
+// FUNCTIONS
+function selectNoDelegated() {
+  if (checkedItems.noDelegated) {
+    noDelegatedSelected.value = false;
+    departmentSelected.value = true;
+  } else {
+    noDelegatedSelected.value = false;
+    departmentSelected.value = false;
+  }
+}
+
+function checkDepartment() {
+  if (checkedItems.groups.length > 0 || checkedItems.users.length > 0) {
+    noDelegatedSelected.value = true;
+    departmentSelected.value = false;
+  } else {
+    noDelegatedSelected.value = false;
+    departmentSelected.value = false;
+  }
+}
 
 // fecha ao clicar fora
 onClickOutside(target, () => (open.value = false));
@@ -185,6 +245,11 @@ onClickOutside(target, () => (open.value = false));
     border-block-end: 1.6px solid #f8f8ff;
     padding-inline-start: 15px;
     font-size: 12px;
+
+    &--disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
   }
 
   &__input {
