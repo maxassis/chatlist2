@@ -13,11 +13,12 @@
     <section class="form">
       <input
         class="form__name input"
+        :class="{ 'input--blue': fields.name }"
         type="text"
         placeholder="nome"
         v-model="fields.name"
       />
-      <select class="input form__phone" v-model="fields.phone">
+      <select class="input form__phone" :class="{ 'input--blue': fields.phone }" v-model="fields.phone">
         <option value>Aparelho:</option>
         <option v-for="device in devices" :key="device.id" :value="device.id">
           {{ device.description }}
@@ -27,12 +28,13 @@
         v-model="fields.whatsNumber"
         type="texte"
         class="input"
+        :class="{ 'input--blue': fields.whatsNumber }"
         placeholder="Número Whatsapp"
       />
 
       <div class="form__tags-wrapper">
         <Tags @sendTags="incomingTags" />
-        <select class="input" v-model="fields.allTags">
+        <select class="input" :class="{ 'input--blue': fields.allTags }" v-model="fields.allTags">
           <option value>Qualquer</option>
           <option value="and">Todas</option>
           <option value="ne">Não Tem</option>
@@ -41,7 +43,7 @@
 
       <div class="form__departments-wrapper">
         <Department @sendDepartments="incomingDepartments" />
-        <select class="input" v-model="fields.allDpt">
+        <select class="input" :class="{ 'input--blue': fields.allDpt }" v-model="fields.allDpt">
           <option value>Qualquer</option>
           <option value="and">Todas</option>
           <option value="ne">Não Tem</option>
@@ -54,39 +56,37 @@
 
       <div class="form__status-wrapper">
         <select
-            class="input"
-            style="padding-inline-start: 11px"
-            v-model="fields.status"
-          >
-            <option value>Status:</option>
-            <option value="ABERTO">ABERTO</option>
-            <option value="EM ATENDIMENTO">EM ATENDIMENTO</option>
-            <option value="AGUARDANDO">AGUARDANDO</option>
-            <option value="RESOLVIDO">RESOLVIDO</option>
-            <option value="FECHADO">FECHADO</option>
-            <option value="INDEFINIDO">INDEFINIDO</option>
-          </select>
+          class="input"
+          :class="{ 'input--blue': fields.status }"
+          style="padding-inline-start: 11px"
+          v-model="fields.status"
+        >
+          <option value>Status:</option>
+          <option value="ABERTO">ABERTO</option>
+          <option value="EM ATENDIMENTO">EM ATENDIMENTO</option>
+          <option value="AGUARDANDO">AGUARDANDO</option>
+          <option value="RESOLVIDO">RESOLVIDO</option>
+          <option value="FECHADO">FECHADO</option>
+          <option value="INDEFINIDO">INDEFINIDO</option>
+        </select>
 
-          <select
-            class="input"
-            v-model="fields.date"
-          >
-            <option value>Ordenar Por</option>
-            <option value="-updated">
-              Data Atualização (↓ Mais Novo) - Padrão
-            </option>
-            <option value="updated">Data Atualização (↑ Mais Antiga)</option>
-            <option value="-created">Data Criação (↓ Mais Novo)</option>
-            <option value="created">Data Criação (↑ Mais Antigos)</option>
-            <option value="-new_messages">Qtde Msgs Não Lidas (↓)</option>
-            <option value="new_messages">Qtde Msgs Não Lidas (↑)</option>
-            <option value="-date_last_message">
-              Data Última Msg (↓) - Mais Novas
-            </option>
-            <option value="date_last_message">
-              Data Última Msg (↑) - Mais Antigos
-            </option>
-          </select>
+        <select class="input" :class="{ 'input--blue': fields.date }" v-model="fields.date">
+          <option value>Ordenar Por</option>
+          <option value="-updated">
+            Data Atualização (↓ Mais Novo) - Padrão
+          </option>
+          <option value="updated">Data Atualização (↑ Mais Antiga)</option>
+          <option value="-created">Data Criação (↓ Mais Novo)</option>
+          <option value="created">Data Criação (↑ Mais Antigos)</option>
+          <option value="-new_messages">Qtde Msgs Não Lidas (↓)</option>
+          <option value="new_messages">Qtde Msgs Não Lidas (↑)</option>
+          <option value="-date_last_message">
+            Data Última Msg (↓) - Mais Novas
+          </option>
+          <option value="date_last_message">
+            Data Última Msg (↑) - Mais Antigos
+          </option>
+        </select>
       </div>
 
       <div class="select__wrapper">
@@ -112,25 +112,30 @@
         </div>
       </div>
 
-      <span class="form__clear" @click="clearForm()" v-show="
-        fields.name != '' ||
-        fields.phone != '' ||
-        fields.whatsNumber != '' ||
-        fields.allTags != '' ||
-        fields.allDpt != '' || 
-        fields.status != '' ||
-        fields.date != '' || 
-        fields.tags.length > 0 || 
-        fields.funnels.length > 0 ||
-        fields.departments.users.length > 0 ||
-        fields.departments.groups.length > 0 ||
-        fields.departments.noDelegated != false ||
-        fields.archiveSearch != false ||
-        fields.broadcastSearch != false ||
-        fields.favoritedSearch != false ||
-        fields.newMessages != false ||
-        fields.scheduledSearch != false
-      ">Limpar filtros</span>
+      <span
+        class="form__clear"
+        @click="clearForm()"
+        v-show="
+          fields.name != '' ||
+          fields.phone != '' ||
+          fields.whatsNumber != '' ||
+          fields.allTags != '' ||
+          fields.allDpt != '' ||
+          fields.status != '' ||
+          fields.date != '' ||
+          fields.tags.length > 0 ||
+          fields.funnels.length > 0 ||
+          fields.departments.users.length > 0 ||
+          fields.departments.groups.length > 0 ||
+          fields.departments.noDelegated != false ||
+          fields.archiveSearch != false ||
+          fields.broadcastSearch != false ||
+          fields.favoritedSearch != false ||
+          fields.newMessages != false ||
+          fields.scheduledSearch != false
+        "
+        >Limpar filtros</span
+      >
     </section>
 
     <section class="list__wrapper">
@@ -174,12 +179,27 @@ const fields = reactive<fieldsTypes>({
 const devices = fetchDevices();
 
 // FUNCTIONS
-const incomingTags = (tags: Array<string>) => fields.tags = tags
-const incomingDepartments = (departments: checkedDptItems) => fields.departments = departments
-const incomingFunnels = (funnels: Array<string>) => fields.funnels = funnels
+const incomingTags = (tags: Array<string>) => (fields.tags = tags);
+const incomingDepartments = (departments: checkedDptItems) =>
+  (fields.departments = departments);
+const incomingFunnels = (funnels: Array<string>) => (fields.funnels = funnels);
 
 function clearForm() {
-  fields.name = "teste";
+    (fields.name = ""),
+    (fields.phone = ""),
+    (fields.allTags = ""),
+    (fields.allDpt = ""),
+    (fields.whatsNumber = ""),
+    (fields.tags = []),
+    (fields.departments = { users: [], groups: [], noDelegated: false }),
+    (fields.funnels = []),
+    (fields.status = ""),
+    (fields.date = ""),
+    (fields.newMessages = false),
+    (fields.archiveSearch = false),
+    (fields.broadcastSearch = false),
+    (fields.favoritedSearch = false),
+    (fields.scheduledSearch = false);
 }
 </script>
 
@@ -245,14 +265,11 @@ function clearForm() {
   }
 
   &__departments-wrapper {
-    display: grid;
-    grid-auto-flow: row;
-    grid-template-columns: 70% 30%;
+    @extend .form__tags-wrapper;
   }
 
   &__status-wrapper {
-    display: grid;
-    grid-auto-flow: row;
+    @extend .form__tags-wrapper;
     grid-template-columns: 50% 50%;
   }
 
@@ -284,6 +301,11 @@ function clearForm() {
   &::placeholder {
     color: black;
     opacity: 1;
+  }
+
+  &--blue {
+    background-color: #ccdbfd ;
+    border-color: #abc4ff ;
   }
 }
 .select {
