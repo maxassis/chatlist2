@@ -140,7 +140,7 @@ import type { checkedDptItems } from "../types";
 
 const target = ref(null);
 const data = fetchDpt();
-// eslint-disable-next-line 
+// eslint-disable-next-line
 const emit = defineEmits(["sendDepartments"]);
 
 // LOCAL STATE
@@ -208,6 +208,14 @@ function checkDepartment() {
     departmentSelected.value = false;
   }
 }
+
+const clearDptInput = () => {
+    (checkedItems.groups = []),
+    (checkedItems.users = []),
+    (checkedItems.noDelegated = false);
+};
+// eslint-disable-next-line
+defineExpose({ clearDptInput });
 
 // fecha ao clicar fora
 onClickOutside(target, () => (open.value = false));

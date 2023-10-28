@@ -110,7 +110,14 @@ function getNameItem(nome: string, id: string) {
   }
 }
 
-// fecha ao clicar fora
+const clearFunnelInput = () => {
+  checkedFunnels.value = []
+  itemNames.value = [] 
+};
+// eslint-disable-next-line
+defineExpose({ clearFunnelInput });
+
+
 onClickOutside(target, () => (open.value = false));
 </script>
 

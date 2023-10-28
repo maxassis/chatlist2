@@ -42,7 +42,7 @@
       </div>
 
       <div class="form__departments-wrapper">
-        <Department @sendDepartments="incomingDepartments" />
+        <Department @sendDepartments="incomingDepartments" ref="DptComponent" />
         <select class="input" :class="{ 'input--blue': fields.allDpt }" v-model="fields.allDpt">
           <option value>Qualquer</option>
           <option value="and">Todas</option>
@@ -51,7 +51,7 @@
       </div>
 
       <div class="form__funnel-wrapper">
-        <Funnel @sendFunnels="incomingFunnels" />
+        <Funnel @sendFunnels="incomingFunnels" ref="FunnelComponent" />
       </div>
 
       <div class="form__status-wrapper">
@@ -158,8 +158,12 @@ import Funnel from "./components/funnel-component.vue";
 import type { checkedDptItems, fieldsTypes } from "./types";
 import { fetchDevices } from "./functions/requests";
 
-// LOCAL STATE
+//  REFS
 const TagComponent = ref<InstanceType<typeof Tags> | null>(null)
+const DptComponent = ref<InstanceType<typeof Department> | null>(null) 
+const FunnelComponent = ref<InstanceType<typeof Funnel> | null>(null)
+
+// LOCAL STATE 
 const fields = reactive<fieldsTypes>({
   name: "",
   phone: "",
@@ -202,6 +206,8 @@ function clearForm() {
     (fields.favoritedSearch = false),
     (fields.scheduledSearch = false);
     TagComponent.value?.clearInput()
+    DptComponent.value?.clearDptInput()
+    FunnelComponent.value?.clearFunnelInput()
 }
 </script>
 

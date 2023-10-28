@@ -74,7 +74,6 @@ const tagSearch = ref("");
 const checkedCategories = ref<Array<string>>([]);
 let tags = data;
 
-
 // COMPUTED
 const filteredItems = computed(() => {
   let valores = tags.value;
@@ -85,10 +84,9 @@ const filteredItems = computed(() => {
 });
 
 // FUNCTIONS
-const clearInput = () => checkedCategories.value = [];
+const clearInput = () => (checkedCategories.value = []);
 // eslint-disable-next-line
-defineExpose({clearInput,});
-
+defineExpose({ clearInput });
 
 // fecha ao clicar fora
 onClickOutside(target, () => (open.value = false));
