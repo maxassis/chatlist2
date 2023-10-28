@@ -6,6 +6,8 @@ export type fieldsTypes = {
   whatsNumber: string,
   tags: Array<string>, 
   departments: checkedDptItems,  
+  status: string,
+  date: string,
   newMessages: boolean,
   archiveSearch: boolean,
   broadcastSearch: boolean ,

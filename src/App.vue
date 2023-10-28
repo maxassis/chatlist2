@@ -20,7 +20,7 @@
       <select class="input form__phone" v-model="fields.phone">
         <option value>Aparelho:</option>
         <option v-for="device in devices" :key="device.id" :value="device.id">
-            {{ device.description }}
+          {{ device.description }}
         </option>
       </select>
       <input
@@ -52,6 +52,43 @@
         <Funnel />
       </div>
 
+      <div class="form__status-wrapper">
+        <select
+            class="input"
+            style="padding-inline-start: 11px"
+            v-model="fields.status"
+          >
+            <option value>Status:</option>
+            <option value="ABERTO">ABERTO</option>
+            <option value="EM ATENDIMENTO">EM ATENDIMENTO</option>
+            <option value="AGUARDANDO">AGUARDANDO</option>
+            <option value="RESOLVIDO">RESOLVIDO</option>
+            <option value="FECHADO">FECHADO</option>
+            <option value="INDEFINIDO">INDEFINIDO</option>
+          </select>
+
+          <select
+            class="input"
+            v-model="fields.date"
+          >
+            <option value>Ordenar Por</option>
+            <option value="-updated">
+              Data Atualização (↓ Mais Novo) - Padrão
+            </option>
+            <option value="updated">Data Atualização (↑ Mais Antiga)</option>
+            <option value="-created">Data Criação (↓ Mais Novo)</option>
+            <option value="created">Data Criação (↑ Mais Antigos)</option>
+            <option value="-new_messages">Qtde Msgs Não Lidas (↓)</option>
+            <option value="new_messages">Qtde Msgs Não Lidas (↑)</option>
+            <option value="-date_last_message">
+              Data Última Msg (↓) - Mais Novas
+            </option>
+            <option value="date_last_message">
+              Data Última Msg (↑) - Mais Antigos
+            </option>
+          </select>
+      </div>
+
       <div class="select__wrapper">
         <div class="select__single-item">
           <img src="../assets/mail.svg" class="select__mail-icon" />
@@ -74,6 +111,27 @@
           <input type="checkbox" v-model="fields.scheduledSearch" />
         </div>
       </div>
+
+      <span class="form__clear" @click="clearForm()" v-show="
+        fields.name != '' ||
+        fields.phone != '' ||
+        fields.whatsNumber != '' ||
+        fields.allTags != '' ||
+        fields.allDpt != '' 
+           // fields.statusSearch != '' ||
+            //fields.dateSearch != '' ||
+            //tagsFiltereds.length > 0 ||
+            //funnelsFiltereds.length > 0 ||
+            //departmentsFiltereds.users.length > 0 ||
+            //departmentsFiltereds.groups.length > 0 ||
+            //departmentsFiltereds.noDelegated != false ||
+            //archiveSearch != false ||
+           // broadcastSearch != false ||
+            //favoritedSearch != false ||
+            //newMessages != false ||
+           // scheduledSearch != false
+      
+      ">Limpar filtros</span>
     </section>
 
     <section class="list__wrapper">
@@ -94,7 +152,7 @@ import Tags from "./components/tags-component.vue";
 import Department from "./components/department-component.vue";
 import Funnel from "./components/funnel-component.vue";
 import type { checkedDptItems, fieldsTypes } from "./types";
-import { fetchDevices } from './functions/requests'
+import { fetchDevices } from "./functions/requests";
 
 // LOCAL STATE
 const fields = reactive<fieldsTypes>({
@@ -105,21 +163,22 @@ const fields = reactive<fieldsTypes>({
   whatsNumber: "",
   tags: [],
   departments: { users: [], groups: [], noDelegated: false },
+  status: "",
+  date: "",
   newMessages: false,
   archiveSearch: false,
   broadcastSearch: false,
   favoritedSearch: false,
   scheduledSearch: false,
 });
-const devices = fetchDevices()
+const devices = fetchDevices();
 
+// FUNCTIONS
+const incomingTags = (tags: Array<string>) => fields.tags = tags
+const incomingDepartments = (departments: checkedDptItems) => fields.departments = departments
 
-// FUNCTIONS 
-function incomingTags(tags: Array<string>) {
-  fields.tags = tags;
-}
-function incomingDepartments(departments: checkedDptItems) {
-  fields.departments = departments;
+function clearForm() {
+  fields.name = "teste";
 }
 </script>
 
@@ -153,7 +212,7 @@ function incomingDepartments(departments: checkedDptItems) {
     }
 
     > img {
-      inline-size: 21px;
+      inline-size: 20px;
     }
 
     > span {
@@ -175,7 +234,6 @@ function incomingDepartments(departments: checkedDptItems) {
 .form {
   display: grid;
   gap: 4px;
-  block-size: 294.6px;
   padding: 12px;
   background-color: #f6f6f6;
 
@@ -189,6 +247,28 @@ function incomingDepartments(departments: checkedDptItems) {
     display: grid;
     grid-auto-flow: row;
     grid-template-columns: 70% 30%;
+  }
+
+  &__status-wrapper {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 50% 50%;
+  }
+
+  &__clear {
+    inline-size: fit-content;
+    text-decoration: underline;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 14px;
+    color: #6e6b6d;
+    cursor: pointer;
+    margin: 11px 0 2px 0;
+    transition: 0.2s ease;
+
+    &:hover {
+      color: darken(#bab8b9, 60%);
+    }
   }
 }
 
@@ -205,7 +285,6 @@ function incomingDepartments(departments: checkedDptItems) {
     opacity: 1;
   }
 }
-
 .select {
   &__wrapper {
     display: flex;
