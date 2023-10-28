@@ -1,11 +1,15 @@
 <template>
   <div class="tags-wrapper" ref="target">
-    <section class="tags" :class="[checkedCategories.length > 0 ? 'tags--blue' : null]" @click="open = !open">
-      <span v-if="checkedCategories.length == 0"
-        >Tags:</span
-      >
+    <section
+      class="tags"
+      :class="[checkedCategories.length > 0 ? 'tags--blue' : null]"
+      @click="open = !open"
+    >
+      <span v-if="checkedCategories.length == 0">Tags:</span>
       <span v-else-if="checkedCategories.length <= 2">
-        <span v-for="tag in checkedCategories" :key="tag" class="tags__names">{{ tag }}</span></span
+        <span v-for="tag in checkedCategories" :key="tag" class="tags__names">{{
+          tag
+        }}</span></span
       >
       <span v-else
         ><span>{{ checkedCategories.length }} tags selecionadas</span>
@@ -61,8 +65,8 @@ import { onClickOutside } from "@vueuse/core";
 
 const data = fetchTags();
 const target = ref(null);
-// eslint-disable-next-line 
-const emit = defineEmits(['sendTags'])
+// eslint-disable-next-line
+const emit = defineEmits(["sendTags"]);
 
 // local state
 const open = ref(false);
@@ -71,6 +75,7 @@ const checkedCategories = ref<Array<string>>([]);
 let tags = data;
 
 
+// COMPUTED
 const filteredItems = computed(() => {
   let valores = tags.value;
   valores = valores.filter((item) => {
@@ -78,6 +83,12 @@ const filteredItems = computed(() => {
   });
   return valores;
 });
+
+// FUNCTIONS
+const clearInput = () => checkedCategories.value = [];
+// eslint-disable-next-line
+defineExpose({clearInput,});
+
 
 // fecha ao clicar fora
 onClickOutside(target, () => (open.value = false));
@@ -104,13 +115,13 @@ onClickOutside(target, () => (open.value = false));
   overflow: hidden;
 
   &--blue {
-    background-color: #ccdbfd ;
-    border-color: #abc4ff ;
+    background-color: #ccdbfd;
+    border-color: #abc4ff;
   }
 
   &__names {
     &:not(:first-child) {
-      margin-inline-start: 8px
+      margin-inline-start: 8px;
     }
   }
 

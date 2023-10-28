@@ -33,7 +33,7 @@
       />
 
       <div class="form__tags-wrapper">
-        <Tags @sendTags="incomingTags" />
+        <Tags @sendTags="incomingTags" ref="TagComponent" />
         <select class="input" :class="{ 'input--blue': fields.allTags }" v-model="fields.allTags">
           <option value>Qualquer</option>
           <option value="and">Todas</option>
@@ -151,7 +151,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { ref, reactive } from "vue";
 import Tags from "./components/tags-component.vue";
 import Department from "./components/department-component.vue";
 import Funnel from "./components/funnel-component.vue";
@@ -159,6 +159,7 @@ import type { checkedDptItems, fieldsTypes } from "./types";
 import { fetchDevices } from "./functions/requests";
 
 // LOCAL STATE
+const TagComponent = ref<InstanceType<typeof Tags> | null>(null)
 const fields = reactive<fieldsTypes>({
   name: "",
   phone: "",
@@ -200,6 +201,7 @@ function clearForm() {
     (fields.broadcastSearch = false),
     (fields.favoritedSearch = false),
     (fields.scheduledSearch = false);
+    TagComponent.value?.clearInput()
 }
 </script>
 
