@@ -48,7 +48,7 @@
                 class="funnel__input"
                 v-model="checkedFunnels"
                 :value="funnel.id"
-                @change="getNameItem(funnel.name, funnel.id)"
+                @change="getNameItem(funnel.name, funnel.id); emit('sendFunnels', checkedFunnels);"
               />
               {{ funnel.name }}
             </label>
@@ -63,6 +63,9 @@
 import { ref, computed } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { fetchFunnels } from "../functions/requests";
+
+// eslint-disable-next-line 
+const emit = defineEmits(["sendFunnels"]);
 
 // LOCAL STATE
 const data = fetchFunnels();

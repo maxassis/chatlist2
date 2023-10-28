@@ -6,6 +6,7 @@ export type fieldsTypes = {
   whatsNumber: string,
   tags: Array<string>, 
   departments: checkedDptItems,  
+  funnels: Array<string>,
   status: string,
   date: string,
   newMessages: boolean,

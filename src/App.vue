@@ -49,7 +49,7 @@
       </div>
 
       <div class="form__funnel-wrapper">
-        <Funnel />
+        <Funnel @sendFunnels="incomingFunnels" />
       </div>
 
       <div class="form__status-wrapper">
@@ -117,20 +117,19 @@
         fields.phone != '' ||
         fields.whatsNumber != '' ||
         fields.allTags != '' ||
-        fields.allDpt != '' 
-           // fields.statusSearch != '' ||
-            //fields.dateSearch != '' ||
-            //tagsFiltereds.length > 0 ||
-            //funnelsFiltereds.length > 0 ||
-            //departmentsFiltereds.users.length > 0 ||
-            //departmentsFiltereds.groups.length > 0 ||
-            //departmentsFiltereds.noDelegated != false ||
-            //archiveSearch != false ||
-           // broadcastSearch != false ||
-            //favoritedSearch != false ||
-            //newMessages != false ||
-           // scheduledSearch != false
-      
+        fields.allDpt != '' || 
+        fields.status != '' ||
+        fields.date != '' || 
+        fields.tags.length > 0 || 
+        fields.funnels.length > 0 ||
+        fields.departments.users.length > 0 ||
+        fields.departments.groups.length > 0 ||
+        fields.departments.noDelegated != false ||
+        fields.archiveSearch != false ||
+        fields.broadcastSearch != false ||
+        fields.favoritedSearch != false ||
+        fields.newMessages != false ||
+        fields.scheduledSearch != false
       ">Limpar filtros</span>
     </section>
 
@@ -163,6 +162,7 @@ const fields = reactive<fieldsTypes>({
   whatsNumber: "",
   tags: [],
   departments: { users: [], groups: [], noDelegated: false },
+  funnels: [],
   status: "",
   date: "",
   newMessages: false,
@@ -176,6 +176,7 @@ const devices = fetchDevices();
 // FUNCTIONS
 const incomingTags = (tags: Array<string>) => fields.tags = tags
 const incomingDepartments = (departments: checkedDptItems) => fields.departments = departments
+const incomingFunnels = (funnels: Array<string>) => fields.funnels = funnels
 
 function clearForm() {
   fields.name = "teste";
