@@ -99,6 +99,8 @@ onClickOutside(target, () => (open.value = false));
   padding-inline-start: 15px;
   background-color: #fff;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
 
   &--blue {
     background-color: #ccdbfd ;
@@ -106,7 +108,9 @@ onClickOutside(target, () => (open.value = false));
   }
 
   &__names {
-    margin-inline-start: 6px
+    &:not(:first-child) {
+      margin-inline-start: 8px
+    }
   }
 
   &__list {
