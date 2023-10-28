@@ -133,13 +133,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, reactive, defineEmits } from "vue";
+import { ref, computed, reactive } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { fetchDpt } from "../functions/requests";
 import type { checkedDptItems } from "../types";
 
 const target = ref(null);
 const data = fetchDpt();
+// eslint-disable-next-line 
 const emit = defineEmits(["sendDepartments"]);
 
 // LOCAL STATE

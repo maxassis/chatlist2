@@ -55,12 +55,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, defineEmits } from "vue";
+import { ref, computed } from "vue";
 import { fetchTags } from "../functions/requests";
 import { onClickOutside } from "@vueuse/core";
 
 const data = fetchTags();
 const target = ref(null);
+// eslint-disable-next-line 
 const emit = defineEmits(['sendTags'])
 
 // local state

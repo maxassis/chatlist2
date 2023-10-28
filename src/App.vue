@@ -18,9 +18,10 @@
         v-model="fields.name"
       />
       <select class="input form__phone" v-model="fields.phone">
-        <option value="1">Aparelho</option>
-        <option>teste1</option>
-        <option>teste2</option>
+        <option value>Aparelho:</option>
+        <option v-for="device in devices" :key="device.id" :value="device.id">
+            {{ device.description }}
+        </option>
       </select>
       <input
         v-model="fields.whatsNumber"
@@ -64,7 +65,7 @@
         </div>
         <div class="select__single-item">
           <img src="../assets/star.svg" class="select__mail-icon" />
-          <input type="checkbox" v-model="fields.favoritedSearch"/>
+          <input type="checkbox" v-model="fields.favoritedSearch" />
         </div>
         <div class="select__single-item">
           <img src="../assets/clock.svg" class="select__mail-icon" />
@@ -91,32 +92,33 @@ import Tags from "./components/tags-component.vue";
 import Department from "./components/department-component.vue";
 import Funnel from "./components/funnel-component.vue";
 import type { checkedDptItems, fieldsTypes } from "./types";
+import { fetchDevices } from './functions/requests'
 
+// LOCAL STATE
 const fields = reactive<fieldsTypes>({
   name: "",
   phone: "",
   allTags: "",
   allDpt: "",
   whatsNumber: "",
-  tags: [], 
-  departments: {users: [], groups: [], noDelegated: false},  
+  tags: [],
+  departments: { users: [], groups: [], noDelegated: false },
   newMessages: false,
   archiveSearch: false,
   broadcastSearch: false,
   favoritedSearch: false,
-  scheduledSearch: false
-})
+  scheduledSearch: false,
+});
+const devices = fetchDevices()
 
+
+// FUNCTIONS 
 function incomingTags(tags: Array<string>) {
   fields.tags = tags;
 }
-
 function incomingDepartments(departments: checkedDptItems) {
   fields.departments = departments;
 }
-
-
-
 </script>
 
 <style lang="scss" scoped>
@@ -196,6 +198,10 @@ function incomingDepartments(departments: checkedDptItems) {
   font-size: 12px;
   padding-inline-start: 15px;
   background-color: #fff;
+  &::placeholder {
+    color: black;
+    opacity: 1;
+  }
 }
 
 .select {
