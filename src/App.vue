@@ -33,16 +33,18 @@
       <div class="form__tags-wrapper">
         <Tags @sendTags="incomingTags" />
         <select class="input" v-model="fields.allTags">
-          <option>teste</option>
-          <option>teste2</option>
+          <option value>Qualquer</option>
+          <option value="and">Todas</option>
+          <option value="ne">Não Tem</option>
         </select>
       </div>
 
       <div class="form__departments-wrapper">
         <Department @sendDepartments="incomingDepartments" />
         <select class="input" v-model="fields.allDpt">
-          <option>teste</option>
-          <option>teste2</option>
+          <option value>Qualquer</option>
+          <option value="and">Todas</option>
+          <option value="ne">Não Tem</option>
         </select>
       </div>
 
