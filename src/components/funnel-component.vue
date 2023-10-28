@@ -32,7 +32,7 @@
           <span>Nenhuma tag encontrada.</span>
         </div> -->
 
-        <div class="funnel__set" v-for="item in data" :key="item.id">
+        <div class="funnel__set" v-for="item in itemsSelectFiltered" :key="item.id">
           <div class="funnel__type">
             <span>{{ item.name }}</span>
           </div>

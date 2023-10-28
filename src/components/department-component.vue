@@ -7,12 +7,10 @@
         getNames.length != 0 || checkedItems.noDelegated ? 'dpt--blue' : null,
       ]"
     >
-    <span
-        v-if="checkedItems.noDelegated && getNames.length <= 3"
+      <span v-if="checkedItems.noDelegated && getNames.length <= 3"
         >Sem delegado</span
       >
-      <span
-        v-if="getNames.length == 0 && checkedItems.noDelegated == false"
+      <span v-if="getNames.length == 0 && checkedItems.noDelegated == false"
         >Usuário/Departamento:</span
       >
       <span
@@ -35,7 +33,12 @@
         <div class="dpt__icon">
           <img src="../../assets/lupa2.svg" />
         </div>
-        <input type="text" class="dpt__search-input" placeholder="Pesquisar" />
+        <input
+          type="text"
+          class="dpt__search-input"
+          placeholder="Pesquisar"
+          v-model="userSearch"
+        />
       </div>
 
       <div class="dtp__options">
@@ -144,6 +147,7 @@ const departments = data;
 const open = ref(false);
 const noDelegatedSelected = ref(false);
 const departmentSelected = ref(false);
+const userSearch = ref("");
 const checkedItems = reactive<checkedDptItems>({
   groups: [],
   users: [],
@@ -152,15 +156,19 @@ const checkedItems = reactive<checkedDptItems>({
 
 // COMPUTED
 const groupsSelectFiltered = computed(() => {
-  let dpt = departments.value?.groups;
+  const dp = departments.value?.groups?.filter((item) => {
+    return item.name.toLowerCase().indexOf(userSearch.value.toLowerCase()) > -1;
+  });
 
-  return dpt;
+  return dp;
 });
 
 const usersSelectFiltered = computed(() => {
-  let dpt = departments?.value?.users;
+  const dp = departments.value?.users.filter((item) => {
+    return item.name.toLowerCase().indexOf(userSearch.value.toLowerCase()) > -1;
+  });
 
-  return dpt;
+  return dp;
 });
 
 const getNames = computed(() => {
@@ -228,10 +236,10 @@ onClickOutside(target, () => (open.value = false));
     background-color: #ccdbfd;
     border-color: #abc4ff;
   }
-  
+
   &__names {
     &:not(:first-child) {
-      margin-inline-start: 8px
+      margin-inline-start: 8px;
     }
   }
 
