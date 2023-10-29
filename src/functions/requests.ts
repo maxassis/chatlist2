@@ -121,37 +121,56 @@ export function fetchDevices() {
   return dt;
 }
 
-// REQUISIÇÂO CHATS
-// export const schemaChats = z.object({
-//   total_chats: z.number(),
-//   total_returned: z.number(),
-//   page_num: z.number(),
-//   chats: z.array(
-//     z.object({
-//       id: z.string().min(1),
-//       phone_id: z.string(),
-//       account_id: z.string(),
-//       wa_chat_id: z.string(),
-//       name: z.string(),
-//       kind: z.string(),
-//       picture: z.string(),
-//       status: z.string(),
-//       favorite: z.boolean(),
-//       archived: z.boolean(),
-//       scheduled: z.boolean(),
-//       new_messages: z.number(),
-//       updated: z.string(),
-//       created: z.string(),
-//       last_message: z.object({ text: z.string(), date: z.string() }),
-//       users_delegated_ids: z.array(z.string()),
-//       groups_delegated_ids: z.array(z.string()),
-//       funnel_steps_ids: z.array(z.string()),
-//       tags: z.array(
-//         z.object({ text: z.string(), color: z.string(), bg: z.string() })
-//       )
-//     })
-//   )
-// })
+// REQUISIÇÂO CHATS MOCK
+export const schemaChats = z.array(
+  z.object({
+    total_chats: z.number(),
+    total_returned: z.number(),
+    page_num: z.number(),
+    chats: z.array(
+      z.object({
+        id: z.string(),
+        phone_id: z.string(),
+        account_id: z.string(),
+        wa_chat_id: z.string(),
+        name: z.string(),
+        kind: z.string(),
+        picture: z.string().nullable(),
+        status: z.string().nullable(),
+        favorite: z.boolean(),
+        archived: z.boolean(),
+        scheduled: z.boolean(),
+        new_messages: z.number(),
+        updated: z.string(),
+        created: z.string(),
+        last_message: z.object({ text: z.string().nullable(), date: z.string().nullable() }),
+        users_delegated_ids: z.array(z.string()),
+        groups_delegated_ids: z.array(z.string()),
+        funnel_steps_ids: z.array(z.string()),
+        tags: z.array(
+          z.object({ text: z.string(), color: z.string(), bg: z.string() })
+        )
+      })
+    )
+  })
+)
+
+export type Chats = z.infer<typeof schemaChats>;
+export function fetchChatsMock() {
+  const dt = ref<Chats | undefined>(undefined);
+  const url = "http://localhost:3000/chats"
+
+  fetcher(schemaChats, url)
+    .then((response) => {
+      dt.value = response
+      console.log(response)
+    })
+    .catch((error) => console.log(error));
+
+  return dt;
+}
+
+fetchChatsMock()
 
 // TESTE REQUEST
 
