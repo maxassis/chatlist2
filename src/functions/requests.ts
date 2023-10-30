@@ -122,8 +122,7 @@ export function fetchDevices() {
 }
 
 // REQUISIÇÂO CHATS MOCK
-export const schemaChats = z.array(
-  z.object({
+export const schemaChats = z.object({
     total_chats: z.number(),
     total_returned: z.number(),
     page_num: z.number(),
@@ -153,12 +152,12 @@ export const schemaChats = z.array(
       })
     )
   })
-)
+
 
 export type Chats = z.infer<typeof schemaChats>;
 export function fetchChatsMock() {
   const dt = ref<Chats | undefined>(undefined);
-  const url = "https://run.mocky.io/v3/dc00e2e3-bb3d-4efa-bc49-1e9370161ac6"
+  const url = "https://run.mocky.io/v3/bba7389c-76d9-4ed0-9bcd-75bf537eac49"
 
   fetcher(schemaChats, url)
     .then((response) => {

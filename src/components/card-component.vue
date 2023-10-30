@@ -1,25 +1,63 @@
 <template>
-  <section class="card__wrapper">
-    <div class="card__single-card">
+  <section class="card__wrapper" >
+    <div class="card__single-card" v-for="card in cards?.chats" :key="card.id">
       <div class="card__checkbox">
         <input type="checkbox" />
       </div>
       <a class="card__infos">
         <img
-          class="card__user-img"
-          src="../../assets/noimg.webp"
-          alt="user image"
-        />
+            v-if="card.picture"
+            :src="card.picture"
+            alt="user image"
+            loading="lazy"
+          />
+          <img
+            v-else
+            src="../../assets/noimg.webp"
+            alt="user image"
+          />
 
         <div class="card__user-info-wrapper">
           <div class="card__name-wrapper">
-            <span class="card__user-name">max hehehehheheheheheheh</span>
+            <span class="card__user-name">{{ card.name }}</span>
           </div>
 
           <div class="card__user-msg">
-            <span
-              >Esse é um
-              testeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span
+            <span v-if="card.last_message.text == 'VIDEO'" class="card__user-msg"
+              ><i class="fa fa-video"></i>️ Vídeo</span
+            >
+            <span v-else-if="card.last_message.text == 'IMAGE'" class="card__user-msg"
+              ><i class="fa fa-image"></i>️ Foto</span
+            >
+            <span v-else-if="card.last_message.text == 'PTT'" class="card__user-msg"
+              ><i class="fa fa-microphone"></i>️ Mensagem de Voz</span
+            >
+            <span v-else-if="card.last_message.text == 'AUDIO'" class="card__user-msg"
+              ><i class="fa fa-volume-up"></i>️ Áudio</span
+            >
+            <span v-else-if="card.last_message.text == 'DOCUMENT'" class="card__user-msg"
+              ><i class="fa fa-file"></i>️ Documento</span
+            >
+            <span v-else-if="card.last_message.text == 'VCARD'" class="card__user-msg"
+              ><i class="fa fa-id-card"></i>️ Contato</span
+            >
+            <span v-else-if="card.last_message.text == 'MULTI_VCARD'" class="card__user-msg"
+              ><i class="fa fa-id-card"></i>️ Contato</span
+            >
+            <span v-else-if="card.last_message.text == 'LOCATION'" class="card__user-msg"
+              ><i class="fa fa-map-marker-alt"></i>️ Localização</span
+            >
+            <span v-else-if="card.last_message.text == 'CALL_LOG'" class="card__user-msg"
+              ><i class="fa fa-phone-slash"></i>️ Ligação Perdida</span
+            >
+            <span v-else-if="card.last_message.text == 'STICKER'" class="card__user-msg"
+              ><i class="fa fa-sticky-note"></i> Figurinha</span
+            >
+            <span v-else-if="card.last_message.text == 'CIPHERTEXT'" class="card__user-msg"
+              ><i class="fa fa-clock"></i> Aguardando Mensagem...</span
+            >
+            <span v-else class="card__user-msg">
+              {{ card.last_message.text }}</span
             >
           </div>
         </div>
@@ -27,15 +65,16 @@
         <div class="card__attendance-wrapper">
           <div class="card__attendance">
             <div class="card__attendance-day">
-              <span class="card__attendance-status">ABERTO</span>
+              <span class="card__attendance-status">{{
+                    card.status == "EM ATENDIMENTO" ? "EM ATENDI" : card.status
+                }}</span>
             </div>
-            <span class="card__attendance__number"> 1 </span>
+            <span class="card__attendance__number" v-if="card.new_messages != 0"> {{ card.new_messages }} </span>
           </div>
 
           <div class="card__attendance-hour-wrapper">
             <span class="card__attendance-hour">ha 9 meses</span>
 
-            <!-- <div class="card__attendance-online-wrapper"> -->
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -57,7 +96,7 @@
                 d="M12.3 12.22A4.92 4.92 0 0 0 14 8.5a5 5 0 0 0-10 0 4.92 4.92 0 0 0 1.7 3.72A8 8 0 0 0 1 19.5a1 1 0 0 0 2 0 6 6 0 0 1 12 0 1 1 0 0 0 2 0 8 8 0 0 0-4.7-7.28ZM9 11.5a3 3 0 1 1 3-3 3 3 0 0 1-3 3Zm9.74.32A5 5 0 0 0 15 3.5a1 1 0 0 0 0 2 3 3 0 0 1 3 3 3 3 0 0 1-1.5 2.59 1 1 0 0 0-.5.84 1 1 0 0 0 .45.86l.39.26.13.07a7 7 0 0 1 4 6.38 1 1 0 0 0 2 0 9 9 0 0 0-4.23-7.68Z"
               />
             </svg>
-            <!-- </div> -->
+            
           </div>
         </div>
       </a>
@@ -82,7 +121,7 @@ const cards = fetchChatsMock();
     display: grid;
     grid-template-columns: 30px 1fr;
     grid-template-rows: 1fr;
-    // border: 1px solid red;
+    border-block-end: 1.12px solid #f2f2f2;
     block-size: 68px;
   }
 
@@ -92,7 +131,6 @@ const cards = fetchChatsMock();
   }
 
   &__infos {
-    border: 1px solid red;
     display: grid;
     grid-template-columns: 45px 1fr auto;
     grid-template-rows: 1fr;
