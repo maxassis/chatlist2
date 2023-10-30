@@ -146,6 +146,7 @@
       <div class="list__count">
         <span>Exibindo 52 resultados: </span>
       </div>
+      <Card />
     </section>
   </div>
 </template>
@@ -155,6 +156,7 @@ import { ref, reactive } from "vue";
 import Tags from "./components/tags-component.vue";
 import Department from "./components/department-component.vue";
 import Funnel from "./components/funnel-component.vue";
+import Card from "./components/card-component.vue";
 import type { checkedDptItems, fieldsTypes } from "./types";
 import { fetchDevices } from "./functions/requests";
 

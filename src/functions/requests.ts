@@ -158,7 +158,7 @@ export const schemaChats = z.array(
 export type Chats = z.infer<typeof schemaChats>;
 export function fetchChatsMock() {
   const dt = ref<Chats | undefined>(undefined);
-  const url = "http://localhost:3000/chats"
+  const url = "https://run.mocky.io/v3/dc00e2e3-bb3d-4efa-bc49-1e9370161ac6"
 
   fetcher(schemaChats, url)
     .then((response) => {
@@ -170,7 +170,6 @@ export function fetchChatsMock() {
   return dt;
 }
 
-fetchChatsMock()
 
 // TESTE REQUEST
 
