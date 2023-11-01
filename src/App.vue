@@ -2,11 +2,19 @@
   <div class="container-chatlist">
     <section class="search-box">
       <button class="search-box__search">
-        <img src="../assets/lupa.svg" />
+        <inline-svg
+          :src="require('../assets/lupa.svg')"
+          aria-label="lupa"
+          width="20"
+        ></inline-svg>
         <span>Pesquisar mensagem</span>
       </button>
       <button class="search-box__add">
-        <img src="../assets/user-plus.svg" />
+        <inline-svg
+          :src="require('../assets/user-plus.svg')"
+          aria-label="add user"
+          width="22"
+        ></inline-svg>
       </button>
     </section>
 
@@ -18,7 +26,11 @@
         placeholder="nome"
         v-model="fields.name"
       />
-      <select class="input form__phone" :class="{ 'input--blue': fields.phone }" v-model="fields.phone">
+      <select
+        class="input form__phone"
+        :class="{ 'input--blue': fields.phone }"
+        v-model="fields.phone"
+      >
         <option value>Aparelho:</option>
         <option v-for="device in devices" :key="device.id" :value="device.id">
           {{ device.description }}
@@ -34,7 +46,11 @@
 
       <div class="form__tags-wrapper">
         <Tags @sendTags="incomingTags" ref="TagComponent" />
-        <select class="input" :class="{ 'input--blue': fields.allTags }" v-model="fields.allTags">
+        <select
+          class="input"
+          :class="{ 'input--blue': fields.allTags }"
+          v-model="fields.allTags"
+        >
           <option value>Qualquer</option>
           <option value="and">Todas</option>
           <option value="ne">Não Tem</option>
@@ -43,7 +59,11 @@
 
       <div class="form__departments-wrapper">
         <Department @sendDepartments="incomingDepartments" ref="DptComponent" />
-        <select class="input" :class="{ 'input--blue': fields.allDpt }" v-model="fields.allDpt">
+        <select
+          class="input"
+          :class="{ 'input--blue': fields.allDpt }"
+          v-model="fields.allDpt"
+        >
           <option value>Qualquer</option>
           <option value="and">Todas</option>
           <option value="ne">Não Tem</option>
@@ -70,7 +90,11 @@
           <option value="INDEFINIDO">INDEFINIDO</option>
         </select>
 
-        <select class="input" :class="{ 'input--blue': fields.date }" v-model="fields.date">
+        <select
+          class="input"
+          :class="{ 'input--blue': fields.date }"
+          v-model="fields.date"
+        >
           <option value>Ordenar Por</option>
           <option value="-updated">
             Data Atualização (↓ Mais Novo) - Padrão
@@ -91,23 +115,43 @@
 
       <div class="select__wrapper">
         <div class="select__single-item">
-          <img src="../assets/mail.svg" class="select__mail-icon" />
+          <inline-svg
+          :src="require('../assets/mail.svg')"
+          aria-label="novas mensagens"
+          width="20"
+        ></inline-svg>
           <input type="checkbox" v-model="fields.newMessages" />
         </div>
         <div class="select__single-item">
-          <img src="../assets/image.svg" class="select__mail-icon" />
+          <inline-svg
+          :src="require('../assets/image.svg')"
+          aria-label="arquivado"
+          width="18"
+        ></inline-svg>
           <input type="checkbox" v-model="fields.archiveSearch" />
         </div>
         <div class="select__single-item">
-          <img src="../assets/transmission.svg" class="select__mail-icon" />
+          <inline-svg
+          :src="require('../assets/transmission.svg')"
+          aria-label="broadcast"
+          width="18"
+        ></inline-svg>
           <input type="checkbox" v-model="fields.broadcastSearch" />
         </div>
         <div class="select__single-item">
-          <img src="../assets/star.svg" class="select__mail-icon" />
+          <inline-svg
+          :src="require('../assets/star.svg')"
+          aria-label="favoritos"
+          width="18"
+        ></inline-svg>
           <input type="checkbox" v-model="fields.favoritedSearch" />
         </div>
         <div class="select__single-item">
-          <img src="../assets/clock.svg" class="select__mail-icon" />
+          <inline-svg
+          :src="require('../assets/clock.svg')"
+          aria-label="agendados"
+          width="18"
+        ></inline-svg>
           <input type="checkbox" v-model="fields.scheduledSearch" />
         </div>
       </div>
@@ -153,6 +197,7 @@
 
 <script setup lang="ts">
 import { ref, reactive } from "vue";
+import InlineSvg from "vue-inline-svg";
 import Tags from "./components/tags-component.vue";
 import Department from "./components/department-component.vue";
 import Funnel from "./components/funnel-component.vue";
@@ -161,9 +206,9 @@ import { fetchDevices } from "./functions/requests";
 import type { fieldsTypes, checkedDptItems } from "./types";
 
 // REFS
-const TagComponent = ref<InstanceType<typeof Tags> | null>(null)
-const DptComponent = ref<InstanceType<typeof Department> | null>(null) 
-const FunnelComponent = ref<InstanceType<typeof Funnel> | null>(null)
+const TagComponent = ref<InstanceType<typeof Tags> | null>(null);
+const DptComponent = ref<InstanceType<typeof Department> | null>(null);
+const FunnelComponent = ref<InstanceType<typeof Funnel> | null>(null);
 
 // REQUEST
 const devices = fetchDevices();
@@ -185,40 +230,31 @@ const fields = reactive<fieldsTypes>({
   broadcastSearch: false,
   favoritedSearch: false,
   scheduledSearch: false,
-  page_num: 0
+  page_num: 0,
 });
 
 const body = reactive({
-    page_num: 0,
-    filter_order_by: fields.date,
-    filter_tag: fields.tags,
-    filter_tag_rule:
-        fields.allTags === ""
-            ? "or"
-            : fields.allTags,
-    filter_user_rule:
-        fields.allDpt === ""
-            ? "or"
-            : fields.allDpt,
-    filter_user: fields.departments,
-    filter_phone: fields.phone,
-    filter_funnel_step: fields.funnels,
-    filter_status: fields.status,
-    filter_search_number: fields.whatsNumber,
-    filter_search_name: fields.name,
-    filter_new_messages: fields.newMessages === true ? "True" : "",
-    filter_archived: fields.archiveSearch === true ? "True" : "",
-    filter_broadcast: fields.broadcastSearch === true ? "True" : "",
-    filter_favorited: fields.favoritedSearch === true ? "True" : "",
-    filter_scheduled: fields.scheduledSearch === true ? "True" : ""
-  }) 
-
- 
-
+  page_num: 0,
+  filter_order_by: fields.date,
+  filter_tag: fields.tags,
+  filter_tag_rule: fields.allTags === "" ? "or" : fields.allTags,
+  filter_user_rule: fields.allDpt === "" ? "or" : fields.allDpt,
+  filter_user: fields.departments,
+  filter_phone: fields.phone,
+  filter_funnel_step: fields.funnels,
+  filter_status: fields.status,
+  filter_search_number: fields.whatsNumber,
+  filter_search_name: fields.name,
+  filter_new_messages: fields.newMessages === true ? "True" : "",
+  filter_archived: fields.archiveSearch === true ? "True" : "",
+  filter_broadcast: fields.broadcastSearch === true ? "True" : "",
+  filter_favorited: fields.favoritedSearch === true ? "True" : "",
+  filter_scheduled: fields.scheduledSearch === true ? "True" : "",
+});
 
 // FUNCTIONS
 function clearForm() {
-    (fields.name = ""),
+  (fields.name = ""),
     (fields.phone = ""),
     (fields.allTags = ""),
     (fields.allDpt = ""),
@@ -233,17 +269,15 @@ function clearForm() {
     (fields.broadcastSearch = false),
     (fields.favoritedSearch = false),
     (fields.scheduledSearch = false);
-    TagComponent.value?.clearInput()
-    DptComponent.value?.clearDptInput()
-    FunnelComponent.value?.clearFunnelInput()
+  TagComponent.value?.clearInput();
+  DptComponent.value?.clearDptInput();
+  FunnelComponent.value?.clearFunnelInput();
 }
 
 const incomingTags = (tags: Array<string>) => (fields.tags = tags);
 const incomingDepartments = (departments: checkedDptItems) =>
   (fields.departments = departments);
 const incomingFunnels = (funnels: Array<string>) => (fields.funnels = funnels);
-
-
 </script>
 
 <style lang="scss" scoped>
@@ -289,6 +323,8 @@ const incomingFunnels = (funnels: Array<string>) => (fields.funnels = funnels);
     border-radius: 20px;
     transition: all 0.3s ease;
     cursor: pointer;
+    block-size: 29px;
+
     &:hover {
       background-color: #e2e6ea;
       padding-inline: 15px;
@@ -347,8 +383,8 @@ const incomingFunnels = (funnels: Array<string>) => (fields.funnels = funnels);
   }
 
   &--blue {
-    background-color: #ccdbfd ;
-    border-color: #abc4ff ;
+    background-color: #ccdbfd;
+    border-color: #abc4ff;
   }
 }
 .select {

@@ -112,8 +112,8 @@ import { BodyType } from "@/types";
 // eslint-disable-next-line 
 const {bodyData} = defineProps<{bodyData: BodyType}>()
 
-const cards = fetchChatsMonolito(bodyData); 
-// ^?
+const cards = fetchChatsMonolito(bodyData) // ^?
+
 </script>
 
 <style lang="scss" scoped>
