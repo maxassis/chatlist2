@@ -7,10 +7,10 @@
         getNames.length != 0 || checkedItems.noDelegated ? 'dpt--blue' : null,
       ]"
     >
-      <span v-if="checkedItems.noDelegated && getNames.length <= 3"
+      <span class="dpt__item-name" v-if="checkedItems.noDelegated && getNames.length <= 3"
         >Sem delegado</span
       >
-      <span v-if="getNames.length == 0 && checkedItems.noDelegated == false"
+      <span class="dpt__item-name" v-if="getNames.length == 0 && checkedItems.noDelegated == false"
         >Usuário/Departamento:</span
       >
       <span
@@ -247,10 +247,16 @@ onClickOutside(target, () => (open.value = false));
   }
 
   &__names {
+    font-size:12px;
     &:not(:first-child) {
       margin-inline-start: 8px;
     }
   }
+
+  &__item-name {
+    font-size:12px;
+  }
+
 
   &__list {
     position: absolute;

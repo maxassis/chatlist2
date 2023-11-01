@@ -106,9 +106,14 @@
 
 <script setup lang="ts">
 // import { ref } from "vue";
-import { fetchChatsMock } from "../functions/requests";
+import { fetchChatsMonolito } from "../functions/requests";
+import { BodyType } from "@/types";
 
-const cards = fetchChatsMock();
+// eslint-disable-next-line 
+const {bodyData} = defineProps<{bodyData: BodyType}>()
+
+const cards = fetchChatsMonolito(bodyData); 
+// ^?
 </script>
 
 <style lang="scss" scoped>
@@ -136,6 +141,7 @@ const cards = fetchChatsMock();
     grid-template-rows: 1fr;
     align-items: center;
     padding: 0 11.2px;
+    text-decoration:none;
   }
 
   &__user-img {

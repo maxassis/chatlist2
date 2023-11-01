@@ -146,7 +146,7 @@
       <div class="list__count">
         <span>Exibindo 52 resultados: </span>
       </div>
-      <Card />
+      <Card :bodyData="body" />
     </section>
   </div>
 </template>
@@ -157,15 +157,18 @@ import Tags from "./components/tags-component.vue";
 import Department from "./components/department-component.vue";
 import Funnel from "./components/funnel-component.vue";
 import Card from "./components/card-component.vue";
-import type { checkedDptItems, fieldsTypes } from "./types";
 import { fetchDevices } from "./functions/requests";
+import type { fieldsTypes, checkedDptItems } from "./types";
 
-//  REFS
+// REFS
 const TagComponent = ref<InstanceType<typeof Tags> | null>(null)
 const DptComponent = ref<InstanceType<typeof Department> | null>(null) 
 const FunnelComponent = ref<InstanceType<typeof Funnel> | null>(null)
 
-// LOCAL STATE 
+// REQUEST
+const devices = fetchDevices();
+
+// LOCAL STATE
 const fields = reactive<fieldsTypes>({
   name: "",
   phone: "",
@@ -182,15 +185,38 @@ const fields = reactive<fieldsTypes>({
   broadcastSearch: false,
   favoritedSearch: false,
   scheduledSearch: false,
+  page_num: 0
 });
-const devices = fetchDevices();
+
+const body = reactive({
+    page_num: 0,
+    filter_order_by: fields.date,
+    filter_tag: fields.tags,
+    filter_tag_rule:
+        fields.allTags === ""
+            ? "or"
+            : fields.allTags,
+    filter_user_rule:
+        fields.allDpt === ""
+            ? "or"
+            : fields.allDpt,
+    filter_user: fields.departments,
+    filter_phone: fields.phone,
+    filter_funnel_step: fields.funnels,
+    filter_status: fields.status,
+    filter_search_number: fields.whatsNumber,
+    filter_search_name: fields.name,
+    filter_new_messages: fields.newMessages === true ? "True" : "",
+    filter_archived: fields.archiveSearch === true ? "True" : "",
+    filter_broadcast: fields.broadcastSearch === true ? "True" : "",
+    filter_favorited: fields.favoritedSearch === true ? "True" : "",
+    filter_scheduled: fields.scheduledSearch === true ? "True" : ""
+  }) 
+
+ 
+
 
 // FUNCTIONS
-const incomingTags = (tags: Array<string>) => (fields.tags = tags);
-const incomingDepartments = (departments: checkedDptItems) =>
-  (fields.departments = departments);
-const incomingFunnels = (funnels: Array<string>) => (fields.funnels = funnels);
-
 function clearForm() {
     (fields.name = ""),
     (fields.phone = ""),
@@ -211,6 +237,13 @@ function clearForm() {
     DptComponent.value?.clearDptInput()
     FunnelComponent.value?.clearFunnelInput()
 }
+
+const incomingTags = (tags: Array<string>) => (fields.tags = tags);
+const incomingDepartments = (departments: checkedDptItems) =>
+  (fields.departments = departments);
+const incomingFunnels = (funnels: Array<string>) => (fields.funnels = funnels);
+
+
 </script>
 
 <style lang="scss" scoped>

@@ -1,9 +1,9 @@
 import { ref } from "vue";
 import { z } from "zod";
 import { createZodFetcher } from "zod-fetch";
+// import type { BodyType } from './app'
 
 const fetcher = createZodFetcher();
-const environment = "dev"; // dev | prod
 
 // REQUISIÇÃO DE TAGS
 const schemaTags = z.array(
@@ -20,9 +20,9 @@ export type Tags = z.infer<typeof schemaTags>;
 export function fetchTags() {
   const dt = ref<Tags>([]);
   const url =
-    environment === "dev"
+  process.env.NODE_ENV === "development"
       ? "https://run.mocky.io/v3/6b4cb26a-02fb-4792-8d53-f42492e7ca75"
-      : "";
+      : `${window.location.origin}/chatlist/tags`;
 
   fetcher(schemaTags, url)
     .then((response) => (dt.value = response))
@@ -53,9 +53,9 @@ export type Dpt = z.infer<typeof schemaDpt>;
 export function fetchDpt() {
   const dt = ref<Dpt | undefined>(undefined);
   const url =
-    environment === "dev"
+  process.env.NODE_ENV === "development"
       ? "https://run.mocky.io/v3/e2053a35-39e2-4b02-b9c3-7908267d3612"
-      : "";
+      : `${window.location.origin}/chatlist/users_and_groups`;
 
   fetcher(schemaDpt, url)
     .then((response) => {
@@ -85,9 +85,9 @@ export type Funis = z.infer<typeof schemaFunnels>;
 export function fetchFunnels() {
   const dt = ref<Funis | []>([]);
   const url =
-    environment === "dev"
+  process.env.NODE_ENV === "development"
       ? "https://run.mocky.io/v3/8586f883-b690-4365-8989-b6ee66dea738"
-      : "";
+      : `${window.location.origin}/chatlist/funnels`;
 
   fetcher(schemaFunnels, url)
     .then((response) => (dt.value = response))
@@ -110,9 +110,9 @@ export type Devices = z.infer<typeof schemaDevices>;
 export function fetchDevices() {
   const dt = ref<Devices>([]);
   const url =
-    environment === "dev"
+  process.env.NODE_ENV === "development"
       ? "https://run.mocky.io/v3/9ec958b0-004f-4cea-a2b3-c8ba266d5064"
-      : "";
+      : `${window.location.origin}/chatlist/phones`;
 
   fetcher(schemaDevices, url)
     .then((response) => (dt.value = response))
@@ -169,6 +169,25 @@ export function fetchChatsMock() {
   return dt;
 }
 
+export function fetchChatsMonolito(bodyDt: any) {
+  const dt = ref<Chats | undefined>(undefined);
+  const url = `${window.location.origin}/chatlist/store`
+
+    fetcher(schemaChats, url, {
+    method: "POST",
+    body: JSON.stringify(bodyDt)
+  })
+    .then((response) => {
+      dt.value = response;
+      console.log(response);
+    })
+    .catch((error) => console.log(error));
+
+  return dt;
+}
+
+
+
 
 // TESTE REQUEST
 
@@ -205,3 +224,4 @@ export function fetchChatsMock() {
 // }
 
 // fetchTeste()
+
