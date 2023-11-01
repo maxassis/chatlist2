@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-chatlist">
     <section class="search-box">
       <button class="search-box__search">
         <img src="../assets/lupa.svg" />
@@ -214,7 +214,7 @@ function clearForm() {
 </script>
 
 <style lang="scss" scoped>
-.container {
+.container-chatlist {
   inline-size: 100%;
   block-size: 100dvh;
 }
