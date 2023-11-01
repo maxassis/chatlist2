@@ -2,19 +2,11 @@
   <div class="container-chatlist">
     <section class="search-box">
       <button class="search-box__search">
-        <inline-svg
-          :src="require('../assets/lupa.svg')"
-          aria-label="lupa"
-          width="20"
-        ></inline-svg>
+        <Icon icon="lupa" />    
         <span>Pesquisar mensagem</span>
       </button>
       <button class="search-box__add">
-        <inline-svg
-          :src="require('../assets/user-plus.svg')"
-          aria-label="add user"
-          width="22"
-        ></inline-svg>
+        <Icon icon="add-user" /> 
       </button>
     </section>
 
@@ -115,43 +107,28 @@
 
       <div class="select__wrapper">
         <div class="select__single-item">
-          <inline-svg
-          :src="require('../assets/mail.svg')"
-          aria-label="novas mensagens"
-          width="20"
-        ></inline-svg>
+          <Icon icon="mail" />
           <input type="checkbox" v-model="fields.newMessages" />
         </div>
         <div class="select__single-item">
-          <inline-svg
-          :src="require('../assets/image.svg')"
-          aria-label="arquivado"
-          width="18"
-        ></inline-svg>
+          <Icon icon="archive" />
           <input type="checkbox" v-model="fields.archiveSearch" />
         </div>
         <div class="select__single-item">
-          <inline-svg
-          :src="require('../assets/transmission.svg')"
-          aria-label="broadcast"
-          width="18"
-        ></inline-svg>
+          <Icon icon="transmission" />
           <input type="checkbox" v-model="fields.broadcastSearch" />
         </div>
         <div class="select__single-item">
-          <inline-svg
-          :src="require('../assets/star.svg')"
-          aria-label="favoritos"
-          width="18"
-        ></inline-svg>
+          <Icon icon="star" />
           <input type="checkbox" v-model="fields.favoritedSearch" />
         </div>
         <div class="select__single-item">
-          <inline-svg
+          <Icon icon="schedule" />
+          <!-- <inline-svg
           :src="require('../assets/clock.svg')"
           aria-label="agendados"
           width="18"
-        ></inline-svg>
+        ></inline-svg> -->
           <input type="checkbox" v-model="fields.scheduledSearch" />
         </div>
       </div>
@@ -197,11 +174,11 @@
 
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-import InlineSvg from "vue-inline-svg";
 import Tags from "./components/tags-component.vue";
 import Department from "./components/department-component.vue";
 import Funnel from "./components/funnel-component.vue";
 import Card from "./components/card-component.vue";
+import Icon from "./components/icon-component.vue"
 import { fetchDevices } from "./functions/requests";
 import type { fieldsTypes, checkedDptItems } from "./types";
 

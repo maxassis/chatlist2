@@ -1,7 +1,7 @@
 import { ref } from "vue";
 import { z } from "zod";
 import { createZodFetcher } from "zod-fetch";
-// import type { BodyType } from './app'
+import type { BodyType } from '../types'
 
 const fetcher = createZodFetcher();
 
@@ -169,18 +169,16 @@ export function fetchChatsMock() {
   return dt;
 }
 
-export function fetchChatsMonolito(bodyDt: any) {
+export function fetchChatsMonolito(bodyDt: BodyType) {
   const dt = ref<Chats | undefined>(undefined);
   const url = `${window.location.origin}/chatlist/store`
 
     fetcher(schemaChats, url, {
     method: "POST",
-    body: JSON.stringify(bodyDt)
+    body: JSON.stringify(bodyDt),
+    headers: {"Content-type": "application/json; charset=UTF-8"},
   })
-    .then((response) => {
-      dt.value = response;
-      console.log(response);
-    })
+    .then((response) => dt.value = response)
     .catch((error) => console.log(error));
 
   return dt;

@@ -1,4 +1,5 @@
 <template>
+  {{ cards }}
   <section class="card__wrapper" >
     <div class="card__single-card" v-for="card in cards?.chats" :key="card.id">
       <div class="card__checkbox">
@@ -10,11 +11,13 @@
             :src="card.picture"
             alt="user image"
             loading="lazy"
+            class="card__user-img"
           />
           <img
             v-else
             src="../../assets/noimg.webp"
             alt="user image"
+            class="card__user-img"
           />
 
         <div class="card__user-info-wrapper">
@@ -105,14 +108,15 @@
 </template>
 
 <script setup lang="ts">
-// import { ref } from "vue";
-import { fetchChatsMonolito } from "../functions/requests";
+//import { ref } from "vue";
+import {  fetchChatsMock } from "../functions/requests";
 import { BodyType } from "@/types";
 
 // eslint-disable-next-line 
 const {bodyData} = defineProps<{bodyData: BodyType}>()
 
-const cards = fetchChatsMonolito(bodyData) // ^?
+const cards = fetchChatsMock()
+
 
 </script>
 
@@ -142,6 +146,7 @@ const cards = fetchChatsMonolito(bodyData) // ^?
     align-items: center;
     padding: 0 11.2px;
     text-decoration:none;
+    cursor: pointer;
   }
 
   &__user-img {

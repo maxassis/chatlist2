@@ -10,9 +10,6 @@ dependencies:
   vue:
     specifier: ^3.2.13
     version: 3.3.7(typescript@4.5.5)
-  vue-inline-svg:
-    specifier: ^3.1.2
-    version: 3.1.2(vue@3.3.7)
   zod:
     specifier: ^3.22.4
     version: 3.22.4
@@ -6948,14 +6945,6 @@ packages:
   /vue-hot-reload-api@2.3.4:
     resolution: {integrity: sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==}
     dev: true
-
-  /vue-inline-svg@3.1.2(vue@3.3.7):
-    resolution: {integrity: sha512-K01sLANBnjosObee4JrBu/igXpYIFhQfy4EcEyVWxEWf6nmrxp7Isz6pmeRCsWx6XGrGWfrQH3uNwt4nOmrFdA==}
-    peerDependencies:
-      vue: ^3
-    dependencies:
-      vue: 3.3.7(typescript@4.5.5)
-    dev: false
 
   /vue-loader@15.11.1(css-loader@6.8.1)(webpack@5.89.0):
     resolution: {integrity: sha512-0iw4VchYLePqJfJu9s62ACWUXeSqM30SQqlIftbYWM3C+jpPcEHKSPUZBLjSF9au4HTHQ/naF6OGnO3Q/qGR3Q==}
