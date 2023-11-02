@@ -12,7 +12,7 @@
       <div class="card__checkbox">
         <input type="checkbox" />
       </div>
-      <a class="card__infos">
+      <div class="card__infos">
         <img
           v-if="card.picture"
           :src="card.picture"
@@ -32,7 +32,7 @@
             <span class="card__user-name">{{ card.name }}</span>
           </div>
 
-          <div class="card__user-msg">
+          <div class="card__user-msg" aria-label="teste" data-balloon-pos="up" >
             <span
               v-if="card.last_message.text == 'VIDEO'"
               class="card__user-msg"
@@ -88,7 +88,7 @@
               class="card__user-msg"
               ><i class="fa fa-clock"></i> Aguardando Mensagem...</span
             >
-            <span v-else class="card__user-msg">
+            <span v-else class="card__user-msg" :title="(card.last_message.text!)">
               {{ card.last_message.text }}</span
             >
           </div>
@@ -135,13 +135,12 @@
             </svg>
           </div>
         </div>
-      </a>
+      </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-//import { ref } from "vue";
 import { fetchCard } from "../functions/requests";
 import { BodyType } from "@/types";
 
@@ -198,7 +197,6 @@ const cards = fetchCard(props.bodyData);
     grid-template-rows: 1fr;
     align-items: center;
     padding: 0 11.2px;
-    text-decoration: none;
     cursor: pointer;
   }
 

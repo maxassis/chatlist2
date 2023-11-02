@@ -110,23 +110,23 @@
         </div>
 
         <div class="select__wrapper">
-          <div class="select__single-item">
+          <div class="select__single-item select__tooltips unread">
             <Icon icon="mail" />
             <input type="checkbox" v-model="fields.newMessages" />
           </div>
-          <div class="select__single-item">
+          <div class="select__single-item select__tooltips archived">
             <Icon icon="archive" />
             <input type="checkbox" v-model="fields.archiveSearch" />
           </div>
-          <div class="select__single-item">
+          <div class="select__single-item select__tooltips broadcast">
             <Icon icon="transmission" />
             <input type="checkbox" v-model="fields.broadcastSearch" />
           </div>
-          <div class="select__single-item">
+          <div class="select__single-item select__tooltips favorited">
             <Icon icon="star" />
             <input type="checkbox" v-model="fields.favoritedSearch" />
           </div>
-          <div class="select__single-item">
+          <div class="select__single-item select__tooltips scheduled">
             <Icon icon="schedule" />
             <input type="checkbox" v-model="fields.scheduledSearch" />
           </div>
@@ -162,14 +162,13 @@
     <section
       class="list__wrapper"
       :style="
-        scrollList
-          ? { transform: `translateY(${'-' + size + 'px'})` }
-          : ''"
+        scrollList ? { transform: `translateY(${'-' + size + 'px'})` } : ''
+      "
     >
       <div class="list__hidden-list" @click="scrollList = !scrollList">
         <span>{{ scrollList ? "Mostrar Filtros" : "Esconder Filtros" }}</span>
         <svg
-          :class="{list__svgRotate: scrollList}"
+          :class="{ list__svgRotate: scrollList }"
           xmlns="http://www.w3.org/2000/svg"
           width="13px"
           viewBox="0 0 256 256"
@@ -199,7 +198,14 @@ import Card from "./components/card-component.vue";
 import Icon from "./components/icon-component.vue";
 import { fetchDevices } from "./functions/requests";
 import { useResizeObserver } from "@vueuse/core";
-import { fields, scrollList, body, incomingTags, incomingDepartments, incomingFunnels } from "./functions/app-functions"
+import {
+  fields,
+  scrollList,
+  body,
+  incomingTags,
+  incomingDepartments,
+  incomingFunnels,
+} from "./functions/app-functions";
 
 // REFS
 const TagComponent = ref<InstanceType<typeof Tags> | null>(null);
@@ -375,6 +381,102 @@ useResizeObserver(el, (entries) => {
   &__mail-icon {
     inline-size: 18px;
   }
+
+  &__tooltips {
+    position: relative;
+  }
+
+  &__tooltips::after {
+    background-color: #333;
+    border-radius: 4px;
+    color: #f1f1f1;
+    font-size: 12.8px;
+    display: none;
+    padding: 3px 6px;
+    position: absolute;
+    text-align: center;
+    z-index: 999;
+  }
+
+  &__tooltips::before {
+    background-color: #333;
+    content: " ";
+    display: none;
+    position: absolute;
+    inline-size: 15px;
+    block-size: 15px;
+    z-index: 999;
+  }
+
+  &__tooltips:hover::after {
+    display: block;
+  }
+
+  &__tooltips:hover::before {
+    display: block;
+  }
+
+  &__tooltips.unread::after {
+    content: "Mostrar chats não lidos";
+    inline-size: 100px;
+  }
+
+  &__tooltips.archived::after {
+    content: "Mostrar chats arquivados";
+    inline-size: 170px;
+  }
+
+  &__tooltips.broadcast::after {
+    content: "Mostrar apenas broadcasts (Listas de transmissão)";
+    inline-size: 170px;
+  }
+
+  &__tooltips.scheduled::after {
+    content: "Mostrar chats agendados";
+    inline-size: 100px;
+  }
+
+  &__tooltips.favorited::after {
+    content: "Mostrar chats favoritados";
+    inline-size: 100px;
+  }
+
+  &__tooltips.clear::after {
+    content: "Limpar filtros";
+    inline-size: 100px;
+  }
+
+  &__tooltips.archived::after,
+  &__tooltips.broadcast::after,
+  &__tooltips.favorited::after,
+  &__tooltips.clear::after {
+    inset-block-start: 0;
+    inset-inline-start: 50%;
+    transform: translate(-50%, calc(-100% - 10px));
+  }
+
+  &__tooltips.scheduled::after {
+    inset-block-start: 0;
+    inset-inline-start: 29%;
+    transform: translate(-50%, calc(-100% - 10px));
+  }
+
+  &__tooltips.unread::after {
+    inset-block-start: 0;
+    inset-inline-start: 72%;
+    transform: translate(-50%, calc(-100% - 10px));
+  }
+
+  &__tooltips.unread::before,
+  &__tooltips.archived::before,
+  &__tooltips.broadcast::before,
+  &__tooltips.favorited::before,
+  &__tooltips.clear::before,
+  &__tooltips.scheduled::before {
+    inset-block-start: 0;
+    inset-inline-start: 50%;
+    transform: translate(-50%, calc(-100% - 5px)) rotate(45deg);
+  }
 }
 
 .list {
@@ -400,11 +502,108 @@ useResizeObserver(el, (entries) => {
     > svg {
       transition: 0.8s ease;
     }
-
   }
 
   &__svgRotate {
     transform: rotate(180deg);
+  }
+}
+
+.tooltip {
+  &__tooltips {
+    position: relative;
+  }
+
+  &__tooltips::after {
+    background-color: #333;
+    border-radius: 4px;
+    color: #f1f1f1;
+    font-size: 12.8px;
+    display: none;
+    padding: 3px 6px;
+    position: absolute;
+    text-align: center;
+    z-index: 999;
+  }
+
+  &__tooltips::before {
+    background-color: #333;
+    content: " ";
+    display: none;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    z-index: 999;
+  }
+
+  &__tooltips:hover::after {
+    display: block;
+  }
+
+  &__tooltips:hover::before {
+    display: block;
+  }
+
+  &__tooltips.unread::after {
+    content: "Mostrar chats não lidos";
+    width: 100px;
+  }
+
+  &__tooltips.archived::after {
+    content: "Mostrar chats arquivados";
+    width: 170px;
+  }
+
+  &__tooltips.broadcast::after {
+    content: "Mostrar apenas broadcasts (Listas de transmissão)";
+    width: 170px;
+  }
+
+  &__tooltips.scheduled::after {
+    content: "Mostrar chats agendados";
+    width: 100px;
+  }
+
+  &__tooltips.favorited::after {
+    content: "Mostrar chats favoritados";
+    width: 100px;
+  }
+
+  &__tooltips.clear::after {
+    content: "Limpar filtros";
+    width: 100px;
+  }
+
+  &__tooltips.archived::after,
+  &__tooltips.broadcast::after,
+  &__tooltips.favorited::after,
+  &__tooltips.clear::after {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, calc(-100% - 10px));
+  }
+
+  &__tooltips.scheduled::after {
+    top: 0;
+    left: 29%;
+    transform: translate(-50%, calc(-100% - 10px));
+  }
+
+  &__tooltips.unread::after {
+    top: 0;
+    left: 72%;
+    transform: translate(-50%, calc(-100% - 10px));
+  }
+
+  &__tooltips.unread::before,
+  &__tooltips.archived::before,
+  &__tooltips.broadcast::before,
+  &__tooltips.favorited::before,
+  &__tooltips.clear::before,
+  &__tooltips.scheduled::before {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, calc(-100% - 5px)) rotate(45deg);
   }
 }
 </style>
