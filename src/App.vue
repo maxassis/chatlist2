@@ -10,154 +10,166 @@
       </button>
     </section>
 
-    <section class="form">
-      <input
-        class="form__name input"
-        :class="{ 'input--blue': fields.name }"
-        type="text"
-        placeholder="nome"
-        v-model="fields.name"
-      />
-      <select
-        class="input form__phone"
-        :class="{ 'input--blue': fields.phone }"
-        v-model="fields.phone"
-      >
-        <option value>Aparelho:</option>
-        <option v-for="device in devices" :key="device.id" :value="device.id">
-          {{ device.description }}
-        </option>
-      </select>
-      <input
-        v-model="fields.whatsNumber"
-        type="texte"
-        class="input"
-        :class="{ 'input--blue': fields.whatsNumber }"
-        placeholder="Número Whatsapp"
-      />
-
-      <div class="form__tags-wrapper">
-        <Tags @sendTags="incomingTags" ref="TagComponent" />
+    <section ref="el">
+      <div class="form">
+        <input
+          class="form__name input"
+          :class="{ 'input--blue': fields.name }"
+          type="text"
+          placeholder="nome"
+          v-model="fields.name"
+        />
         <select
-          class="input"
-          :class="{ 'input--blue': fields.allTags }"
-          v-model="fields.allTags"
+          class="input form__phone"
+          :class="{ 'input--blue': fields.phone }"
+          v-model="fields.phone"
         >
-          <option value>Qualquer</option>
-          <option value="and">Todas</option>
-          <option value="ne">Não Tem</option>
-        </select>
-      </div>
-
-      <div class="form__departments-wrapper">
-        <Department @sendDepartments="incomingDepartments" ref="DptComponent" />
-        <select
-          class="input"
-          :class="{ 'input--blue': fields.allDpt }"
-          v-model="fields.allDpt"
-        >
-          <option value>Qualquer</option>
-          <option value="and">Todas</option>
-          <option value="ne">Não Tem</option>
-        </select>
-      </div>
-
-      <div class="form__funnel-wrapper">
-        <Funnel @sendFunnels="incomingFunnels" ref="FunnelComponent" />
-      </div>
-
-      <div class="form__status-wrapper">
-        <select
-          class="input"
-          :class="{ 'input--blue': fields.status }"
-          style="padding-inline-start: 11px"
-          v-model="fields.status"
-        >
-          <option value>Status:</option>
-          <option value="ABERTO">ABERTO</option>
-          <option value="EM ATENDIMENTO">EM ATENDIMENTO</option>
-          <option value="AGUARDANDO">AGUARDANDO</option>
-          <option value="RESOLVIDO">RESOLVIDO</option>
-          <option value="FECHADO">FECHADO</option>
-          <option value="INDEFINIDO">INDEFINIDO</option>
-        </select>
-
-        <select
-          class="input"
-          :class="{ 'input--blue': fields.date }"
-          v-model="fields.date"
-        >
-          <option value>Ordenar Por</option>
-          <option value="-updated">
-            Data Atualização (↓ Mais Novo) - Padrão
-          </option>
-          <option value="updated">Data Atualização (↑ Mais Antiga)</option>
-          <option value="-created">Data Criação (↓ Mais Novo)</option>
-          <option value="created">Data Criação (↑ Mais Antigos)</option>
-          <option value="-new_messages">Qtde Msgs Não Lidas (↓)</option>
-          <option value="new_messages">Qtde Msgs Não Lidas (↑)</option>
-          <option value="-date_last_message">
-            Data Última Msg (↓) - Mais Novas
-          </option>
-          <option value="date_last_message">
-            Data Última Msg (↑) - Mais Antigos
+          <option value>Aparelho:</option>
+          <option v-for="device in devices" :key="device.id" :value="device.id">
+            {{ device.description }}
           </option>
         </select>
-      </div>
+        <input
+          v-model="fields.whatsNumber"
+          type="texte"
+          class="input"
+          :class="{ 'input--blue': fields.whatsNumber }"
+          placeholder="Número Whatsapp"
+        />
 
-      <div class="select__wrapper">
-        <div class="select__single-item">
-          <Icon icon="mail" />
-          <input type="checkbox" v-model="fields.newMessages" />
+        <div class="form__tags-wrapper">
+          <Tags @sendTags="incomingTags" ref="TagComponent" />
+          <select
+            class="input"
+            :class="{ 'input--blue': fields.allTags }"
+            v-model="fields.allTags"
+          >
+            <option value>Qualquer</option>
+            <option value="and">Todas</option>
+            <option value="ne">Não Tem</option>
+          </select>
         </div>
-        <div class="select__single-item">
-          <Icon icon="archive" />
-          <input type="checkbox" v-model="fields.archiveSearch" />
-        </div>
-        <div class="select__single-item">
-          <Icon icon="transmission" />
-          <input type="checkbox" v-model="fields.broadcastSearch" />
-        </div>
-        <div class="select__single-item">
-          <Icon icon="star" />
-          <input type="checkbox" v-model="fields.favoritedSearch" />
-        </div>
-        <div class="select__single-item">
-          <Icon icon="schedule" />
-          <input type="checkbox" v-model="fields.scheduledSearch" />
-        </div>
-      </div>
 
-      <span
-        class="form__clear"
-        @click="clearForm()"
-        v-show="
-          fields.name != '' ||
-          fields.phone != '' ||
-          fields.whatsNumber != '' ||
-          fields.allTags != '' ||
-          fields.allDpt != '' ||
-          fields.status != '' ||
-          fields.date != '' ||
-          fields.tags.length > 0 ||
-          fields.funnels.length > 0 ||
-          fields.departments.users.length > 0 ||
-          fields.departments.groups.length > 0 ||
-          fields.departments.noDelegated != false ||
-          fields.archiveSearch != false ||
-          fields.broadcastSearch != false ||
-          fields.favoritedSearch != false ||
-          fields.newMessages != false ||
-          fields.scheduledSearch != false
-        "
-        >Limpar filtros</span
-      >
+        <div class="form__departments-wrapper">
+          <Department
+            @sendDepartments="incomingDepartments"
+            ref="DptComponent"
+          />
+          <select
+            class="input"
+            :class="{ 'input--blue': fields.allDpt }"
+            v-model="fields.allDpt"
+          >
+            <option value>Qualquer</option>
+            <option value="and">Todas</option>
+            <option value="ne">Não Tem</option>
+          </select>
+        </div>
+
+        <div class="form__funnel-wrapper">
+          <Funnel @sendFunnels="incomingFunnels" ref="FunnelComponent" />
+        </div>
+
+        <div class="form__status-wrapper">
+          <select
+            class="input"
+            :class="{ 'input--blue': fields.status }"
+            style="padding-inline-start: 11px"
+            v-model="fields.status"
+          >
+            <option value>Status:</option>
+            <option value="ABERTO">ABERTO</option>
+            <option value="EM ATENDIMENTO">EM ATENDIMENTO</option>
+            <option value="AGUARDANDO">AGUARDANDO</option>
+            <option value="RESOLVIDO">RESOLVIDO</option>
+            <option value="FECHADO">FECHADO</option>
+            <option value="INDEFINIDO">INDEFINIDO</option>
+          </select>
+
+          <select
+            class="input"
+            :class="{ 'input--blue': fields.date }"
+            v-model="fields.date"
+          >
+            <option value>Ordenar Por</option>
+            <option value="-updated">
+              Data Atualização (↓ Mais Novo) - Padrão
+            </option>
+            <option value="updated">Data Atualização (↑ Mais Antiga)</option>
+            <option value="-created">Data Criação (↓ Mais Novo)</option>
+            <option value="created">Data Criação (↑ Mais Antigos)</option>
+            <option value="-new_messages">Qtde Msgs Não Lidas (↓)</option>
+            <option value="new_messages">Qtde Msgs Não Lidas (↑)</option>
+            <option value="-date_last_message">
+              Data Última Msg (↓) - Mais Novas
+            </option>
+            <option value="date_last_message">
+              Data Última Msg (↑) - Mais Antigos
+            </option>
+          </select>
+        </div>
+
+        <div class="select__wrapper">
+          <div class="select__single-item">
+            <Icon icon="mail" />
+            <input type="checkbox" v-model="fields.newMessages" />
+          </div>
+          <div class="select__single-item">
+            <Icon icon="archive" />
+            <input type="checkbox" v-model="fields.archiveSearch" />
+          </div>
+          <div class="select__single-item">
+            <Icon icon="transmission" />
+            <input type="checkbox" v-model="fields.broadcastSearch" />
+          </div>
+          <div class="select__single-item">
+            <Icon icon="star" />
+            <input type="checkbox" v-model="fields.favoritedSearch" />
+          </div>
+          <div class="select__single-item">
+            <Icon icon="schedule" />
+            <input type="checkbox" v-model="fields.scheduledSearch" />
+          </div>
+        </div>
+
+        <span
+          class="form__clear"
+          @click="clearForm()"
+          v-show="
+            fields.name != '' ||
+            fields.phone != '' ||
+            fields.whatsNumber != '' ||
+            fields.allTags != '' ||
+            fields.allDpt != '' ||
+            fields.status != '' ||
+            fields.date != '' ||
+            fields.tags.length > 0 ||
+            fields.funnels.length > 0 ||
+            fields.departments.users.length > 0 ||
+            fields.departments.groups.length > 0 ||
+            fields.departments.noDelegated != false ||
+            fields.archiveSearch != false ||
+            fields.broadcastSearch != false ||
+            fields.favoritedSearch != false ||
+            fields.newMessages != false ||
+            fields.scheduledSearch != false
+          "
+          >Limpar filtros</span
+        >
+      </div>
     </section>
 
-    <section class="list__wrapper">
-      <div class="list__hidden-list">
-        <span>Esconder filtros</span>
+    <section
+      class="list__wrapper"
+      :style="
+        scrollList
+          ? { transform: `translateY(${'-' + size + 'px'})` }
+          : ''"
+    >
+      <div class="list__hidden-list" @click="scrollList = !scrollList">
+        <span>{{ scrollList ? "Mostrar Filtros" : "Esconder Filtros" }}</span>
         <svg
+          :class="{list__svgRotate: scrollList}"
           xmlns="http://www.w3.org/2000/svg"
           width="13px"
           viewBox="0 0 256 256"
@@ -173,68 +185,31 @@
           />
         </svg>
       </div>
-
       <Card :bodyData="body" />
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import Tags from "./components/tags-component.vue";
 import Department from "./components/department-component.vue";
 import Funnel from "./components/funnel-component.vue";
 import Card from "./components/card-component.vue";
 import Icon from "./components/icon-component.vue";
 import { fetchDevices } from "./functions/requests";
-import type { fieldsTypes, checkedDptItems } from "./types";
+import { useResizeObserver } from "@vueuse/core";
+import { fields, scrollList, body, incomingTags, incomingDepartments, incomingFunnels } from "./functions/app-functions"
 
 // REFS
 const TagComponent = ref<InstanceType<typeof Tags> | null>(null);
 const DptComponent = ref<InstanceType<typeof Department> | null>(null);
 const FunnelComponent = ref<InstanceType<typeof Funnel> | null>(null);
+const el = ref(null);
+const size = ref("");
 
 // REQUEST
 const devices = fetchDevices();
-
-// LOCAL STATE
-const fields = reactive<fieldsTypes>({
-  name: "",
-  phone: "",
-  allTags: "",
-  allDpt: "",
-  whatsNumber: "",
-  tags: [],
-  departments: { users: [], groups: [], noDelegated: false },
-  funnels: [],
-  status: "",
-  date: "",
-  newMessages: false,
-  archiveSearch: false,
-  broadcastSearch: false,
-  favoritedSearch: false,
-  scheduledSearch: false,
-  page_num: 0,
-});
-
-const body = reactive({
-  page_num: 0,
-  filter_order_by: fields.date,
-  filter_tag: fields.tags,
-  filter_tag_rule: fields.allTags === "" ? "or" : fields.allTags,
-  filter_user_rule: fields.allDpt === "" ? "or" : fields.allDpt,
-  filter_user: fields.departments,
-  filter_phone: fields.phone,
-  filter_funnel_step: fields.funnels,
-  filter_status: fields.status,
-  filter_search_number: fields.whatsNumber,
-  filter_search_name: fields.name,
-  filter_new_messages: fields.newMessages === true ? "True" : "",
-  filter_archived: fields.archiveSearch === true ? "True" : "",
-  filter_broadcast: fields.broadcastSearch === true ? "True" : "",
-  filter_favorited: fields.favoritedSearch === true ? "True" : "",
-  filter_scheduled: fields.scheduledSearch === true ? "True" : "",
-});
 
 // FUNCTIONS
 function clearForm() {
@@ -258,10 +233,11 @@ function clearForm() {
   FunnelComponent.value?.clearFunnelInput();
 }
 
-const incomingTags = (tags: Array<string>) => (fields.tags = tags);
-const incomingDepartments = (departments: checkedDptItems) =>
-  (fields.departments = departments);
-const incomingFunnels = (funnels: Array<string>) => (fields.funnels = funnels);
+useResizeObserver(el, (entries) => {
+  const entry = entries[0];
+  const { height } = entry.contentRect;
+  size.value = `${height}`;
+});
 </script>
 
 <style lang="scss" scoped>
@@ -404,6 +380,8 @@ const incomingFunnels = (funnels: Array<string>) => (fields.funnels = funnels);
 .list {
   &__wrapper {
     block-size: 100%;
+    z-index: 1;
+    transition: transform 0.5s linear;
   }
 
   &__hidden-list {
@@ -417,6 +395,16 @@ const incomingFunnels = (funnels: Array<string>) => (fields.funnels = funnels);
     gap: 5px;
     font-size: 12px;
     cursor: pointer;
+    background-color: #fff;
+
+    > svg {
+      transition: 0.8s ease;
+    }
+
+  }
+
+  &__svgRotate {
+    transform: rotate(180deg);
   }
 }
 </style>
