@@ -3,7 +3,7 @@ import { z } from "zod";
 import { createZodFetcher } from "zod-fetch";
 import type { BodyType } from '../types'
 
-const enviroment: "DEV" | "PROD" = "PROD"
+const enviroment: "DEV" | "PROD" = "DEV";
 
 const fetcher = createZodFetcher();
 

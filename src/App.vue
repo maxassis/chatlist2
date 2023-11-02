@@ -2,11 +2,11 @@
   <div class="container-chatlist">
     <section class="search-box">
       <button class="search-box__search">
-        <Icon icon="lupa" />    
+        <Icon icon="lupa" />
         <span>Pesquisar mensagem</span>
       </button>
       <button class="search-box__add">
-        <Icon icon="add-user" /> 
+        <Icon icon="add-user" />
       </button>
     </section>
 
@@ -157,11 +157,23 @@
     <section class="list__wrapper">
       <div class="list__hidden-list">
         <span>Esconder filtros</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="13px"
+          viewBox="0 0 256 256"
+        >
+          <path fill="none" d="M0 0h256v256H0z" />
+          <path
+            fill="none"
+            stroke="black"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="16"
+            d="m48 160 80-80 80 80"
+          />
+        </svg>
       </div>
 
-      <div class="list__count">
-        <span>Exibindo 52 resultados: </span>
-      </div>
       <Card :bodyData="body" />
     </section>
   </div>
@@ -173,7 +185,7 @@ import Tags from "./components/tags-component.vue";
 import Department from "./components/department-component.vue";
 import Funnel from "./components/funnel-component.vue";
 import Card from "./components/card-component.vue";
-import Icon from "./components/icon-component.vue"
+import Icon from "./components/icon-component.vue";
 import { fetchDevices } from "./functions/requests";
 import type { fieldsTypes, checkedDptItems } from "./types";
 
@@ -381,6 +393,7 @@ const incomingFunnels = (funnels: Array<string>) => (fields.funnels = funnels);
     border-radius: 7px;
     border: 1.6px solid #dfe1e5;
     accent-color: #1ba779;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
   }
 
   &__mail-icon {
@@ -394,22 +407,16 @@ const incomingFunnels = (funnels: Array<string>) => (fields.funnels = funnels);
   }
 
   &__hidden-list {
-    inline-size: 100%;
+    display: grid;
+    align-items: center;
+    place-content: center;
+    grid-auto-flow: column;
     block-size: 27px;
     border-block-end: 1.6px solid #dfe1e5;
     border-block-start: 1.6px solid #dfe1e5;
+    gap: 5px;
     font-size: 12px;
-    font-weight: 600;
-    background-color: #fff;
-  }
-
-  &__count {
-    display: flex;
-    align-items: center;
-    block-size: 35px;
-    padding-inline-start: 16px;
-    font-size: 11px;
-    background-color: #fff;
+    cursor: pointer;
   }
 }
 </style>
