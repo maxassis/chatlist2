@@ -1,5 +1,4 @@
 <template>
-  {{ cards }}
   <section class="card__wrapper" >
     <div class="card__single-card" v-for="card in cards?.chats" :key="card.id">
       <div class="card__checkbox">
@@ -68,7 +67,7 @@
         <div class="card__attendance-wrapper">
           <div class="card__attendance">
             <div class="card__attendance-day">
-              <span class="card__attendance-status">{{
+              <span class="card__attendance-status" v-if="card.status">{{
                     card.status == "EM ATENDIMENTO" ? "EM ATENDI" : card.status
                 }}</span>
             </div>
@@ -98,8 +97,7 @@
                 fill="#dc2e56"
                 d="M12.3 12.22A4.92 4.92 0 0 0 14 8.5a5 5 0 0 0-10 0 4.92 4.92 0 0 0 1.7 3.72A8 8 0 0 0 1 19.5a1 1 0 0 0 2 0 6 6 0 0 1 12 0 1 1 0 0 0 2 0 8 8 0 0 0-4.7-7.28ZM9 11.5a3 3 0 1 1 3-3 3 3 0 0 1-3 3Zm9.74.32A5 5 0 0 0 15 3.5a1 1 0 0 0 0 2 3 3 0 0 1 3 3 3 3 0 0 1-1.5 2.59 1 1 0 0 0-.5.84 1 1 0 0 0 .45.86l.39.26.13.07a7 7 0 0 1 4 6.38 1 1 0 0 0 2 0 9 9 0 0 0-4.23-7.68Z"
               />
-            </svg>
-            
+            </svg>         
           </div>
         </div>
       </a>
@@ -109,21 +107,20 @@
 
 <script setup lang="ts">
 //import { ref } from "vue";
-import {  fetchChatsMock } from "../functions/requests";
+import {  fetchCard } from "../functions/requests";
 import { BodyType } from "@/types";
 
 // eslint-disable-next-line 
-const {bodyData} = defineProps<{bodyData: BodyType}>()
-
-const cards = fetchChatsMock()
-
-
+const props = defineProps<{bodyData: BodyType}>()
+const cards = fetchCard(props.bodyData)
 </script>
 
 <style lang="scss" scoped>
 .card {
   &__wrapper {
-    block-size: 100%;
+    max-block-size: calc(100dvh - 442.4px);
+    overflow: scroll;
+    background-color: #fff;
   }
 
   &__single-card {
@@ -172,10 +169,10 @@ const cards = fetchChatsMock()
 
   &__user-name {
     white-space: nowrap;
-
+    color: #000;
     text-overflow: ellipsis;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 14px !important;
+    font-weight: 600 !important;
   }
 
   &__user-msg {

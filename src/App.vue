@@ -124,11 +124,6 @@
         </div>
         <div class="select__single-item">
           <Icon icon="schedule" />
-          <!-- <inline-svg
-          :src="require('../assets/clock.svg')"
-          aria-label="agendados"
-          width="18"
-        ></inline-svg> -->
           <input type="checkbox" v-model="fields.scheduledSearch" />
         </div>
       </div>
@@ -260,7 +255,7 @@ const incomingFunnels = (funnels: Array<string>) => (fields.funnels = funnels);
 <style lang="scss" scoped>
 .container-chatlist {
   inline-size: 100%;
-  block-size: 100dvh;
+  max-block-size: calc(100dvh - 45px);
 }
 
 .search-box {

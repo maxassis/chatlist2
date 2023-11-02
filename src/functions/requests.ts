@@ -3,6 +3,8 @@ import { z } from "zod";
 import { createZodFetcher } from "zod-fetch";
 import type { BodyType } from '../types'
 
+const enviroment: "DEV" | "PROD" = "PROD"
+
 const fetcher = createZodFetcher();
 
 // REQUISIÇÃO DE TAGS
@@ -20,7 +22,7 @@ export type Tags = z.infer<typeof schemaTags>;
 export function fetchTags() {
   const dt = ref<Tags>([]);
   const url =
-  process.env.NODE_ENV === "development"
+  enviroment === "DEV"
       ? "https://run.mocky.io/v3/6b4cb26a-02fb-4792-8d53-f42492e7ca75"
       : `${window.location.origin}/chatlist/tags`;
 
@@ -53,7 +55,7 @@ export type Dpt = z.infer<typeof schemaDpt>;
 export function fetchDpt() {
   const dt = ref<Dpt | undefined>(undefined);
   const url =
-  process.env.NODE_ENV === "development"
+  enviroment === "DEV"
       ? "https://run.mocky.io/v3/e2053a35-39e2-4b02-b9c3-7908267d3612"
       : `${window.location.origin}/chatlist/users_and_groups`;
 
@@ -85,7 +87,7 @@ export type Funis = z.infer<typeof schemaFunnels>;
 export function fetchFunnels() {
   const dt = ref<Funis | []>([]);
   const url =
-  process.env.NODE_ENV === "development"
+  enviroment === "DEV"
       ? "https://run.mocky.io/v3/8586f883-b690-4365-8989-b6ee66dea738"
       : `${window.location.origin}/chatlist/funnels`;
 
@@ -110,7 +112,7 @@ export type Devices = z.infer<typeof schemaDevices>;
 export function fetchDevices() {
   const dt = ref<Devices>([]);
   const url =
-  process.env.NODE_ENV === "development"
+  enviroment === "DEV"
       ? "https://run.mocky.io/v3/9ec958b0-004f-4cea-a2b3-c8ba266d5064"
       : `${window.location.origin}/chatlist/phones`;
 
@@ -184,42 +186,8 @@ export function fetchChatsMonolito(bodyDt: BodyType) {
   return dt;
 }
 
+export function fetchCard(bodyDt: BodyType) {
+  return enviroment === "DEV" ? fetchChatsMock() : fetchChatsMonolito(bodyDt);
+}
 
-
-
-// TESTE REQUEST
-
-// export const schemaTeste = z.object({
-//   id: z.number().min(1),
-//   title: z.string().min(1),
-//   body: z.string().min(1),
-//   userId: z.number().min(1),
-// });
-
-// export type Teste = z.infer<typeof schemaTeste>;
-
-// export function fetchTeste() {
-//   const dt = ref<Teste>();
-
-//   fetcher(schemaTeste, "https://jsonplaceholder.typicode.com/posts", {
-//     method: "POST",
-//     body: JSON.stringify({
-//       title: "foo",
-//       body: "bar",
-//       userId: 1,
-//     }),
-//     headers: {
-//       "Content-type": "application/json; charset=UTF-8",
-//     },
-//   })
-//     .then((response) => {
-//       dt.value = response;
-//       console.log(response);
-//     })
-//     .catch((error) => console.log(error));
-
-//   return dt;
-// }
-
-// fetchTeste()
 
