@@ -169,7 +169,7 @@ const cards = fetchCard(props.bodyData);
 
   &__counter {
     color: #229954;
-    // font-size: 13px;
+    font-weight: bold;
   }
 
   &__wrapper {

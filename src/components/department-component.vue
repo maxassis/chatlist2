@@ -31,7 +31,7 @@
     <section class="dpt__list" v-show="open">
       <div class="dpt__search-wrapper">
         <div class="dpt__icon">
-          <img src="../../assets/lupa2.svg" />
+          <Icon icon="lupa2" />
         </div>
         <input
           type="text"
@@ -41,12 +41,12 @@
         />
       </div>
 
-      <div class="dtp__options">
-        <!-- <div class="dtp__not-found">
+      <div class="dpt__options">
+        <div class="dpt__not-found" v-show="!groupsSelectFiltered?.length && !usersSelectFiltered?.length">
           <span>Nenhuma tag encontrada.</span>
-        </div> -->
+        </div>
 
-        <div class="dpt__items">
+        <div class="dpt__items" v-show="groupsSelectFiltered?.length || usersSelectFiltered?.length">
           <div
             class="dpt__single-item"
             :class="[
@@ -133,6 +133,7 @@
 </template>
 
 <script setup lang="ts">
+import Icon from "./icon-component.vue"
 import { ref, computed, reactive } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { fetchDpt } from "../functions/requests";

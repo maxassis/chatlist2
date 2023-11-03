@@ -17,7 +17,7 @@
     <section class="funnel__list" v-show="open">
       <div class="funnel__search-wrapper">
         <div class="funnel__icon">
-          <img src="../../assets/lupa2.svg" />
+          <Icon icon="lupa2" />
         </div>
         <input
           type="text"
@@ -28,9 +28,9 @@
       </div>
 
       <div class="funnel__options">
-        <!-- <div class="funnel__not-found">
+        <div class="funnel__not-found" v-show="!itemsSelectFiltered.length">
           <span>Nenhuma tag encontrada.</span>
-        </div> -->
+        </div>
 
         <div class="funnel__set" v-for="item in itemsSelectFiltered" :key="item.id">
           <div class="funnel__type">
@@ -60,6 +60,7 @@
 </template>
 
 <script lang="ts" setup>
+import Icon from "./icon-component.vue";
 import { ref, computed } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { fetchFunnels } from "../functions/requests";
@@ -233,6 +234,12 @@ onClickOutside(target, () => (open.value = false));
   &__options {
     overflow: auto;
     block-size: 272px;
+  }
+
+  &__not-found {
+    text-align: center;
+    font-size: 12px;
+    margin-block-start: 15px;
   }
 
   &__input {

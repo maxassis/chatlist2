@@ -19,7 +19,7 @@
     <section class="tags__list" v-show="open">
       <div class="tags__search-wrapper">
         <div class="tags__icon">
-          <img src="../../assets/lupa2.svg" />
+          <Icon icon="lupa2" />
         </div>
         <input
           type="text"
@@ -59,6 +59,7 @@
 </template>
 
 <script setup lang="ts">
+import Icon from "./icon-component.vue";
 import { ref, computed } from "vue";
 import { fetchTags } from "../functions/requests";
 import { onClickOutside } from "@vueuse/core";
