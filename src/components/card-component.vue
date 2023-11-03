@@ -9,7 +9,16 @@
     >
   </div>
   <section class="card__wrapper">
-    <div class="card__single-card" v-for="card in cards?.chats" :key="card.id">
+    <div
+      class="card__single-card"
+      :class="{
+        'card--darken': card.id == cardID,
+        'card--toggleHover': card.id != cardID,
+      }"
+      v-for="card in cards?.chats"
+      :key="card.id"
+      @click="cardID = card.id"
+    >
       <div class="card__checkbox">
         <input type="checkbox" />
       </div>
@@ -156,12 +165,16 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { fetchCard } from "../functions/requests";
 import { BodyType } from "@/types";
 
 // eslint-disable-next-line
 const props = defineProps<{ bodyData: BodyType }>();
 const cards = fetchCard(props.bodyData);
+const cardID = ref("");
+
+// FUNCTIONS
 </script>
 
 <style lang="scss" scoped>
@@ -177,7 +190,6 @@ const cards = fetchCard(props.bodyData);
 
   &__quant-of-chats {
     padding-inline-start: 16px;
-    // font-size: 11px;
     font-style: italic;
     padding-inline-start: 12px;
   }
@@ -195,7 +207,7 @@ const cards = fetchCard(props.bodyData);
 
   &__single-card {
     display: grid;
-    grid-template-columns: 30px 1fr;
+    grid-template-columns: 0px 1fr;
     grid-template-rows: 1fr;
     border-block-end: 1.12px solid #f2f2f2;
     block-size: 68px;
@@ -204,6 +216,7 @@ const cards = fetchCard(props.bodyData);
   &__checkbox {
     display: grid;
     place-items: center;
+    overflow: hidden;
   }
 
   &__infos {
@@ -332,6 +345,17 @@ const cards = fetchCard(props.bodyData);
   &__status-yellow {
     background-color: #f6c23e;
     color: #333;
+  }
+
+  &--darken {
+    background-color: darken(#f6f6f6, 5%);
+  }
+
+  &--toggleHover {
+    &:hover {
+        background-color: #faf9f9;
+        opacity: 0.9;
+      }
   }
 }
 </style>

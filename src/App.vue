@@ -16,7 +16,7 @@
           class="form__name input"
           :class="{ 'input--blue': fields.name }"
           type="text"
-          placeholder="nome"
+          placeholder="Nome"
           v-model="fields.name"
         />
         <select
@@ -207,10 +207,10 @@ import {
   incomingFunnels,
 } from "./functions/app-functions";
 
-window.addEventListener("testEvent", (e) => {
-  console.log(e.detail.message);
+// window.addEventListener("testEvent", (e) => {
+//   console.log(e.detail.message);
   
-})
+// })
 
 
 
