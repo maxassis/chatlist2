@@ -4,7 +4,8 @@
       >Exibindo
       <span class="card__counter">
         {{ cards?.chats.length ? cards?.chats.length : 0 }}
-      </span> Resultados</span
+      </span>
+      Resultados</span
     >
   </div>
   <section class="card__wrapper">
@@ -32,7 +33,7 @@
             <span class="card__user-name">{{ card.name }}</span>
           </div>
 
-          <div class="card__user-msg" aria-label="teste" data-balloon-pos="up" >
+          <div class="card__user-msg" aria-label="teste" data-balloon-pos="up">
             <span
               v-if="card.last_message.text == 'VIDEO'"
               class="card__user-msg"
@@ -88,7 +89,11 @@
               class="card__user-msg"
               ><i class="fa fa-clock"></i> Aguardando Mensagem...</span
             >
-            <span v-else class="card__user-msg" :title="(card.last_message.text!)">
+            <span
+              v-else
+              class="card__user-msg"
+              :title="(card.last_message.text!)"
+            >
               {{ card.last_message.text }}</span
             >
           </div>
@@ -97,9 +102,19 @@
         <div class="card__attendance-wrapper">
           <div class="card__attendance">
             <div class="card__attendance-day">
-              <span class="card__attendance-status" v-if="card.status">{{
-                card.status == "EM ATENDIMENTO" ? "EM ATENDI" : card.status
-              }}</span>
+              <span
+                class="card__attendance-status"
+                :class="{
+                  'card__status-red': card.status === 'ABERTO',
+                  'card__status-green': card.status === 'RESOLVIDO',
+                  'card__status-yellow': card.status === 'AGUARDANDO',
+                  'card__status-light-blue': card.status === 'FECHADO',
+                }"
+                v-if="card.status"
+                >{{
+                  card.status == "EM ATENDIMENTO" ? "EM ATENDI" : card.status
+                }}</span
+              >
             </div>
             <span
               class="card__attendance__number"
@@ -300,6 +315,23 @@ const cards = fetchCard(props.bodyData);
   &__icon2 {
     inline-size: 14px;
     block-size: 14px;
+  }
+
+  &__status-red {
+    background-color: #e74a3b;
+  }
+
+  &__status-green {
+    background-color: #1cc88a;
+  }
+
+  &__status-light-blue {
+    background-color: #36b9cc;
+  }
+
+  &__status-yellow {
+    background-color: #f6c23e;
+    color: #333;
   }
 }
 </style>

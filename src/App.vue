@@ -207,6 +207,13 @@ import {
   incomingFunnels,
 } from "./functions/app-functions";
 
+window.addEventListener("testEvent", (e) => {
+  console.log(e.detail.message);
+  
+})
+
+
+
 // REFS
 const TagComponent = ref<InstanceType<typeof Tags> | null>(null);
 const DptComponent = ref<InstanceType<typeof Department> | null>(null);
@@ -531,8 +538,8 @@ useResizeObserver(el, (entries) => {
     content: " ";
     display: none;
     position: absolute;
-    width: 15px;
-    height: 15px;
+    inline-size: 15px;
+    block-size: 15px;
     z-index: 999;
   }
 
@@ -546,52 +553,52 @@ useResizeObserver(el, (entries) => {
 
   &__tooltips.unread::after {
     content: "Mostrar chats não lidos";
-    width: 100px;
+    inline-size: 100px;
   }
 
   &__tooltips.archived::after {
     content: "Mostrar chats arquivados";
-    width: 170px;
+    inline-size: 170px;
   }
 
   &__tooltips.broadcast::after {
     content: "Mostrar apenas broadcasts (Listas de transmissão)";
-    width: 170px;
+    inline-size: 170px;
   }
 
   &__tooltips.scheduled::after {
     content: "Mostrar chats agendados";
-    width: 100px;
+    inline-size: 100px;
   }
 
   &__tooltips.favorited::after {
     content: "Mostrar chats favoritados";
-    width: 100px;
+    inline-size: 100px;
   }
 
   &__tooltips.clear::after {
     content: "Limpar filtros";
-    width: 100px;
+    inline-size: 100px;
   }
 
   &__tooltips.archived::after,
   &__tooltips.broadcast::after,
   &__tooltips.favorited::after,
   &__tooltips.clear::after {
-    top: 0;
-    left: 50%;
+    inset-block-start: 0;
+    inset-inline-start: 50%;
     transform: translate(-50%, calc(-100% - 10px));
   }
 
   &__tooltips.scheduled::after {
-    top: 0;
-    left: 29%;
+    inset-block-start: 0;
+    inset-inline-start: 29%;
     transform: translate(-50%, calc(-100% - 10px));
   }
 
   &__tooltips.unread::after {
-    top: 0;
-    left: 72%;
+    inset-block-start: 0;
+    inset-inline-start: 72%;
     transform: translate(-50%, calc(-100% - 10px));
   }
 
@@ -601,8 +608,8 @@ useResizeObserver(el, (entries) => {
   &__tooltips.favorited::before,
   &__tooltips.clear::before,
   &__tooltips.scheduled::before {
-    top: 0;
-    left: 50%;
+    inset-block-start: 0;
+    inset-inline-start: 50%;
     transform: translate(-50%, calc(-100% - 5px)) rotate(45deg);
   }
 }
