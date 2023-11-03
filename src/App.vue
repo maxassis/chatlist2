@@ -184,7 +184,7 @@
           />
         </svg>
       </div>
-      <Card :bodyData="body" />
+      <Card :bodyData="body" :scroll="scrollList" :size="size"/>
     </section>
   </div>
 </template>

@@ -8,7 +8,15 @@
       Resultados</span
     >
   </div>
-  <section class="card__wrapper">
+  <section class="card__wrapper" :style="[
+          scroll
+            ? {
+                height: `calc(100dvh - 147px)`,
+              }
+            : {
+                height: `calc(100dvh - 147px - ${size + 'px'})`,
+              },
+        ]" >
     <div
       class="card__single-card"
       :class="{
@@ -17,7 +25,7 @@
       }"
       v-for="card in cards?.chats"
       :key="card.id"
-      @click="cardID = card.id"
+      @click="cardID = card.id;"
     >
       <div class="card__checkbox">
         <input type="checkbox" />
@@ -170,11 +178,38 @@ import { fetchCard } from "../functions/requests";
 import { BodyType } from "@/types";
 
 // eslint-disable-next-line
-const props = defineProps<{ bodyData: BodyType }>();
-const cards = fetchCard(props.bodyData);
+const { bodyData, scroll } = defineProps<{ bodyData: BodyType, scroll: boolean, size: string }>();
+const cards = fetchCard(bodyData);
 const cardID = ref("");
 
 // FUNCTIONS
+// function openChat(id: string) {
+//      // eslint-disable-next-line 
+//      // @ts-ignore 
+//       window.open_chat(id)
+
+//       // if (window.stopFetch) {
+//       //   window.stopFetch();
+//       // }
+//     }
+
+// function selectCard(id: string) {
+//       const msgsSelected = document.querySelector(".forward-check");
+//       // eslint-disable-next-line 
+//       // @ts-ignore 
+//       const titlePage = document.getElementsByTagName("TITLE")[0].text
+//       if (msgsSelected == null) {
+//         window.history.pushState(titlePage, "/chats#" + id);
+//         //selected.value = !selected.value;
+//         openChat(id);
+//       } else {
+//         const checkbox = document.getElementById("fwd-checkbox-" + id) as HTMLInputElement;
+//         checkbox.checked = !checkbox.checked;
+//         // eslint-disable-next-line 
+//         // @ts-ignore 
+//         window.CountingChatsSelected();
+//       }
+//     }
 </script>
 
 <style lang="scss" scoped>
@@ -200,7 +235,6 @@ const cardID = ref("");
   }
 
   &__wrapper {
-    max-block-size: calc(100dvh - 442.4px);
     overflow: scroll;
     background-color: #fff;
   }
