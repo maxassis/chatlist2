@@ -1,9 +1,10 @@
 import { ref } from "vue";
 import { z } from "zod";
 import { createZodFetcher } from "zod-fetch";
-import type { BodyType } from '../types'
+import { fields } from "./app-functions";
 
-const enviroment: "DEV" | "PROD" = "DEV";
+const enviroment: "DEV" | "PROD" = "PROD";
+// const enviroment = process.env.NODE_ENV === "development" ? "DEV" : "PROD";
 
 const fetcher = createZodFetcher();
 
@@ -123,7 +124,9 @@ export function fetchDevices() {
   return dt;
 }
 
-// REQUISIÇÂO CHATS MOCK
+// REQUISIÇÂO CHATS 
+export const cards = ref<Chats>()
+
 export const schemaChats = z.object({
     total_chats: z.number(),
     total_returned: z.number(),
@@ -163,31 +166,48 @@ export function fetchChatsMock() {
 
   fetcher(schemaChats, url)
     .then((response) => {
-      dt.value = response
-      console.log(response)
+      cards.value = response
+      // console.log(dt.value)
     })
     .catch((error) => console.log(error));
 
   return dt;
 }
 
-export function fetchChatsMonolito(bodyDt: BodyType) {
+export function fetchChatsMonolito() {
   const dt = ref<Chats | undefined>(undefined);
   const url = `${window.location.origin}/chatlist/store`
 
     fetcher(schemaChats, url, {
     method: "POST",
-    body: JSON.stringify(bodyDt),
+    body: JSON.stringify({
+      page_num: 0,
+      filter_order_by: fields.date,
+      filter_tag: fields.tags,
+      filter_tag_rule: fields.allTags === "" ? "or" : fields.allTags,
+      filter_user_rule: fields.allDpt === "" ? "or" : fields.allDpt,
+      filter_user: fields.departments,
+      filter_phone: fields.phone,
+      filter_funnel_step: fields.funnels,
+      filter_status: fields.status,
+      filter_search_number: fields.whatsNumber,
+      filter_search_name: fields.name,
+      filter_new_messages: fields.newMessages === true ? "True" : "",
+      filter_archived: fields.archiveSearch === true ? "True" : "",
+      filter_broadcast: fields.broadcastSearch === true ? "True" : "",
+      filter_favorited: fields.favoritedSearch === true ? "True" : "",
+      filter_scheduled: fields.scheduledSearch === true ? "True" : "",
+    }),
     headers: {"Content-type": "application/json; charset=UTF-8"},
   })
-    .then((response) => dt.value = response)
+    .then((response) => cards.value = response)
     .catch((error) => console.log(error));
 
   return dt;
 }
 
-export function fetchCard(bodyDt: BodyType) {
-  return enviroment === "DEV" ? fetchChatsMock() : fetchChatsMonolito(bodyDt);
+export function fetchCard() {
+  return enviroment === "DEV" ? fetchChatsMock() : fetchChatsMonolito();
 }
 
 

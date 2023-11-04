@@ -174,15 +174,32 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { fetchCard } from "../functions/requests";
-import { BodyType } from "@/types";
+import type { Chats } from "@/functions/requests";
 
+
+// PROPS
 // eslint-disable-next-line
-const { bodyData, scroll } = defineProps<{ bodyData: BodyType, scroll: boolean, size: string }>();
-const cards = fetchCard(bodyData);
+const { scroll, size, cards } = defineProps<{ scroll: boolean, size: string, cards: Chats | undefined  }>();
+
+
+//LOCAL STATE
 const cardID = ref("");
 
+
 // FUNCTIONS
+
+// const reFetchCard = () => {
+//   console.log("refetch");
+
+//   let data = fetchCard()
+//   console.log(data);
+  
+//   cards = data
+// }; 
+// // eslint-disable-next-line
+// defineExpose({ reFetchCard });
+
+
 // function openChat(id: string) {
 //      // eslint-disable-next-line 
 //      // @ts-ignore 
@@ -210,6 +227,9 @@ const cardID = ref("");
 //         window.CountingChatsSelected();
 //       }
 //     }
+
+
+
 </script>
 
 <style lang="scss" scoped>

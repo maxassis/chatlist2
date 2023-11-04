@@ -1,6 +1,6 @@
 <template>
   <div class="container-chatlist">
-    <section class="search-box">
+    <section class="search-box" @click="teste = !teste">
       <button class="search-box__search">
         <Icon icon="lupa" />
         <span>Pesquisar mensagem</span>
@@ -18,11 +18,13 @@
           type="text"
           placeholder="Nome"
           v-model="fields.name"
+          @input="debouncedFn"
         />
         <select
           class="input form__phone"
           :class="{ 'input--blue': fields.phone }"
           v-model="fields.phone"
+          @change="fetchCard()"
         >
           <option value>Aparelho:</option>
           <option v-for="device in devices" :key="device.id" :value="device.id">
@@ -35,6 +37,7 @@
           class="input"
           :class="{ 'input--blue': fields.whatsNumber }"
           placeholder="Número Whatsapp"
+          @input="fetchCard()"
         />
 
         <div class="form__tags-wrapper">
@@ -43,6 +46,7 @@
             class="input"
             :class="{ 'input--blue': fields.allTags }"
             v-model="fields.allTags"
+            @change="fetchCard()"
           >
             <option value>Qualquer</option>
             <option value="and">Todas</option>
@@ -59,6 +63,7 @@
             class="input"
             :class="{ 'input--blue': fields.allDpt }"
             v-model="fields.allDpt"
+            @change="fetchCard()"
           >
             <option value>Qualquer</option>
             <option value="and">Todas</option>
@@ -76,6 +81,7 @@
             :class="{ 'input--blue': fields.status }"
             style="padding-inline-start: 11px"
             v-model="fields.status"
+            @change="fetchCard()"
           >
             <option value>Status:</option>
             <option value="ABERTO">ABERTO</option>
@@ -90,6 +96,7 @@
             class="input"
             :class="{ 'input--blue': fields.date }"
             v-model="fields.date"
+            @change="fetchCard()"
           >
             <option value>Ordenar Por</option>
             <option value="-updated">
@@ -112,23 +119,43 @@
         <div class="select__wrapper">
           <div class="select__single-item select__tooltips unread">
             <Icon icon="mail" />
-            <input type="checkbox" v-model="fields.newMessages" />
+            <input
+              type="checkbox"
+              v-model="fields.newMessages"
+              @change="fetchCard()"
+            />
           </div>
           <div class="select__single-item select__tooltips archived">
             <Icon icon="archive" />
-            <input type="checkbox" v-model="fields.archiveSearch" />
+            <input
+              type="checkbox"
+              v-model="fields.archiveSearch"
+              @change="fetchCard()"
+            />
           </div>
           <div class="select__single-item select__tooltips broadcast">
             <Icon icon="transmission" />
-            <input type="checkbox" v-model="fields.broadcastSearch" />
+            <input
+              type="checkbox"
+              v-model="fields.broadcastSearch"
+              @change="fetchCard()"
+            />
           </div>
           <div class="select__single-item select__tooltips favorited">
             <Icon icon="star" />
-            <input type="checkbox" v-model="fields.favoritedSearch" />
+            <input
+              type="checkbox"
+              v-model="fields.favoritedSearch"
+              @change="fetchCard()"
+            />
           </div>
           <div class="select__single-item select__tooltips scheduled">
             <Icon icon="schedule" />
-            <input type="checkbox" v-model="fields.scheduledSearch" />
+            <input
+              type="checkbox"
+              v-model="fields.scheduledSearch"
+              @change="fetchCard()"
+            />
           </div>
         </div>
 
@@ -184,7 +211,12 @@
           />
         </svg>
       </div>
-      <Card :bodyData="body" :scroll="scrollList" :size="size"/>
+      <Card
+        :cards="cards"
+        :scroll="scrollList"
+        :size="size"
+        ref="CardComponent"
+      />
     </section>
   </div>
 </template>
@@ -201,28 +233,31 @@ import { useResizeObserver } from "@vueuse/core";
 import {
   fields,
   scrollList,
-  body,
   incomingTags,
   incomingDepartments,
   incomingFunnels,
 } from "./functions/app-functions";
+import { fetchCard } from "./functions/requests";
+import { cards } from "./functions/requests";
+import { useDebounceFn } from '@vueuse/core'
 
 // window.addEventListener("testEvent", (e) => {
 //   console.log(e.detail.message);
-  
+
 // })
 
+fetchCard()
 
-
-// REFS
 const TagComponent = ref<InstanceType<typeof Tags> | null>(null);
 const DptComponent = ref<InstanceType<typeof Department> | null>(null);
 const FunnelComponent = ref<InstanceType<typeof Funnel> | null>(null);
+const CardComponent = ref<InstanceType<typeof Card> | null>(null);
 const el = ref(null);
 const size = ref("");
 
 // REQUEST
 const devices = fetchDevices();
+
 
 // FUNCTIONS
 function clearForm() {
@@ -244,6 +279,9 @@ function clearForm() {
   TagComponent.value?.clearInput();
   DptComponent.value?.clearDptInput();
   FunnelComponent.value?.clearFunnelInput();
+
+  fetchCard();
+
 }
 
 useResizeObserver(el, (entries) => {
@@ -251,6 +289,19 @@ useResizeObserver(el, (entries) => {
   const { height } = entry.contentRect;
   size.value = `${height}`;
 });
+
+const debouncedFn = useDebounceFn(() => {
+   console.log("refetch");
+   fetchCard()
+   
+}, 1000)
+
+
+// function reFetch() {
+//   console.log("refetch");
+
+//   // cards = fetchCard();
+// }
 </script>
 
 <style lang="scss" scoped>
