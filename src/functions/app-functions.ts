@@ -1,5 +1,6 @@
 import { reactive, ref } from "vue";
 import { fieldsTypes, checkedDptItems } from "../types";
+import { fetchCard } from "./requests";
 
 // LOCAL STATE
 export const fields = reactive<fieldsTypes>({
@@ -24,9 +25,15 @@ export const fields = reactive<fieldsTypes>({
 export const scrollList = ref(false);
 
 // FUNCTIONS
-export const incomingTags = (tags: Array<string>) => (fields.tags = tags);
-export const incomingDepartments = (departments: checkedDptItems) =>
-  (fields.departments = departments);
-export const incomingFunnels = (funnels: Array<string>) =>
-  (fields.funnels = funnels);
- 
+export const incomingTags = (tags: Array<string>) => {
+  fields.tags = tags;
+  fetchCard();
+};
+export const incomingDepartments = (departments: checkedDptItems) => {
+  fields.departments = departments;
+  fetchCard();
+};
+export const incomingFunnels = (funnels: Array<string>) => {
+  fields.funnels = funnels;
+  fetchCard();
+};

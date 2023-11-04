@@ -3,7 +3,7 @@ import { z } from "zod";
 import { createZodFetcher } from "zod-fetch";
 import { fields } from "./app-functions";
 
-const enviroment: "DEV" | "PROD" = "PROD";
+const enviroment: "DEV" | "PROD" = "DEV";
 // const enviroment = process.env.NODE_ENV === "development" ? "DEV" : "PROD";
 
 const fetcher = createZodFetcher();
@@ -12,7 +12,7 @@ const fetcher = createZodFetcher();
 const schemaTags = z.array(
   z.object({
     id: z.string().min(1),
-    text: z.string().min(1),
+    text: z.string(),
     color: z.string(),
     bg: z.string(),
   })
@@ -39,15 +39,15 @@ export const schemaDpt = z.object({
   users: z.array(
     z.object({
       id: z.string().min(1),
-      type: z.string().min(1),
-      name: z.string().min(1),
-      email: z.string().min(1),
+      type: z.string(),
+      name: z.string(),
+      email: z.string(),
     })
   ),
   groups: z.array(
     z.object({
       id: z.string().min(1),
-      name: z.string().min(1),
+      name: z.string(),
     })
   ),
 });
@@ -73,11 +73,11 @@ export function fetchDpt() {
 export const schemaFunnels = z.array(
   z.object({
     id: z.string().min(1),
-    name: z.string().min(1),
+    name: z.string(),
     steps: z.array(
       z.object({
-        id: z.string().min(1),
-        name: z.string().min(1),
+        id: z.string(),
+        name: z.string(),
       })
     ),
   })
@@ -103,7 +103,7 @@ export function fetchFunnels() {
 export const schemaDevices = z.array(
   z.object({
     id: z.string().min(1),
-    description: z.string().min(1),
+    description: z.string(),
     owner_wa_id: z.string(),
   })
 );
@@ -133,9 +133,9 @@ export const schemaChats = z.object({
     page_num: z.number(),
     chats: z.array(
       z.object({
-        id: z.string(),
+        id: z.string().min(1),
         phone_id: z.string(),
-        account_id: z.string(),
+        account_id: z.string().min(1),
         wa_chat_id: z.string(),
         name: z.string(),
         kind: z.string(),
@@ -212,7 +212,6 @@ export function fetchCard() {
 
 
 // WEBSOCKETS
-
 export const schemaWebsockets = z.object({
   id: z.string().min(1),
   phone_id: z.string(),
