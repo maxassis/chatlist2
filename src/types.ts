@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export type fieldsTypes = {
   name: string,
   phone: string,
@@ -23,28 +25,29 @@ export type checkedDptItems = {
     noDelegated: boolean,
 }
 
-// export interface BodyType {
-//   page_num: number
-//   filter_order_by: string
-//   filter_tag: string[]
-//   filter_tag_rule: string
-//   filter_user_rule: string
-//   filter_user: {
-//     users: string[]
-//     groups: string[]
-//     noDelegated: boolean
-//   }
-//   filter_phone: string
-//   filter_funnel_step: string[]
-//   filter_status: string
-//   filter_search_number: string
-//   filter_search_name: string
-//   filter_new_messages: string
-//   filter_archived: string
-//   filter_broadcast: string
-//   filter_favorited: string
-//   filter_scheduled: string
-// }
+const schemaSingleCard = z.object({
+  id: z.string().min(1),
+  phone_id: z.string(),
+  account_id: z.string().min(1),
+  wa_chat_id: z.string(),
+  name: z.string(),
+  kind: z.string(),
+  picture: z.string().nullable(),
+  status: z.string().nullable(),
+  favorite: z.boolean(),
+  archived: z.boolean(),
+  scheduled: z.boolean(),
+  new_messages: z.number(),
+  updated: z.string(),
+  created: z.string(),
+  last_message: z.object({ text: z.string().nullable(), date: z.string().nullable() }),
+  users_delegated_ids: z.array(z.string()),
+  groups_delegated_ids: z.array(z.string()),
+  funnel_steps_ids: z.array(z.string()),
+  tags: z.array(
+    z.object({ text: z.string(), color: z.string(), bg: z.string() })
+  )
+})
 
-
+export type singleCardType = z.infer<typeof schemaSingleCard>;
 

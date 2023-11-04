@@ -5,7 +5,7 @@
         <Icon icon="lupa" />
         <span>Pesquisar mensagem</span>
       </button>
-      <button class="search-box__add startchat-modal-open" >
+      <button class="search-box__add startchat-modal-open">
         <Icon icon="add-user" />
       </button>
     </section>
@@ -211,12 +211,37 @@
           />
         </svg>
       </div>
-      <Card
-        :cards="cards"
-        :scroll="scrollList"
-        :size="size"
-        ref="CardComponent"
-      />
+
+      <div class="list__count">
+        <span class="list__quant-of-chats"
+          >Exibindo
+          <span class="list__counter">
+            {{ cards?.length ? cards?.length : 0 }}
+          </span>
+          Resultados</span
+        >
+      </div>
+      <section
+        class="list__wrapper-cards"
+        :style="[
+          scrollList
+            ? {
+                height: `calc(100dvh - 147px)`,
+              }
+            : {
+                height: `calc(100dvh - 147px - ${size + 'px'})`,
+              },
+        ]"
+      >
+        <Card
+          v-for="card in cards"
+          :card="card"
+          :online="online"
+          :scroll="scrollList"
+          :size="size"
+          :key="card.id"
+        />
+      </section>
     </section>
   </div>
 </template>
@@ -228,8 +253,7 @@ import Department from "./components/department-component.vue";
 import Funnel from "./components/funnel-component.vue";
 import Card from "./components/card-component.vue";
 import Icon from "./components/icon-component.vue";
-import { fetchDevices } from "./functions/requests";
-import { useResizeObserver } from "@vueuse/core";
+import { useResizeObserver, useDebounceFn } from "@vueuse/core";
 import {
   fields,
   scrollList,
@@ -238,34 +262,40 @@ import {
   incomingFunnels,
 } from "./functions/app-functions";
 import { fetchCard } from "./functions/requests";
-import { cards, schemaWebsockets } from "./functions/requests";
-import { useDebounceFn } from '@vueuse/core'
+import {
+  schemaWebsockets,
+  cards,
+  fetchOnline,
+  fetchDevices,
+} from "./functions/requests";
 
-
+// EVENT LISTENER
 window.addEventListener("webSocketEvent", (e) => {
-  // eslint-disable-next-line 
-  // @ts-ignore 
-  const data = e.detail
+  // eslint-disable-next-line
+  // @ts-ignore
+  const data = e.detail;
   const parsedData = schemaWebsockets.safeParse(data);
 
-if (parsedData.success) {
-  console.log(parsedData.data); // { name: 'John', age: 30 }
-} else {
-  console.log(parsedData.error); // This will be executed because age is not a number
-}
+  if (parsedData.success) {
+    console.log(parsedData.data);
+  } else {
+    console.log(parsedData.error);
+  }
+});
 
-})
-
-const TagComponent = ref<InstanceType<typeof Tags> | null>(null);
-const DptComponent = ref<InstanceType<typeof Department> | null>(null);
-const FunnelComponent = ref<InstanceType<typeof Funnel> | null>(null);
-const CardComponent = ref<InstanceType<typeof Card> | null>(null);
-const el = ref(null);
-const size = ref("");
 
 // REQUEST
 const devices = fetchDevices();
-fetchCard()
+const online = fetchOnline();
+fetchCard();
+
+// REFS
+const TagComponent = ref<InstanceType<typeof Tags> | null>(null);
+const DptComponent = ref<InstanceType<typeof Department> | null>(null);
+const FunnelComponent = ref<InstanceType<typeof Funnel> | null>(null);
+const el = ref(null);
+const size = ref("");
+
 
 // FUNCTIONS
 function clearForm() {
@@ -289,7 +319,6 @@ function clearForm() {
   FunnelComponent.value?.clearFunnelInput();
 
   fetchCard();
-
 }
 
 useResizeObserver(el, (entries) => {
@@ -299,9 +328,8 @@ useResizeObserver(el, (entries) => {
 });
 
 const debouncedFn = useDebounceFn(() => {
-  //  console.log("refetch");
-   fetchCard()
-}, 600)
+  fetchCard();
+}, 600);
 </script>
 
 <style lang="scss" scoped>
@@ -541,7 +569,12 @@ const debouncedFn = useDebounceFn(() => {
   &__wrapper {
     block-size: 100%;
     z-index: 1;
-    transition: transform 0.5s linear;
+    transition: all 0.5s linear;
+  }
+
+  &__wrapper-cards {
+    overflow: scroll;
+    background-color: #fff;
   }
 
   &__hidden-list {
@@ -557,6 +590,10 @@ const debouncedFn = useDebounceFn(() => {
     cursor: pointer;
     background-color: #fff;
 
+    > span {
+      font-size: 11px;
+    }
+
     > svg {
       transition: 0.8s ease;
     }
@@ -564,6 +601,26 @@ const debouncedFn = useDebounceFn(() => {
 
   &__svgRotate {
     transform: rotate(180deg);
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+    block-size: 35px;
+    font-size: 11px;
+    background-color: #fff;
+    font-size: 13px;
+  }
+
+  &__quant-of-chats {
+    padding-inline-start: 16px;
+    font-style: italic;
+    padding-inline-start: 12px;
+  }
+
+  &__counter {
+    color: #229954;
+    font-weight: bold;
   }
 }
 

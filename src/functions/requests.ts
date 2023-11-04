@@ -3,8 +3,8 @@ import { z } from "zod";
 import { createZodFetcher } from "zod-fetch";
 import { fields } from "./app-functions";
 
-const enviroment: "DEV" | "PROD" = "DEV";
-// const enviroment = process.env.NODE_ENV === "development" ? "DEV" : "PROD";
+//const enviroment: "DEV" | "PROD" = "DEV";
+const enviroment = process.env.NODE_ENV === "development" ? "DEV" : "PROD";
 
 const fetcher = createZodFetcher();
 
@@ -124,6 +124,42 @@ export function fetchDevices() {
   return dt;
 }
 
+// REQUISIÇÂO ONLINE
+export const schemaOnline = z.object({
+  groups: z.array(
+    z.object({
+      id: z.string(),
+      is_online: z.boolean(),
+      name: z.string(),
+      users: z.array(z.string())
+    })
+  ),
+  users: z.array(
+    z.object({
+      email: z.string(),
+      id: z.string(),
+      is_online: z.boolean(),
+      name: z.string()
+    })
+  )
+})
+
+export type OnlineType = z.infer<typeof schemaOnline>
+
+export function fetchOnline() {
+  const dt = ref<OnlineType>();
+  const url =
+  enviroment === "DEV"
+      ? "https://run.mocky.io/v3/7c9c2989-e157-4cca-9d61-fe22bba4ce0f"
+      : `${window.location.origin}/get_users_and_groups`;
+
+  fetcher(schemaOnline, url)
+    .then((response) => (dt.value = response))
+    .catch((error) => console.log(error));
+
+  return dt;
+}
+
 // REQUISIÇÂO CHATS 
 export const cards = ref<Chats>()
 
@@ -156,7 +192,7 @@ export const schemaChats = z.object({
         )
       })
     )
-  })
+  }).transform(({chats}) => chats)
 
 
 export type Chats = z.infer<typeof schemaChats>;
@@ -209,7 +245,6 @@ export function fetchChatsMonolito() {
 export function fetchCard() {
   return enviroment === "DEV" ? fetchChatsMock() : fetchChatsMonolito();
 }
-
 
 // WEBSOCKETS
 export const schemaWebsockets = z.object({
