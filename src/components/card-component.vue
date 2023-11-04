@@ -25,7 +25,7 @@
       }"
       v-for="card in cards?.chats"
       :key="card.id"
-      @click="cardID = card.id;"
+      @click="cardID = card.id; selectCard(card.id)"
     >
       <div class="card__checkbox">
         <input type="checkbox" />
@@ -188,45 +188,33 @@ const cardID = ref("");
 
 // FUNCTIONS
 
-// const reFetchCard = () => {
-//   console.log("refetch");
+function openChat(id: string) {
+     // eslint-disable-next-line 
+     // @ts-ignore 
+      window.open_chat(id)
 
-//   let data = fetchCard()
-//   console.log(data);
-  
-//   cards = data
-// }; 
-// // eslint-disable-next-line
-// defineExpose({ reFetchCard });
+      // if (window.stopFetch) {
+      //   window.stopFetch();
+      // }
+    }
 
-
-// function openChat(id: string) {
-//      // eslint-disable-next-line 
-//      // @ts-ignore 
-//       window.open_chat(id)
-
-//       // if (window.stopFetch) {
-//       //   window.stopFetch();
-//       // }
-//     }
-
-// function selectCard(id: string) {
-//       const msgsSelected = document.querySelector(".forward-check");
-//       // eslint-disable-next-line 
-//       // @ts-ignore 
-//       const titlePage = document.getElementsByTagName("TITLE")[0].text
-//       if (msgsSelected == null) {
-//         window.history.pushState(titlePage, "/chats#" + id);
-//         //selected.value = !selected.value;
-//         openChat(id);
-//       } else {
-//         const checkbox = document.getElementById("fwd-checkbox-" + id) as HTMLInputElement;
-//         checkbox.checked = !checkbox.checked;
-//         // eslint-disable-next-line 
-//         // @ts-ignore 
-//         window.CountingChatsSelected();
-//       }
-//     }
+function selectCard(id: string) {
+      const msgsSelected = document.querySelector(".forward-check");
+      // eslint-disable-next-line 
+      // @ts-ignore 
+      const titlePage = document.getElementsByTagName("TITLE")[0].text
+      if (msgsSelected == null) {
+        window.history.pushState(titlePage, "/chats#" + id);
+        //selected.value = !selected.value;
+        openChat(id);
+      } else {
+        const checkbox = document.getElementById("fwd-checkbox-" + id) as HTMLInputElement;
+        checkbox.checked = !checkbox.checked;
+        // eslint-disable-next-line 
+        // @ts-ignore 
+        window.CountingChatsSelected();
+      }
+    }
 
 
 

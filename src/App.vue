@@ -1,11 +1,11 @@
 <template>
   <div class="container-chatlist">
-    <section class="search-box" @click="teste = !teste">
-      <button class="search-box__search">
+    <section class="search-box">
+      <button class="search-box__search search-message-modal-open">
         <Icon icon="lupa" />
         <span>Pesquisar mensagem</span>
       </button>
-      <button class="search-box__add">
+      <button class="search-box__add startchat-modal-open" >
         <Icon icon="add-user" />
       </button>
     </section>
@@ -238,15 +238,23 @@ import {
   incomingFunnels,
 } from "./functions/app-functions";
 import { fetchCard } from "./functions/requests";
-import { cards } from "./functions/requests";
+import { cards, schemaWebsockets } from "./functions/requests";
 import { useDebounceFn } from '@vueuse/core'
 
-// window.addEventListener("testEvent", (e) => {
-//   console.log(e.detail.message);
 
-// })
+window.addEventListener("webSocketEvent", (e) => {
+  // eslint-disable-next-line 
+  // @ts-ignore 
+  const data = e.detail
+  const parsedData = schemaWebsockets.safeParse(data);
 
-fetchCard()
+if (parsedData.success) {
+  console.log(parsedData.data); // { name: 'John', age: 30 }
+} else {
+  console.log(parsedData.error); // This will be executed because age is not a number
+}
+
+})
 
 const TagComponent = ref<InstanceType<typeof Tags> | null>(null);
 const DptComponent = ref<InstanceType<typeof Department> | null>(null);
@@ -257,7 +265,7 @@ const size = ref("");
 
 // REQUEST
 const devices = fetchDevices();
-
+fetchCard()
 
 // FUNCTIONS
 function clearForm() {
@@ -291,17 +299,9 @@ useResizeObserver(el, (entries) => {
 });
 
 const debouncedFn = useDebounceFn(() => {
-   console.log("refetch");
+  //  console.log("refetch");
    fetchCard()
-   
-}, 1000)
-
-
-// function reFetch() {
-//   console.log("refetch");
-
-//   // cards = fetchCard();
-// }
+}, 600)
 </script>
 
 <style lang="scss" scoped>
