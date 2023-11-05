@@ -1,4 +1,5 @@
 <template>
+  {{ token }}
   <div class="container-chatlist">
     <section class="search-box">
       <button class="search-box__search search-message-modal-open">
@@ -237,9 +238,8 @@
           v-for="card in cards"
           :card="card"
           :online="online"
-          :scroll="scrollList"
-          :size="size"
           :key="card.id"
+          :token="token"
         />
       </section>
     </section>
@@ -267,6 +267,7 @@ import {
   cards,
   fetchOnline,
   fetchDevices,
+  fetchToken,
 } from "./functions/requests";
 
 // EVENT LISTENER
@@ -283,11 +284,12 @@ window.addEventListener("webSocketEvent", (e) => {
   }
 });
 
-
 // REQUEST
 const devices = fetchDevices();
 const online = fetchOnline();
+const token = fetchToken();
 fetchCard();
+
 
 // REFS
 const TagComponent = ref<InstanceType<typeof Tags> | null>(null);
@@ -295,6 +297,7 @@ const DptComponent = ref<InstanceType<typeof Department> | null>(null);
 const FunnelComponent = ref<InstanceType<typeof Funnel> | null>(null);
 const el = ref(null);
 const size = ref("");
+
 
 
 // FUNCTIONS

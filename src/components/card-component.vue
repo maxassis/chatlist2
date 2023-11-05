@@ -1,16 +1,4 @@
 <template>
-  <!-- <section
-    class="card__wrapper"
-    :style="[
-      onScroll
-        ? {
-            height: `calc(100dvh - 147px)`,
-          }
-        : {
-            height: `calc(100dvh - 147px - ${size + 'px'})`,
-          },
-    ]"
-  > -->
   <div
     class="card__single-card"
     :class="{
@@ -139,8 +127,11 @@
         </div>
 
         <div class="card__attendance-hour-wrapper">
-          <span class="card__attendance-hour">ha 9 meses</span>
-
+          <!-- <span class="card__attendance-hour" v-if="card.last_message.date">{{
+             hours == false
+               ? `há ${dateCalc(card.last_message.date, tokenInfo.timezone)}`
+               : `${dateCalc(card.last_message.date, tokenInfo.timezone)}`
+          }}</span> -->
           <svg
             v-if="singleCard.users_delegated_ids.length > 0"
             xmlns="http://www.w3.org/2000/svg"
@@ -170,22 +161,25 @@
       </div>
     </div>
   </div>
-  <!-- </section> -->
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-// import { cards } from "@/functions/requests";
 import type { singleCardType } from "../types";
 import type { OnlineType } from "../functions/requests";
+import { formatDistance } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
+import format from "date-fns/format";
+import intervalToDuration from "date-fns/intervalToDuration";
+import { zonedTimeToUtc, utcToZonedTime } from "date-fns-tz";
+import type { tokenType } from "../functions/requests";
 
 // PROPS
 // eslint-disable-next-line
 const props = defineProps<{
-  scroll: boolean;
-  size: string;
   card: singleCardType;
   online: OnlineType | undefined;
+  token: tokenType
 }>();
 
 //LOCAL STATE
@@ -194,11 +188,17 @@ const userOnline = ref(false);
 const groupOnline = ref(false);
 const singleCard = ref(props.card);
 const checkOnline = ref(props.online);
+const hours = ref(false)
+const tokenInfo = ref(props.token);
 
 //onMounted
 onMounted(() => {
-  checkStatus(checkOnline?.value)
-})
+  const checkData = Object.entries(checkOnline).length;
+
+  if (checkData !== 0) {
+    checkStatus(checkOnline?.value);
+  }
+});
 
 // FUNCTIONS
 function openChat(id: string) {
@@ -247,7 +247,7 @@ function checkStatus(online: OnlineType | undefined) {
 
   groupOnline.value = false;
   if (singleCard?.value.groups_delegated_ids.length > 0) {
-    online.groups.forEach((item) => {
+    online?.groups.forEach((item) => {
       if (item.is_online) {
         if (singleCard.value.groups_delegated_ids.includes(item.id)) {
           groupOnline.value = true;
@@ -256,15 +256,47 @@ function checkStatus(online: OnlineType | undefined) {
     });
   }
 }
+
+function dateCalc(dt: string, timezone: string) {
+  // ESSE DATEFORMATTED É NECESSÁRIO PARA FUNCIONAR NO SAFARI
+  const dateFormatted = dt.replace(/\s/, "T");
+
+  const serverTimeZone = "Africa/Dakar";
+  const userTimeZone = timezone;
+
+  // HORÁRIOS NO FUSO DO SERVIDOR
+  const date = new Date(dateFormatted);
+  const dateInServerZone = zonedTimeToUtc(date, serverTimeZone);
+
+  // HORÁRIOS NO FUSO DO USUÁRIO
+  const hourNow = new Date();
+  const dateInUserZone = utcToZonedTime(dateInServerZone, userTimeZone);
+  const hournowInUserZone = utcToZonedTime(hourNow, userTimeZone);
+
+  // CALCULA DISTANCIA DE TEMPO ENTRE A HORA ATUAL NO SERVIDOR E A HORA DA ATUALIZAÇÃO DO CARD
+  const distanceInWords = formatDistance(dateInUserZone, hournowInUserZone, {
+    includeSeconds: true,
+    locale: ptBR,
+  });
+
+  // VERIFICA SE A MENSAGEM FOI ENVIADA HÁ MAIS DE 24HS
+  const interval = intervalToDuration({
+    start: dateInUserZone,
+    end: hournowInUserZone,
+  });
+
+  if (interval.days && interval.days < 1) {
+    hours.value = true;
+    return format(dateInUserZone, "HH:mm");
+  } else {
+    hours.value = false;
+    return distanceInWords;
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 .card {
-  // &__wrapper {
-  //   overflow: scroll;
-  //   background-color: #fff;
-  // }
-
   &__single-card {
     display: grid;
     grid-template-columns: 0px 1fr;
@@ -359,6 +391,7 @@ function checkStatus(online: OnlineType | undefined) {
 
   &__attendance-hour-wrapper {
     display: flex;
+    justify-content: flex-end;
     align-items: center;
     gap: 8px;
     margin-block-start: 8px;

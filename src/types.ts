@@ -51,3 +51,5 @@ const schemaSingleCard = z.object({
 
 export type singleCardType = z.infer<typeof schemaSingleCard>;
 
+
+

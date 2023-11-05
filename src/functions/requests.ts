@@ -23,7 +23,7 @@ export type Tags = z.infer<typeof schemaTags>;
 export function fetchTags() {
   const dt = ref<Tags>([]);
   const url =
-  enviroment === "DEV"
+    enviroment === "DEV"
       ? "https://run.mocky.io/v3/6b4cb26a-02fb-4792-8d53-f42492e7ca75"
       : `${window.location.origin}/chatlist/tags`;
 
@@ -56,7 +56,7 @@ export type Dpt = z.infer<typeof schemaDpt>;
 export function fetchDpt() {
   const dt = ref<Dpt | undefined>(undefined);
   const url =
-  enviroment === "DEV"
+    enviroment === "DEV"
       ? "https://run.mocky.io/v3/e2053a35-39e2-4b02-b9c3-7908267d3612"
       : `${window.location.origin}/chatlist/users_and_groups`;
 
@@ -88,7 +88,7 @@ export type Funis = z.infer<typeof schemaFunnels>;
 export function fetchFunnels() {
   const dt = ref<Funis | []>([]);
   const url =
-  enviroment === "DEV"
+    enviroment === "DEV"
       ? "https://run.mocky.io/v3/8586f883-b690-4365-8989-b6ee66dea738"
       : `${window.location.origin}/chatlist/funnels`;
 
@@ -113,7 +113,7 @@ export type Devices = z.infer<typeof schemaDevices>;
 export function fetchDevices() {
   const dt = ref<Devices>([]);
   const url =
-  enviroment === "DEV"
+    enviroment === "DEV"
       ? "https://run.mocky.io/v3/9ec958b0-004f-4cea-a2b3-c8ba266d5064"
       : `${window.location.origin}/chatlist/phones`;
 
@@ -131,7 +131,7 @@ export const schemaOnline = z.object({
       id: z.string(),
       is_online: z.boolean(),
       name: z.string(),
-      users: z.array(z.string())
+      users: z.array(z.string()),
     })
   ),
   users: z.array(
@@ -139,31 +139,34 @@ export const schemaOnline = z.object({
       email: z.string(),
       id: z.string(),
       is_online: z.boolean(),
-      name: z.string()
+      name: z.string(),
     })
-  )
-})
+  ),
+});
 
-export type OnlineType = z.infer<typeof schemaOnline>
+export type OnlineType = z.infer<typeof schemaOnline>;
 
 export function fetchOnline() {
   const dt = ref<OnlineType>();
   const url =
-  enviroment === "DEV"
+    enviroment === "DEV"
       ? "https://run.mocky.io/v3/7c9c2989-e157-4cca-9d61-fe22bba4ce0f"
       : `${window.location.origin}/get_users_and_groups`;
 
   fetcher(schemaOnline, url)
-    .then((response) => (dt.value = response))
+    .then((response) => {
+      dt.value = response;
+    })
     .catch((error) => console.log(error));
 
   return dt;
 }
 
-// REQUISIÇÂO CHATS 
-export const cards = ref<Chats>()
+// REQUISIÇÂO CHATS
+export const cards = ref<Chats>();
 
-export const schemaChats = z.object({
+export const schemaChats = z
+  .object({
     total_chats: z.number(),
     total_returned: z.number(),
     page_num: z.number(),
@@ -183,26 +186,29 @@ export const schemaChats = z.object({
         new_messages: z.number(),
         updated: z.string(),
         created: z.string(),
-        last_message: z.object({ text: z.string().nullable(), date: z.string().nullable() }),
+        last_message: z.object({
+          text: z.string().nullable(),
+          date: z.string().nullable(),
+        }),
         users_delegated_ids: z.array(z.string()),
         groups_delegated_ids: z.array(z.string()),
         funnel_steps_ids: z.array(z.string()),
         tags: z.array(
           z.object({ text: z.string(), color: z.string(), bg: z.string() })
-        )
+        ),
       })
-    )
-  }).transform(({chats}) => chats)
-
+    ),
+  })
+  .transform(({ chats }) => chats);
 
 export type Chats = z.infer<typeof schemaChats>;
 export function fetchChatsMock() {
   const dt = ref<Chats | undefined>(undefined);
-  const url = "https://run.mocky.io/v3/bba7389c-76d9-4ed0-9bcd-75bf537eac49"
+  const url = "https://run.mocky.io/v3/bba7389c-76d9-4ed0-9bcd-75bf537eac49";
 
   fetcher(schemaChats, url)
     .then((response) => {
-      cards.value = response
+      cards.value = response;
       // console.log(dt.value)
     })
     .catch((error) => console.log(error));
@@ -212,9 +218,9 @@ export function fetchChatsMock() {
 
 export function fetchChatsMonolito() {
   const dt = ref<Chats | undefined>(undefined);
-  const url = `${window.location.origin}/chatlist/store`
+  const url = `${window.location.origin}/chatlist/store`;
 
-    fetcher(schemaChats, url, {
+  fetcher(schemaChats, url, {
     method: "POST",
     body: JSON.stringify({
       page_num: 0,
@@ -234,9 +240,9 @@ export function fetchChatsMonolito() {
       filter_favorited: fields.favoritedSearch === true ? "True" : "",
       filter_scheduled: fields.scheduledSearch === true ? "True" : "",
     }),
-    headers: {"Content-type": "application/json; charset=UTF-8"},
+    headers: { "Content-type": "application/json; charset=UTF-8" },
   })
-    .then((response) => cards.value = response)
+    .then((response) => (cards.value = response))
     .catch((error) => console.log(error));
 
   return dt;
@@ -261,12 +267,81 @@ export const schemaWebsockets = z.object({
   new_messages: z.number(),
   updated: z.string(),
   created: z.string(),
-  last_message: z.object({ text: z.string().nullable(), date: z.string().nullable() }),
+  last_message: z.object({
+    text: z.string().nullable(),
+    date: z.string().nullable(),
+  }),
   users_delegated_ids: z.array(z.string()),
   groups_delegated_ids: z.array(z.string()),
   funnel_steps_ids: z.array(z.string()),
   tags: z.array(
     z.object({ text: z.string(), color: z.string(), bg: z.string() })
-  )
-})
+  ),
+});
 
+// TOKEN
+export const schemaToken2 = z.object({
+  user_type: z.string(),
+  permissions: z.array(z.string()),
+  account_id: z.string().min(1),
+  timezone: z.string(),
+  user_name: z.string(),
+  user_id: z.string().min(1),
+  super_level: z.number(),
+  groups_ids: z.array(z.string()),
+  account_features: z.array(z.string()),
+  exp: z.number(),
+  iat: z.number(),
+});
+
+export const schemaToken = z.string();
+
+export type tokenType = z.infer<typeof schemaToken2>;
+
+export function fetchToken() {
+  const dt = ref<tokenType>();
+  const decode = (token: string): string =>
+    decodeURIComponent(
+      atob(token.split(".")[1].replace("-", "+").replace("_", "/"))
+        .split("")
+        .map((c) => `%${("00" + c.charCodeAt(0).toString(16)).slice(-2)}`)
+        .join("")
+    );
+
+  const url =
+    enviroment === "DEV"
+      ? "https://run.mocky.io/v3/f08e800d-dc92-4068-834a-184a46db9baf"
+      : `${window.location.origin}/jwt/user-service-token`;
+
+  // fetcher(schemaToken, url, {
+  //   // headers: {
+  //   //   "Content-Type": "text/plain; charset=UTF-8",
+  //   //   // 'Content-Type': 'application/x-www-form-urlencoded',
+  //   // },
+  // })
+  //   .then((response) => response.text())
+  //   .catch((error) => console.log(error));
+
+  fetch(url, {
+    headers: {
+      "Content-Type": "text/plain; charset=UTF-8",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    }})
+    .then((response) => response.text())
+    .then((json) => decode(json))
+    .then((token) => JSON.parse(token))
+    .then((token) => {
+      const parsedData = schemaToken2.safeParse(token);
+
+      if (parsedData.success) {
+        dt.value = parsedData.data;
+      } else {
+        console.log(parsedData.error);
+      }
+    })
+    .catch((error) => console.log(error));
+
+  return dt;
+}
+
+fetchToken();
