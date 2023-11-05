@@ -129,8 +129,8 @@
         <div class="card__attendance-hour-wrapper">
           <span class="card__attendance-hour" v-if="card.last_message.date">{{
              hours == false
-               ? `há ${dateCalc(card.last_message.date, tokenInfo.timezone)}`
-               : `${dateCalc(card.last_message.date, tokenInfo.timezone)}`
+               ? `há ${dateCalc(card.last_message.date, tokenInfo!.timezone)}`
+               : `${dateCalc(card.last_message.date, tokenInfo!.timezone)}`
           }}</span>
           <svg
             v-if="singleCard.users_delegated_ids.length > 0"
@@ -179,7 +179,7 @@ import type { tokenType } from "../functions/requests";
 const props = defineProps<{
   card: singleCardType;
   online: OnlineType | undefined;
-  token: tokenType
+  token: tokenType | undefined;
 }>();
 
 //LOCAL STATE

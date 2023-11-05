@@ -313,19 +313,9 @@ export function fetchToken() {
       ? "https://run.mocky.io/v3/f08e800d-dc92-4068-834a-184a46db9baf"
       : `${window.location.origin}/jwt/user-service-token`;
 
-  // fetcher(schemaToken, url, {
-  //   // headers: {
-  //   //   "Content-Type": "text/plain; charset=UTF-8",
-  //   //   // 'Content-Type': 'application/x-www-form-urlencoded',
-  //   // },
-  // })
-  //   .then((response) => response.text())
-  //   .catch((error) => console.log(error));
-
   fetch(url, {
     headers: {
       "Content-Type": "text/plain; charset=UTF-8",
-      // 'Content-Type': 'application/x-www-form-urlencoded',
     }})
     .then((response) => response.text())
     .then((json) => decode(json))
