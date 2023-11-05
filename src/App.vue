@@ -1,5 +1,4 @@
 <template>
-  {{ token }}
   <div class="container-chatlist">
     <section class="search-box">
       <button class="search-box__search search-message-modal-open">
