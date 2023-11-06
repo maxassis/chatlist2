@@ -128,9 +128,9 @@
 
         <div class="card__attendance-hour-wrapper">
           <span class="card__attendance-hour" v-if="card.last_message.date">{{
-             hours == false
-               ? `há ${dateCalc(card.last_message.date, tokenInfo!.timezone)}`
-               : `${dateCalc(card.last_message.date, tokenInfo!.timezone)}`
+            hours == false
+              ? `há ${dateCalc(card.last_message.date, tokenInfo!.timezone)}`
+              : `${dateCalc(card.last_message.date, tokenInfo!.timezone)}`
           }}</span>
           <svg
             v-if="singleCard.users_delegated_ids.length > 0"
@@ -188,7 +188,7 @@ const userOnline = ref(false);
 const groupOnline = ref(false);
 const singleCard = ref(props.card);
 const checkOnline = ref(props.online);
-const hours = ref(false)
+const hours = ref(false);
 const tokenInfo = ref(props.token);
 
 //onMounted

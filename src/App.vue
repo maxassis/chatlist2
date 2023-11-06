@@ -216,7 +216,7 @@
         <span class="list__quant-of-chats"
           >Exibindo
           <span class="list__counter">
-            {{ cards?.length ? cards?.length : 0 }}
+            {{ fullCards?.chats.length ? fullCards?.chats.length : 0 }}
           </span>
           Resultados</span
         >
@@ -234,7 +234,7 @@
         ]"
       >
         <Card
-          v-for="card in cards"
+          v-for="card in fullCards?.chats"
           :card="card"
           :online="online"
           :key="card.id"
@@ -263,7 +263,7 @@ import {
 import { fetchCard } from "./functions/requests";
 import {
   schemaWebsockets,
-  cards,
+  fullCards,
   fetchOnline,
   fetchDevices,
   fetchToken,
@@ -296,7 +296,6 @@ const DptComponent = ref<InstanceType<typeof Department> | null>(null);
 const FunnelComponent = ref<InstanceType<typeof Funnel> | null>(null);
 const el = ref(null);
 const size = ref("");
-
 
 
 // FUNCTIONS

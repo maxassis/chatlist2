@@ -163,7 +163,7 @@ export function fetchOnline() {
 }
 
 // REQUISIÇÂO CHATS
-export const cards = ref<Chats>();
+export const fullCards = ref<Chats>();
 
 export const schemaChats = z
   .object({
@@ -199,16 +199,15 @@ export const schemaChats = z
       })
     ),
   })
-  .transform(({ chats }) => chats);
 
 export type Chats = z.infer<typeof schemaChats>;
 export function fetchChatsMock() {
   const dt = ref<Chats | undefined>(undefined);
-  const url = "https://run.mocky.io/v3/bba7389c-76d9-4ed0-9bcd-75bf537eac49";
+  const url = "https://run.mocky.io/v3/eae31c54-ae3d-41f7-9586-ce3e4d8e20b9";
 
   fetcher(schemaChats, url)
     .then((response) => {
-      cards.value = response;
+      fullCards.value = response;
       // console.log(dt.value)
     })
     .catch((error) => console.log(error));
@@ -242,7 +241,7 @@ export function fetchChatsMonolito() {
     }),
     headers: { "Content-type": "application/json; charset=UTF-8" },
   })
-    .then((response) => (cards.value = response))
+    .then((response) => (fullCards.value = response))
     .catch((error) => console.log(error));
 
   return dt;
