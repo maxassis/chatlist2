@@ -309,7 +309,7 @@ export function fetchToken() {
 
   const url =
     enviroment === "DEV"
-      ? "https://run.mocky.io/v3/f08e800d-dc92-4068-834a-184a46db9baf"
+      ? "https://run.mocky.io/v3/539721dd-cb03-4d27-b0ef-9f6acd1cfe20"
       : `${window.location.origin}/jwt/user-service-token`;
 
   fetch(url, {

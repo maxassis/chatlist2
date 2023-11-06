@@ -1,5 +1,6 @@
 <template>
   <div
+  v-if="card.account_id == tokenInfo?.account_id"
     class="card__single-card"
     :class="{
       'card--darken': singleCard.id == cardID,
