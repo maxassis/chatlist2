@@ -1,7 +1,7 @@
 import { ref } from "vue";
 import { z } from "zod";
 import { createZodFetcher } from "zod-fetch";
-import { fields } from "./app-functions";
+import { fields, tokenFilter } from "./app-functions";
 
 //const enviroment: "DEV" | "PROD" = "DEV";
 const enviroment = process.env.NODE_ENV === "development" ? "DEV" : "PROD";
@@ -294,7 +294,6 @@ export const schemaToken2 = z.object({
 });
 
 export const schemaToken = z.string();
-
 export type tokenType = z.infer<typeof schemaToken2>;
 
 export function fetchToken() {
@@ -324,6 +323,7 @@ export function fetchToken() {
 
       if (parsedData.success) {
         dt.value = parsedData.data;
+        tokenFilter(parsedData.data)
       } else {
         console.log(parsedData.error);
       }

@@ -5,7 +5,7 @@
         <Icon icon="lupa" />
         <span>Pesquisar mensagem</span>
       </button>
-      <button class="search-box__add startchat-modal-open">
+      <button v-if="inputsHidden.addChat" class="search-box__add startchat-modal-open">
         <Icon icon="add-user" />
       </button>
     </section>
@@ -17,6 +17,7 @@
           :class="{ 'input--blue': fields.name }"
           type="text"
           placeholder="Nome"
+          v-if="inputsHidden.nameInput"
           v-model="fields.name"
           @input="debouncedFn"
         />
@@ -24,6 +25,7 @@
           class="input form__phone"
           :class="{ 'input--blue': fields.phone }"
           v-model="fields.phone"
+          v-if="inputsHidden.phoneInput"
           @change="fetchCard()"
         >
           <option value>Aparelho:</option>
@@ -33,6 +35,7 @@
         </select>
         <input
           v-model="fields.whatsNumber"
+          v-if="inputsHidden.telNumberInput"
           type="texte"
           class="input"
           :class="{ 'input--blue': fields.whatsNumber }"
@@ -40,7 +43,7 @@
           @input="fetchCard()"
         />
 
-        <div class="form__tags-wrapper">
+        <div class="form__tags-wrapper" v-if="inputsHidden.tagInput">
           <Tags @sendTags="incomingTags" ref="TagComponent" />
           <select
             class="input"
@@ -54,7 +57,7 @@
           </select>
         </div>
 
-        <div class="form__departments-wrapper">
+        <div class="form__departments-wrapper" v-if="inputsHidden.userInput">
           <Department
             @sendDepartments="incomingDepartments"
             ref="DptComponent"
@@ -71,12 +74,13 @@
           </select>
         </div>
 
-        <div class="form__funnel-wrapper">
+        <div class="form__funnel-wrapper" v-if="inputsHidden.funnelInput">
           <Funnel @sendFunnels="incomingFunnels" ref="FunnelComponent" />
         </div>
 
         <div class="form__status-wrapper">
           <select
+            v-if="inputsHidden.chatStatus"
             class="input"
             :class="{ 'input--blue': fields.status }"
             style="padding-inline-start: 11px"
@@ -93,6 +97,7 @@
           </select>
 
           <select
+            v-if="inputsHidden.orderByInput"
             class="input"
             :class="{ 'input--blue': fields.date }"
             v-model="fields.date"
@@ -117,7 +122,7 @@
         </div>
 
         <div class="select__wrapper">
-          <div class="select__single-item select__tooltips unread">
+          <div v-if="inputsHidden.unreadInput" class="select__single-item select__tooltips unread">
             <Icon icon="mail" />
             <input
               type="checkbox"
@@ -125,7 +130,7 @@
               @change="fetchCard()"
             />
           </div>
-          <div class="select__single-item select__tooltips archived">
+          <div v-if="inputsHidden.archivedInput" class="select__single-item select__tooltips archived">
             <Icon icon="archive" />
             <input
               type="checkbox"
@@ -133,7 +138,7 @@
               @change="fetchCard()"
             />
           </div>
-          <div class="select__single-item select__tooltips broadcast">
+          <div v-if="inputsHidden.broadcastInput" class="select__single-item select__tooltips broadcast">
             <Icon icon="transmission" />
             <input
               type="checkbox"
@@ -141,7 +146,7 @@
               @change="fetchCard()"
             />
           </div>
-          <div class="select__single-item select__tooltips favorited">
+          <div v-if="inputsHidden.favoritedInput" class="select__single-item select__tooltips favorited">
             <Icon icon="star" />
             <input
               type="checkbox"
@@ -259,6 +264,7 @@ import {
   incomingTags,
   incomingDepartments,
   incomingFunnels,
+  inputsHidden,
 } from "./functions/app-functions";
 import { fetchCard } from "./functions/requests";
 import {
@@ -289,14 +295,12 @@ const online = fetchOnline();
 const token = fetchToken();
 fetchCard();
 
-
 // REFS
 const TagComponent = ref<InstanceType<typeof Tags> | null>(null);
 const DptComponent = ref<InstanceType<typeof Department> | null>(null);
 const FunnelComponent = ref<InstanceType<typeof Funnel> | null>(null);
 const el = ref(null);
 const size = ref("");
-
 
 // FUNCTIONS
 function clearForm() {
@@ -331,6 +335,9 @@ useResizeObserver(el, (entries) => {
 const debouncedFn = useDebounceFn(() => {
   fetchCard();
 }, 600);
+
+
+
 </script>
 
 <style lang="scss" scoped>
