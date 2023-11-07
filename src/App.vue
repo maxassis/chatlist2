@@ -273,9 +273,9 @@
           <span>Não há mais chats para listar</span>
         </div>
 
-        <LoadingDots
+        <!-- <LoadingDots
           v-if="loadingDots && fullCards && fullCards.length >= 10"
-        />
+        /> -->
 
         <div
           ref="observer"
@@ -294,7 +294,7 @@ import Department from "./components/department-component.vue";
 import Funnel from "./components/funnel-component.vue";
 import Card from "./components/card-component.vue";
 import Icon from "./components/icon-component.vue";
-import LoadingDots from "./components/loadingDots-component.vue";
+// import LoadingDots from "./components/loadingDots-component.vue";
 import CardNotFound from "./components/card-notFound.vue";
 import {
   useResizeObserver,
@@ -311,7 +311,6 @@ import {
   hasFilter,
   hiddenObserver,
   morePages,
-  loadingDots,
 } from "./functions/app-functions";
 import { fetchCard } from "./functions/requests";
 import {

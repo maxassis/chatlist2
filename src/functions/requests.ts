@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ref } from "vue";
 import { z } from "zod";
 import { createZodFetcher } from "zod-fetch";
@@ -6,7 +5,6 @@ import {
   fields,
   tokenFilter,
   hiddenObserver,
-  loadingDots,
 } from "./app-functions";
 
 //const enviroment: "DEV" | "PROD" = "DEV";
@@ -209,7 +207,6 @@ export const schemaChats = z
 
 export type Chats = z.infer<typeof schemaChats>;
 export function fetchChatsMock() {
-  const dt = ref<Chats | undefined>(undefined);
   const url = "https://run.mocky.io/v3/eae31c54-ae3d-41f7-9586-ce3e4d8e20b9";
 
   fetcher(schemaChats, url)
@@ -221,7 +218,6 @@ export function fetchChatsMock() {
 }
 
 export function fetchChatsMonolito() {
-  const dt = ref<Chats | undefined>(undefined);
   const url = `${window.location.origin}/chatlist/store`;
 
   fetcher(schemaChats, url, {
@@ -256,12 +252,11 @@ export function fetchCard() {
 
 // REQUISIÇAO CARDS NO SCROLL
 export function fetchChatsOnScroll() {
-  const dt = ref<Chats | undefined>(undefined);
   const url =
     enviroment === "DEV"
       ? "https://run.mocky.io/v3/eae31c54-ae3d-41f7-9586-ce3e4d8e20b9"
       : `${window.location.origin}/chatlist/store`;
-  loadingDots.value = true;
+  // loadingDots.value = true;
 
   fetcher(schemaChats, url, {
     method: "POST",
@@ -291,7 +286,7 @@ export function fetchChatsOnScroll() {
       response.length === 0
         ? (hiddenObserver.value = false)
         : (hiddenObserver.value = true);
-      loadingDots.value = false;
+      // loadingDots.value = false;
     })
     .catch((error) => console.log(error));
 }
@@ -318,7 +313,6 @@ export const schemaToken = z.string();
 export type tokenType = z.infer<typeof schemaToken2>;
 
 export function fetchToken() {
-  const dt = ref<tokenType>();
   const decode = (token: string): string =>
     decodeURIComponent(
       atob(token.split(".")[1].replace("-", "+").replace("_", "/"))
