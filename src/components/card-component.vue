@@ -1,6 +1,5 @@
 <template>
   <div
-  v-if="card.account_id == tokenInfo?.account_id"
     class="card__single-card"
     :class="{
       'card--darken': singleCard.id == cardID,
@@ -130,8 +129,8 @@
         <div class="card__attendance-hour-wrapper">
           <span class="card__attendance-hour" v-if="card.last_message.date">{{
             hours == false
-              ? `há ${dateCalc(card.last_message.date, tokenInfo!.timezone)}`
-              : `${dateCalc(card.last_message.date, tokenInfo!.timezone)}`
+              ? `há ${dateCalc(card.last_message.date, tokenInfo?.timezone as string)}`
+              : `${dateCalc(card.last_message.date, tokenInfo?.timezone as string)}`
           }}</span>
           <svg
             v-if="singleCard.users_delegated_ids.length > 0"
@@ -173,14 +172,13 @@ import ptBR from "date-fns/locale/pt-BR";
 import format from "date-fns/format";
 import intervalToDuration from "date-fns/intervalToDuration";
 import { zonedTimeToUtc, utcToZonedTime } from "date-fns-tz";
-import type { tokenType } from "../functions/requests";
+import { tokenInfo } from "../functions/requests";
 
 // PROPS
 // eslint-disable-next-line
 const props = defineProps<{
   card: singleCardType;
   online: OnlineType | undefined;
-  token: tokenType | undefined;
 }>();
 
 //LOCAL STATE
@@ -190,7 +188,7 @@ const groupOnline = ref(false);
 const singleCard = ref(props.card);
 const checkOnline = ref(props.online);
 const hours = ref(false);
-const tokenInfo = ref(props.token);
+const cardInfo = ref(props.card)
 
 //onMounted
 onMounted(() => {

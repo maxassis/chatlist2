@@ -1,7 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ref } from "vue";
 import { z } from "zod";
 import { createZodFetcher } from "zod-fetch";
-import { fields, tokenFilter } from "./app-functions";
+import {
+  fields,
+  tokenFilter,
+  hiddenObserver,
+  loadingDots,
+} from "./app-functions";
 
 //const enviroment: "DEV" | "PROD" = "DEV";
 const enviroment = process.env.NODE_ENV === "development" ? "DEV" : "PROD";
@@ -198,7 +204,8 @@ export const schemaChats = z
         ),
       })
     ),
-  }).transform(({chats}) => chats)
+  })
+  .transform(({ chats }) => chats);
 
 export type Chats = z.infer<typeof schemaChats>;
 export function fetchChatsMock() {
@@ -211,8 +218,6 @@ export function fetchChatsMock() {
       // console.log(dt.value)
     })
     .catch((error) => console.log(error));
-
-  return dt;
 }
 
 export function fetchChatsMonolito() {
@@ -243,42 +248,58 @@ export function fetchChatsMonolito() {
   })
     .then((response) => (fullCards.value = response))
     .catch((error) => console.log(error));
-
-  return dt;
 }
 
 export function fetchCard() {
   return enviroment === "DEV" ? fetchChatsMock() : fetchChatsMonolito();
 }
 
-// WEBSOCKETS
-export const schemaWebsockets = z.object({
-  id: z.string().min(1),
-  phone_id: z.string(),
-  account_id: z.string().min(1),
-  wa_chat_id: z.string(),
-  name: z.string(),
-  kind: z.string(),
-  picture: z.string().nullable(),
-  status: z.string().nullable(),
-  archived: z.boolean(),
-  scheduled: z.boolean(),
-  new_messages: z.number(),
-  updated: z.string(),
-  created: z.string(),
-  last_message: z.object({
-    text: z.string().nullable(),
-    date: z.string().nullable(),
-  }),
-  users_delegated_ids: z.array(z.string()),
-  groups_delegated_ids: z.array(z.string()),
-  funnel_steps_ids: z.array(z.string()),
-  tags: z.array(
-    z.object({ text: z.string(), color: z.string(), bg: z.string() })
-  ),
-});
+// REQUISIÇAO CARDS NO SCROLL
+export function fetchChatsOnScroll() {
+  const dt = ref<Chats | undefined>(undefined);
+  const url =
+    enviroment === "DEV"
+      ? "https://run.mocky.io/v3/eae31c54-ae3d-41f7-9586-ce3e4d8e20b9"
+      : `${window.location.origin}/chatlist/store`;
+  loadingDots.value = true;
+
+  fetcher(schemaChats, url, {
+    method: "POST",
+    body: JSON.stringify({
+      page_num: fields.page_num,
+      filter_order_by: fields.date,
+      filter_tag: fields.tags,
+      filter_tag_rule: fields.allTags === "" ? "or" : fields.allTags,
+      filter_user_rule: fields.allDpt === "" ? "or" : fields.allDpt,
+      filter_user: fields.departments,
+      filter_phone: fields.phone,
+      filter_funnel_step: fields.funnels,
+      filter_status: fields.status,
+      filter_search_number: fields.whatsNumber,
+      filter_search_name: fields.name,
+      filter_new_messages: fields.newMessages === true ? "True" : "",
+      filter_archived: fields.archiveSearch === true ? "True" : "",
+      filter_broadcast: fields.broadcastSearch === true ? "True" : "",
+      filter_favorited: fields.favoritedSearch === true ? "True" : "",
+      filter_scheduled: fields.scheduledSearch === true ? "True" : "",
+    }),
+    headers: { "Content-type": "application/json; charset=UTF-8" },
+  })
+    .then((response) => {
+      fullCards.value = fullCards?.value?.concat(response);
+
+      response.length === 0
+        ? (hiddenObserver.value = false)
+        : (hiddenObserver.value = true);
+      loadingDots.value = false;
+    })
+    .catch((error) => console.log(error));
+}
+
 
 // TOKEN
+export const tokenInfo = ref<tokenType>();
+
 export const schemaToken2 = z.object({
   user_type: z.string(),
   permissions: z.array(z.string()),
@@ -314,7 +335,8 @@ export function fetchToken() {
   fetch(url, {
     headers: {
       "Content-Type": "text/plain; charset=UTF-8",
-    }})
+    },
+  })
     .then((response) => response.text())
     .then((json) => decode(json))
     .then((token) => JSON.parse(token))
@@ -322,15 +344,13 @@ export function fetchToken() {
       const parsedData = schemaToken2.safeParse(token);
 
       if (parsedData.success) {
-        dt.value = parsedData.data;
-        tokenFilter(parsedData.data)
+        tokenInfo.value = parsedData.data;
+        tokenFilter(parsedData.data);
       } else {
         console.log(parsedData.error);
       }
     })
     .catch((error) => console.log(error));
-
-  return dt;
 }
 
 fetchToken();

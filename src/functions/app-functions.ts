@@ -1,6 +1,6 @@
 import { reactive, ref, watch, toRef } from "vue";
 import { fieldsTypes, checkedDptItems } from "../types";
-import { fetchCard } from "./requests";
+import { fetchCard, fetchChatsOnScroll } from "./requests";
 import type { tokenType } from "./requests";
 
 // LOCAL STATE
@@ -43,6 +43,8 @@ export const whatsNumber = ref("")
 export const scrollList = ref(false);
 export const hasFilter = ref(false);
 export const user = ref("");
+export const hiddenObserver = ref(true);
+export const loadingDots = ref(false);
 const whatsField = toRef(fields, 'whatsNumber');
 
 // WATCH
@@ -65,7 +67,6 @@ export const incomingFunnels = (funnels: Array<string>) => {
   fields.funnels = funnels;
   fetchCard();
 };
-
 
 export function tokenFilter(token: tokenType) {
   user.value = token.user_type;
@@ -146,4 +147,10 @@ export function tokenFilter(token: tokenType) {
     hasFilter.value = true;
   }
 }
+
+export const morePages = () => {
+  fields.page_num += 1;
+  fetchChatsOnScroll();
+};
+
 

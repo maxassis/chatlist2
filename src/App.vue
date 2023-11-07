@@ -1,16 +1,16 @@
 <template>
   <div class="container-chatlist">
     <section class="search-box">
-      <button class="search-box__search search-message-modal-open">
+      <span class="search-box__search search-message-modal-open">
         <Icon icon="lupa" />
         <span>Pesquisar mensagem</span>
-      </button>
-      <button
+      </span>
+      <span
         v-if="inputsHidden.addChat"
         class="search-box__add startchat-modal-open"
       >
         <Icon icon="add-user" />
-      </button>
+    </span>
     </section>
 
     <section ref="el" v-if="hasFilter">
@@ -212,7 +212,11 @@
         scrollList ? { transform: `translateY(${'-' + size + 'px'})` } : ''
       "
     >
-      <div class="list__hidden-list" @click="scrollList = !scrollList" v-if="hasFilter">
+      <div
+        class="list__hidden-list"
+        @click="scrollList = !scrollList"
+        v-if="hasFilter"
+      >
         <span>{{ scrollList ? "Mostrar Filtros" : "Esconder Filtros" }}</span>
         <svg
           :class="{ list__svgRotate: scrollList }"
@@ -253,15 +257,31 @@
               },
         ]"
       >
-        <CardNotFound  v-show="fullCards?.length == 0"/>      
+        <CardNotFound v-show="fullCards?.length == 0" />
 
         <Card
           v-for="card in fullCards"
           :card="card"
           :online="online"
           :key="card.id"
-          :token="token"
         />
+
+        <div
+          class="list__noMoreMessages"
+          v-if="hiddenObserver == false && fullCards && fullCards.length >= 15"
+        >
+          <span>Não há mais chats para listar</span>
+        </div>
+
+        <LoadingDots
+          v-if="loadingDots && fullCards && fullCards.length >= 10"
+        />
+
+        <div
+          ref="observer"
+          class="list__intersection-observer"
+          v-show="hiddenObserver"
+        ></div>
       </section>
     </section>
   </div>
@@ -274,8 +294,13 @@ import Department from "./components/department-component.vue";
 import Funnel from "./components/funnel-component.vue";
 import Card from "./components/card-component.vue";
 import Icon from "./components/icon-component.vue";
+import LoadingDots from "./components/loadingDots-component.vue";
 import CardNotFound from "./components/card-notFound.vue";
-import { useResizeObserver, useDebounceFn } from "@vueuse/core";
+import {
+  useResizeObserver,
+  useDebounceFn,
+  useIntersectionObserver,
+} from "@vueuse/core";
 import {
   fields,
   scrollList,
@@ -283,16 +308,18 @@ import {
   incomingDepartments,
   incomingFunnels,
   inputsHidden,
-  hasFilter
+  hasFilter,
+  hiddenObserver,
+  morePages,
+  loadingDots,
 } from "./functions/app-functions";
 import { fetchCard } from "./functions/requests";
 import {
-  schemaWebsockets,
   fullCards,
   fetchOnline,
   fetchDevices,
-  fetchToken,
 } from "./functions/requests";
+import { schemaWebsockets } from "./types";
 
 // EVENT LISTENER
 window.addEventListener("webSocketEvent", (e) => {
@@ -311,7 +338,6 @@ window.addEventListener("webSocketEvent", (e) => {
 // REQUEST
 const devices = fetchDevices();
 const online = fetchOnline();
-const token = fetchToken();
 fetchCard();
 
 // REFS
@@ -320,20 +346,8 @@ const DptComponent = ref<InstanceType<typeof Department> | null>(null);
 const FunnelComponent = ref<InstanceType<typeof Funnel> | null>(null);
 const el = ref(null);
 const size = ref("");
-
-
-// // COMPUTED
-// const teste = computed(() => {
-//   let whats = fields.whatsNumber
-
-//   const result = whats.replace(/\D/gim, "");
- 
-//   return result;
-// });
-
-
-
-
+const observer = ref(null);
+const targetIsVisible = ref(false);
 
 // FUNCTIONS
 function clearForm() {
@@ -368,6 +382,13 @@ useResizeObserver(el, (entries) => {
 const debouncedFn = useDebounceFn(() => {
   fetchCard();
 }, 600);
+
+useIntersectionObserver(observer, ([{ isIntersecting }]) => {
+  targetIsVisible.value = isIntersecting;
+  if (targetIsVisible.value) {
+    morePages();
+  }
+});
 </script>
 
 <style lang="scss" scoped>
@@ -659,6 +680,31 @@ const debouncedFn = useDebounceFn(() => {
   &__counter {
     color: #229954;
     font-weight: bold;
+  }
+
+  &__intersection-observer {
+    pointer-events: none;
+    position: relative;
+    z-index: -1;
+    inset-block-start: -420px;
+    block-size: 0.5px;
+  }
+
+  &__noMoreMessages {
+    inline-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eaeaea;
+    color: white;
+    block-size: 35px;
+
+    span {
+      font-size: 15px;
+      color: black;
+      opacity: 0.7;
+      font-weight: bold;
+    }
   }
 }
 
