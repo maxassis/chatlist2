@@ -1,4 +1,4 @@
-import { reactive, ref } from "vue";
+import { reactive, ref, watch, toRef } from "vue";
 import { fieldsTypes, checkedDptItems } from "../types";
 import { fetchCard } from "./requests";
 import type { tokenType } from "./requests";
@@ -39,10 +39,18 @@ export const inputsHidden = {
   addChat: false
 }
 
+export const whatsNumber = ref("")
 export const scrollList = ref(false);
 export const hasFilter = ref(false);
 export const user = ref("");
+const whatsField = toRef(fields, 'whatsNumber');
 
+// WATCH
+watch(whatsField, () => {
+  const num = whatsField.value;
+  const result = num.replace(/\D/gim, "");
+  whatsField.value = result;
+})
 
 // FUNCTIONS
 export const incomingTags = (tags: Array<string>) => {

@@ -113,12 +113,18 @@ onClickOutside(target, () => (open.value = false));
   white-space: nowrap;
   overflow: hidden;
 
+  > span {
+    font-size: 12px;
+  }
+
   &--blue {
     background-color: #ccdbfd;
     border-color: #abc4ff;
   }
 
   &__names {
+    font-size: 12px;
+
     &:not(:first-child) {
       margin-inline-start: 8px;
     }
@@ -196,6 +202,10 @@ onClickOutside(target, () => (open.value = false));
     border-block-end: 1.6px solid #f8f8ff;
     padding-inline-start: 15px;
     font-size: 12px;
+
+    > label {
+      margin-block-end: 0;
+    }
   }
 
   &__input {

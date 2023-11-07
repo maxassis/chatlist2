@@ -7,7 +7,9 @@
     >
       <span v-if="itemNames.length == 0">Etapa do Funil:</span>
       <span v-else-if="itemNames.length <= 2">
-        <span v-for="item in itemNames" :key="item" class="funnel__names">{{ item }}</span>
+        <span v-for="item in itemNames" :key="item" class="funnel__names">{{
+          item
+        }}</span>
       </span>
       <span v-else>
         <span>{{ itemNames.length }} funis selecionados</span>
@@ -32,7 +34,11 @@
           <span>Nenhuma tag encontrada.</span>
         </div>
 
-        <div class="funnel__set" v-for="item in itemsSelectFiltered" :key="item.id">
+        <div
+          class="funnel__set"
+          v-for="item in itemsSelectFiltered"
+          :key="item.id"
+        >
           <div class="funnel__type">
             <span>{{ item.name }}</span>
           </div>
@@ -48,7 +54,10 @@
                 class="funnel__input"
                 v-model="checkedFunnels"
                 :value="funnel.id"
-                @change="getNameItem(funnel.name, funnel.id); emit('sendFunnels', checkedFunnels);"
+                @change="
+                  getNameItem(funnel.name, funnel.id);
+                  emit('sendFunnels', checkedFunnels);
+                "
               />
               {{ funnel.name }}
             </label>
@@ -65,7 +74,7 @@ import { ref, computed } from "vue";
 import { onClickOutside } from "@vueuse/core";
 import { fetchFunnels } from "../functions/requests";
 
-// eslint-disable-next-line 
+// eslint-disable-next-line
 const emit = defineEmits(["sendFunnels"]);
 
 // LOCAL STATE
@@ -112,12 +121,11 @@ function getNameItem(nome: string, id: string) {
 }
 
 const clearFunnelInput = () => {
-  checkedFunnels.value = []
-  itemNames.value = [] 
+  checkedFunnels.value = [];
+  itemNames.value = [];
 };
 // eslint-disable-next-line
 defineExpose({ clearFunnelInput });
-
 
 onClickOutside(target, () => (open.value = false));
 </script>
@@ -142,14 +150,20 @@ onClickOutside(target, () => (open.value = false));
   white-space: nowrap;
   overflow: hidden;
 
+  > span {
+    font-size: 12px;
+  }
+
   &--blue {
     background-color: #ccdbfd;
     border-color: #abc4ff;
   }
 
   &__names {
+    font-size: 12px;
+    
     &:not(:first-child) {
-      margin-inline-start: 8px
+      margin-inline-start: 8px;
     }
   }
 
@@ -215,6 +229,10 @@ onClickOutside(target, () => (open.value = false));
     border-block-end: 1.6px solid #f8f8ff;
     padding-inline-start: 15px;
     font-size: 12px;
+
+    > label {
+      margin-block-end: 0;
+    }
   }
 
   &__type {

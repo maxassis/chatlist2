@@ -333,6 +333,10 @@ onClickOutside(target, () => (open.value = false));
     padding-inline-start: 15px;
     font-size: 12px;
 
+    > label {
+      margin-block-end: 0;
+    }
+
     &--disabled {
       opacity: 0.4;
       pointer-events: none;

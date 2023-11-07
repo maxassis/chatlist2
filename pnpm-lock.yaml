@@ -16,6 +16,9 @@ dependencies:
   vue:
     specifier: ^3.2.13
     version: 3.3.7(typescript@4.5.5)
+  vue3-lottie:
+    specifier: ^3.2.0
+    version: 3.2.0(vue@3.3.7)
   zod:
     specifier: ^3.22.4
     version: 3.22.4
@@ -4937,6 +4940,10 @@ packages:
       p-locate: 4.1.0
     dev: true
 
+  /lodash-es@4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
+
   /lodash.debounce@4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
     dev: true
@@ -5009,6 +5016,10 @@ packages:
       cli-cursor: 2.1.0
       wrap-ansi: 3.0.1
     dev: true
+
+  /lottie-web@5.12.2:
+    resolution: {integrity: sha512-uvhvYPC8kGPjXT3MyKMrL3JitEAmDMp30lVkuq/590Mw9ok6pWcFCwXJveo0t5uqYw1UREQHofD+jVpdjBv8wg==}
+    dev: false
 
   /lower-case@2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
@@ -7076,6 +7087,17 @@ packages:
   /vue-template-es2015-compiler@1.9.1:
     resolution: {integrity: sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==}
     dev: true
+
+  /vue3-lottie@3.2.0(vue@3.3.7):
+    resolution: {integrity: sha512-PtNXbv7iD4XGmK8CXd71aLWmILIR6P6VzLMDw6ZzmDAeuJZuJ0MdOVnn50LOARgq+cOFJsn/2z+7tZh0F9T9qw==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      vue: ^3.2
+    dependencies:
+      lodash-es: 4.17.21
+      lottie-web: 5.12.2
+      vue: 3.3.7(typescript@4.5.5)
+    dev: false
 
   /vue@3.3.7(typescript@4.5.5):
     resolution: {integrity: sha512-YEMDia1ZTv1TeBbnu6VybatmSteGOS3A3YgfINOfraCbf85wdKHzscD6HSS/vB4GAtI7sa1XPX7HcQaJ1l24zA==}

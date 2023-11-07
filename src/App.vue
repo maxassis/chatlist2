@@ -5,12 +5,15 @@
         <Icon icon="lupa" />
         <span>Pesquisar mensagem</span>
       </button>
-      <button v-if="inputsHidden.addChat" class="search-box__add startchat-modal-open">
+      <button
+        v-if="inputsHidden.addChat"
+        class="search-box__add startchat-modal-open"
+      >
         <Icon icon="add-user" />
       </button>
     </section>
 
-    <section ref="el">
+    <section ref="el" v-if="hasFilter">
       <div class="form">
         <input
           class="form__name input"
@@ -18,7 +21,7 @@
           type="text"
           placeholder="Nome"
           v-if="inputsHidden.nameInput"
-          v-model="fields.name"
+          v-model.trim="fields.name"
           @input="debouncedFn"
         />
         <select
@@ -34,7 +37,7 @@
           </option>
         </select>
         <input
-          v-model="fields.whatsNumber"
+          v-model.trim="fields.whatsNumber"
           v-if="inputsHidden.telNumberInput"
           type="texte"
           class="input"
@@ -122,7 +125,10 @@
         </div>
 
         <div class="select__wrapper">
-          <div v-if="inputsHidden.unreadInput" class="select__single-item select__tooltips unread">
+          <div
+            v-if="inputsHidden.unreadInput"
+            class="select__single-item select__tooltips unread"
+          >
             <Icon icon="mail" />
             <input
               type="checkbox"
@@ -130,7 +136,10 @@
               @change="fetchCard()"
             />
           </div>
-          <div v-if="inputsHidden.archivedInput" class="select__single-item select__tooltips archived">
+          <div
+            v-if="inputsHidden.archivedInput"
+            class="select__single-item select__tooltips archived"
+          >
             <Icon icon="archive" />
             <input
               type="checkbox"
@@ -138,7 +147,10 @@
               @change="fetchCard()"
             />
           </div>
-          <div v-if="inputsHidden.broadcastInput" class="select__single-item select__tooltips broadcast">
+          <div
+            v-if="inputsHidden.broadcastInput"
+            class="select__single-item select__tooltips broadcast"
+          >
             <Icon icon="transmission" />
             <input
               type="checkbox"
@@ -146,7 +158,10 @@
               @change="fetchCard()"
             />
           </div>
-          <div v-if="inputsHidden.favoritedInput" class="select__single-item select__tooltips favorited">
+          <div
+            v-if="inputsHidden.favoritedInput"
+            class="select__single-item select__tooltips favorited"
+          >
             <Icon icon="star" />
             <input
               type="checkbox"
@@ -197,7 +212,7 @@
         scrollList ? { transform: `translateY(${'-' + size + 'px'})` } : ''
       "
     >
-      <div class="list__hidden-list" @click="scrollList = !scrollList">
+      <div class="list__hidden-list" @click="scrollList = !scrollList" v-if="hasFilter">
         <span>{{ scrollList ? "Mostrar Filtros" : "Esconder Filtros" }}</span>
         <svg
           :class="{ list__svgRotate: scrollList }"
@@ -221,7 +236,7 @@
         <span class="list__quant-of-chats"
           >Exibindo
           <span class="list__counter">
-            {{ fullCards?.chats.length ? fullCards?.chats.length : 0 }}
+            {{ fullCards?.length ? fullCards?.length : 0 }}
           </span>
           Resultados</span
         >
@@ -238,8 +253,10 @@
               },
         ]"
       >
+        <CardNotFound  v-show="fullCards?.length == 0"/>      
+
         <Card
-          v-for="card in fullCards?.chats"
+          v-for="card in fullCards"
           :card="card"
           :online="online"
           :key="card.id"
@@ -257,6 +274,7 @@ import Department from "./components/department-component.vue";
 import Funnel from "./components/funnel-component.vue";
 import Card from "./components/card-component.vue";
 import Icon from "./components/icon-component.vue";
+import CardNotFound from "./components/card-notFound.vue";
 import { useResizeObserver, useDebounceFn } from "@vueuse/core";
 import {
   fields,
@@ -265,6 +283,7 @@ import {
   incomingDepartments,
   incomingFunnels,
   inputsHidden,
+  hasFilter
 } from "./functions/app-functions";
 import { fetchCard } from "./functions/requests";
 import {
@@ -302,6 +321,20 @@ const FunnelComponent = ref<InstanceType<typeof Funnel> | null>(null);
 const el = ref(null);
 const size = ref("");
 
+
+// // COMPUTED
+// const teste = computed(() => {
+//   let whats = fields.whatsNumber
+
+//   const result = whats.replace(/\D/gim, "");
+ 
+//   return result;
+// });
+
+
+
+
+
 // FUNCTIONS
 function clearForm() {
   (fields.name = ""),
@@ -335,9 +368,6 @@ useResizeObserver(el, (entries) => {
 const debouncedFn = useDebounceFn(() => {
   fetchCard();
 }, 600);
-
-
-
 </script>
 
 <style lang="scss" scoped>

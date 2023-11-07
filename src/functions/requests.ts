@@ -198,7 +198,7 @@ export const schemaChats = z
         ),
       })
     ),
-  })
+  }).transform(({chats}) => chats)
 
 export type Chats = z.infer<typeof schemaChats>;
 export function fetchChatsMock() {
