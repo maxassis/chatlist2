@@ -1,6 +1,6 @@
 <template>
   <div class="container-chatlist">
-    <section class="search-box">
+    <section class="search-box" @click="showForward = !showForward">
       <span class="search-box__search search-message-modal-open">
         <Icon icon="lupa" />
         <span>Pesquisar mensagem</span>
@@ -10,7 +10,7 @@
         class="search-box__add startchat-modal-open"
       >
         <Icon icon="add-user" />
-    </span>
+      </span>
     </section>
 
     <section ref="el" v-if="hasFilter">
@@ -245,6 +245,23 @@
           Resultados</span
         >
       </div>
+
+      <div :class="['list__forward-wrapper', {'list__forward-wrapper--hidden': !showForward}]">
+          <div
+            class="list__forward"
+          >
+            <button class="list__forward-btn-green">Encaminhar mensagem</button>
+            <button class="list__forward-btn-red" @click="close">Cancelar</button>
+            <div class="list__forward-counter-wrapper">
+              <label>
+                <input type="checkbox" v-model="checkAllForward" />
+                Selecionar todos
+              </label>
+              <span>Selecionados: <span>(60)</span></span>
+            </div>
+          </div>
+        </div>
+
       <section
         class="list__wrapper-cards"
         :style="[
@@ -260,10 +277,12 @@
         <CardNotFound v-show="fullCards?.length == 0" />
 
         <Card
-          v-for="card in fullCards"
+           v-for="card in fullCards"
           :card="card"
-          :online="online"
           :key="card.id"
+          :checkAllForward= "checkAllForward"
+          :openForward = "showForward"
+          ref="CardComponent"
         />
 
         <div
@@ -273,9 +292,9 @@
           <span>Não há mais chats para listar</span>
         </div>
 
-        <!-- <LoadingDots
+        <LoadingDots
           v-if="loadingDots && fullCards && fullCards.length >= 10"
-        /> -->
+        />
 
         <div
           ref="observer"
@@ -294,7 +313,7 @@ import Department from "./components/department-component.vue";
 import Funnel from "./components/funnel-component.vue";
 import Card from "./components/card-component.vue";
 import Icon from "./components/icon-component.vue";
-// import LoadingDots from "./components/loadingDots-component.vue";
+import LoadingDots from "./components/loadingDots-component.vue";
 import CardNotFound from "./components/card-notFound.vue";
 import {
   useResizeObserver,
@@ -311,13 +330,12 @@ import {
   hasFilter,
   hiddenObserver,
   morePages,
+  loadingDots,
+  showForward,
+  checkAllForward
 } from "./functions/app-functions";
 import { fetchCard } from "./functions/requests";
-import {
-  fullCards,
-  fetchOnline,
-  fetchDevices,
-} from "./functions/requests";
+import { fullCards, fetchDevices } from "./functions/requests";
 import { schemaWebsockets } from "./types";
 
 // EVENT LISTENER
@@ -336,13 +354,14 @@ window.addEventListener("webSocketEvent", (e) => {
 
 // REQUEST
 const devices = fetchDevices();
-const online = fetchOnline();
+// const online = fetchOnline();
 fetchCard();
 
 // REFS
 const TagComponent = ref<InstanceType<typeof Tags> | null>(null);
 const DptComponent = ref<InstanceType<typeof Department> | null>(null);
 const FunnelComponent = ref<InstanceType<typeof Funnel> | null>(null);
+// const CardComponent = ref<InstanceType<typeof Card> | null>(null);  
 const el = ref(null);
 const size = ref("");
 const observer = ref(null);
@@ -388,6 +407,12 @@ useIntersectionObserver(observer, ([{ isIntersecting }]) => {
     morePages();
   }
 });
+
+function close() {
+  showForward.value = !showForward.value 
+  checkAllForward.value = false
+}
+
 </script>
 
 <style lang="scss" scoped>
@@ -705,103 +730,71 @@ useIntersectionObserver(observer, ([{ isIntersecting }]) => {
       font-weight: bold;
     }
   }
-}
 
-.tooltip {
-  &__tooltips {
-    position: relative;
+  &__forward {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: 36px 38px;
+    border-block-end: 1.12px solid #f2f2f2;
+    overflow: hidden;
+    
   }
 
-  &__tooltips::after {
-    background-color: #333;
-    border-radius: 4px;
-    color: #f1f1f1;
-    font-size: 12.8px;
-    display: none;
-    padding: 3px 6px;
-    position: absolute;
-    text-align: center;
-    z-index: 999;
+  &__forward-wrapper {
+    block-size: 74px;
+    overflow: hidden;
+    transition: block-size 0.5s ease;
+    border-block-end: 1.12px solid #f2f2f2;
   }
 
-  &__tooltips::before {
-    background-color: #333;
-    content: " ";
-    display: none;
-    position: absolute;
-    inline-size: 15px;
-    block-size: 15px;
-    z-index: 999;
+  &__forward-wrapper--hidden {
+    block-size: 0;
   }
 
-  &__tooltips:hover::after {
-    display: block;
+  &__forward-btn-green {
+    grid-area: 1/1;
+    background-color: #1cc88a;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.5s ease;
+    font-size: 13.5px;
+
+    &:hover {
+      background-color: darken(#1cc88a, 6%);
+    }
   }
 
-  &__tooltips:hover::before {
-    display: block;
+  &__forward-btn-red {
+    grid-area: 1/2;
+    background-color: #e74a3b;
+    cursor: pointer;
+    color: #fff;
+    opacity: 0.9;
+    transition: background-color 0.5s ease;
+    font-size: 13.5px;
+
+    &:hover {
+      background-color: darken(#e74a3b, 5%);
+    }
   }
 
-  &__tooltips.unread::after {
-    content: "Mostrar chats não lidos";
-    inline-size: 100px;
-  }
+  &__forward-counter-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-area: 2 / 1 / 3 / 3;
+    padding-inline: 17px;
+    font-size: 12px;
+    background-color: #fff;
 
-  &__tooltips.archived::after {
-    content: "Mostrar chats arquivados";
-    inline-size: 170px;
-  }
+    input {
+      accent-color: #1ba779;
+    }
 
-  &__tooltips.broadcast::after {
-    content: "Mostrar apenas broadcasts (Listas de transmissão)";
-    inline-size: 170px;
-  }
-
-  &__tooltips.scheduled::after {
-    content: "Mostrar chats agendados";
-    inline-size: 100px;
-  }
-
-  &__tooltips.favorited::after {
-    content: "Mostrar chats favoritados";
-    inline-size: 100px;
-  }
-
-  &__tooltips.clear::after {
-    content: "Limpar filtros";
-    inline-size: 100px;
-  }
-
-  &__tooltips.archived::after,
-  &__tooltips.broadcast::after,
-  &__tooltips.favorited::after,
-  &__tooltips.clear::after {
-    inset-block-start: 0;
-    inset-inline-start: 50%;
-    transform: translate(-50%, calc(-100% - 10px));
-  }
-
-  &__tooltips.scheduled::after {
-    inset-block-start: 0;
-    inset-inline-start: 29%;
-    transform: translate(-50%, calc(-100% - 10px));
-  }
-
-  &__tooltips.unread::after {
-    inset-block-start: 0;
-    inset-inline-start: 72%;
-    transform: translate(-50%, calc(-100% - 10px));
-  }
-
-  &__tooltips.unread::before,
-  &__tooltips.archived::before,
-  &__tooltips.broadcast::before,
-  &__tooltips.favorited::before,
-  &__tooltips.clear::before,
-  &__tooltips.scheduled::before {
-    inset-block-start: 0;
-    inset-inline-start: 50%;
-    transform: translate(-50%, calc(-100% - 5px)) rotate(45deg);
+    label {
+      margin-block-end: 0;
+    }
   }
 }
 </style>

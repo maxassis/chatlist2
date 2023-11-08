@@ -1,17 +1,22 @@
 <template>
   <div
+    v-if="card.account_id == tokenInfo?.account_id"
     class="card__single-card"
     :class="{
-      'card--darken': singleCard.id == cardID,
-      'card--toggleHover': singleCard.id != cardID,
+      'card--darken':
+        (!showForward && singleCard.id == IDSelected) ||
+        (showForward && checkForward === true),
+      'card--toggleHover': singleCard.id != IDSelected && !checkForward,
+      'card__checkbox--show': showForward,
     }"
     @click="
-      cardID = singleCard.id;
-      selectCard(singleCard.id);
+      clickCard(singleCard.id)
+      // selectID(singleCard.id);
+      // selectCard(singleCard.id);
     "
   >
     <div class="card__checkbox">
-      <input type="checkbox" />
+      <input type="checkbox" v-model="checkForward" />
     </div>
     <div class="card__infos">
       <img
@@ -129,8 +134,14 @@
         <div class="card__attendance-hour-wrapper">
           <span class="card__attendance-hour" v-if="card.last_message.date">{{
             hours == false
-              ? `há ${dateCalc(card.last_message.date, tokenInfo?.timezone as string)}`
-              : `${dateCalc(card.last_message.date, tokenInfo?.timezone as string)}`
+              ? `há ${dateCalc(
+                  card.last_message.date,
+                  tokenInfo?.timezone as string
+                )}`
+              : `${dateCalc(
+                  card.last_message.date,
+                  tokenInfo?.timezone as string
+                )}`
           }}</span>
           <svg
             v-if="singleCard.users_delegated_ids.length > 0"
@@ -164,40 +175,55 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, toRef, watch } from "vue";
 import type { singleCardType } from "../types";
 import type { OnlineType } from "../functions/requests";
-import { formatDistance } from "date-fns";
-import ptBR from "date-fns/locale/pt-BR";
-import format from "date-fns/format";
-import intervalToDuration from "date-fns/intervalToDuration";
-import { zonedTimeToUtc, utcToZonedTime } from "date-fns-tz";
 import { tokenInfo } from "../functions/requests";
+import { showForward } from "@/functions/app-functions";
+import { cardSelected } from "../state/cardSelected";
+import { dateCalc, hours } from "../functions/card-functions";
+import { onlineUsers } from "../functions/requests";
 
 // PROPS
 // eslint-disable-next-line
 const props = defineProps<{
   card: singleCardType;
-  online: OnlineType | undefined;
+  checkAllForward: boolean;
+  openForward: boolean;
 }>();
 
 //LOCAL STATE
-const cardID = ref("");
 const userOnline = ref(false);
 const groupOnline = ref(false);
-const singleCard = ref(props.card);
-const checkOnline = ref(props.online);
-const hours = ref(false);
-const cardInfo = ref(props.card)
+const singleCard = toRef(props, "card");
+const checkForward = ref(false);
+
+// GLOBAL STATE
+const { IDSelected, selectID } = cardSelected();
 
 //onMounted
 onMounted(() => {
-  const checkData = Object.entries(checkOnline).length;
+  const checkData = Object.entries(onlineUsers).length;
 
   if (checkData !== 0) {
-    checkStatus(checkOnline?.value);
+    checkStatus(onlineUsers?.value);
   }
 });
+
+// WATCH
+watch(
+  () => props.checkAllForward,
+  () => {
+    checkForward.value = props.checkAllForward;
+  }
+);
+
+watch(
+  () => props.openForward,
+  () => {
+    checkForward.value = false    
+  }
+);
 
 // FUNCTIONS
 function openChat(id: string) {
@@ -210,25 +236,6 @@ function openChat(id: string) {
   // }
 }
 
-function selectCard(id: string) {
-  const msgsSelected = document.querySelector(".forward-check");
-  // eslint-disable-next-line
-  // @ts-ignore
-  const titlePage = document.getElementsByTagName("TITLE")[0].text;
-  if (msgsSelected == null) {
-    window.history.pushState(titlePage, "/chats#" + id);
-    //selected.value = !selected.value;
-    openChat(id);
-  } else {
-    const checkbox = document.getElementById(
-      "fwd-checkbox-" + id
-    ) as HTMLInputElement;
-    checkbox.checked = !checkbox.checked;
-    // eslint-disable-next-line
-    // @ts-ignore
-    window.CountingChatsSelected();
-  }
-}
 
 function checkStatus(online: OnlineType | undefined) {
   userOnline.value = false;
@@ -256,58 +263,58 @@ function checkStatus(online: OnlineType | undefined) {
   }
 }
 
-function dateCalc(dt: string, timezone: string) {
-  // ESSE DATEFORMATTED É NECESSÁRIO PARA FUNCIONAR NO SAFARI
-  const dateFormatted = dt.replace(/\s/, "T");
+function clickCard(id: string) {
+  selectID(id);
 
-  const serverTimeZone = "Africa/Dakar";
-  const userTimeZone = timezone;
+  if (showForward.value === true) {
+    checkForward.value = !checkForward.value;
+  }
 
-  // HORÁRIOS NO FUSO DO SERVIDOR
-  const date = new Date(dateFormatted);
-  const dateInServerZone = zonedTimeToUtc(date, serverTimeZone);
-
-  // HORÁRIOS NO FUSO DO USUÁRIO
-  const hourNow = new Date();
-  const dateInUserZone = utcToZonedTime(dateInServerZone, userTimeZone);
-  const hournowInUserZone = utcToZonedTime(hourNow, userTimeZone);
-
-  // CALCULA DISTANCIA DE TEMPO ENTRE A HORA ATUAL NO SERVIDOR E A HORA DA ATUALIZAÇÃO DO CARD
-  const distanceInWords = formatDistance(dateInUserZone, hournowInUserZone, {
-    includeSeconds: true,
-    locale: ptBR,
-  });
-
-  // VERIFICA SE A MENSAGEM FOI ENVIADA HÁ MAIS DE 24HS
-  const interval = intervalToDuration({
-    start: dateInUserZone,
-    end: hournowInUserZone,
-  });
-
-  if (interval.days && interval.days < 1) {
-    hours.value = true;
-    return format(dateInUserZone, "HH:mm");
+  const msgsSelected = document.querySelector(".forward-check");
+  // eslint-disable-next-line
+  // @ts-ignore
+  const titlePage = document.getElementsByTagName("TITLE")[0].text;
+  if (msgsSelected == null) {
+    window.history.pushState(titlePage, "/chats#" + id);
+    //selected.value = !selected.value;
+    !showForward && openChat(id);
   } else {
-    hours.value = false;
-    return distanceInWords;
+    const checkbox = document.getElementById(
+      "fwd-checkbox-" + id
+    ) as HTMLInputElement;
+    checkbox.checked = !checkbox.checked;
+    // eslint-disable-next-line
+    // @ts-ignore
+    window.CountingChatsSelected();
   }
 }
+
 </script>
 
 <style lang="scss" scoped>
 .card {
   &__single-card {
     display: grid;
-    grid-template-columns: 0px 1fr;
+    grid-template-columns: 0 1fr;
     grid-template-rows: 1fr;
     border-block-end: 1.12px solid #f2f2f2;
     block-size: 68px;
+    transition: grid-template-columns 0.5s ease;
   }
 
   &__checkbox {
     display: grid;
+    justify-content: flex-end;
     place-items: center;
     overflow: hidden;
+
+    input {
+      accent-color: #1ba779;
+    }
+  }
+
+  &__checkbox--show {
+    grid-template-columns: 30px 1fr;
   }
 
   &__infos {

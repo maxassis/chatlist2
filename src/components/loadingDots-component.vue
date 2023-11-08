@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #eaeaea;
+  // background-color: #eaeaea;
   block-size: 35px;
 }
 

@@ -5,6 +5,7 @@ import {
   fields,
   tokenFilter,
   hiddenObserver,
+  loadingDots
 } from "./app-functions";
 
 //const enviroment: "DEV" | "PROD" = "DEV";
@@ -129,6 +130,8 @@ export function fetchDevices() {
 }
 
 // REQUISIÇÂO ONLINE
+export const onlineUsers = ref<OnlineType>();
+
 export const schemaOnline = z.object({
   groups: z.array(
     z.object({
@@ -159,12 +162,14 @@ export function fetchOnline() {
 
   fetcher(schemaOnline, url)
     .then((response) => {
-      dt.value = response;
+      onlineUsers.value = response;
     })
     .catch((error) => console.log(error));
 
-  return dt;
+  
 }
+
+fetchOnline()
 
 // REQUISIÇÂO CHATS
 export const fullCards = ref<Chats>();
@@ -256,7 +261,7 @@ export function fetchChatsOnScroll() {
     enviroment === "DEV"
       ? "https://run.mocky.io/v3/eae31c54-ae3d-41f7-9586-ce3e4d8e20b9"
       : `${window.location.origin}/chatlist/store`;
-  // loadingDots.value = true;
+  loadingDots.value = true;
 
   fetcher(schemaChats, url, {
     method: "POST",
@@ -286,7 +291,7 @@ export function fetchChatsOnScroll() {
       response.length === 0
         ? (hiddenObserver.value = false)
         : (hiddenObserver.value = true);
-      // loadingDots.value = false;
+      loadingDots.value = false;
     })
     .catch((error) => console.log(error));
 }

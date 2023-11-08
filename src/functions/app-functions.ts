@@ -44,7 +44,9 @@ export const scrollList = ref(false);
 export const hasFilter = ref(false);
 export const user = ref("");
 export const hiddenObserver = ref(true);
-// export const loadingDots = ref(false);
+export const loadingDots = ref(false);
+export const showForward = ref(false)
+export const checkAllForward = ref(false)
 const whatsField = toRef(fields, 'whatsNumber');
 
 // WATCH
