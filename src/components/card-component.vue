@@ -11,8 +11,6 @@
     }"
     @click="
       clickCard(singleCard.id)
-      // selectID(singleCard.id);
-      // selectCard(singleCard.id);
     "
   >
     <div class="card__checkbox">
@@ -179,7 +177,6 @@ import { ref, onMounted, toRef, watch, onUpdated } from "vue";
 import type { singleCardType } from "@/types";
 import type { OnlineType } from "@/functions/requests";
 import { tokenInfo } from "@/functions/requests";
-import { showForward } from "@/functions/app-functions";
 import { dateCalc, hours } from "@/functions/card-functions";
 import { onlineUsers } from "@/functions/requests";
 import forwardsState from "@/state/forward"
@@ -197,6 +194,7 @@ const props = defineProps<{
 const userOnline = ref(false);
 const groupOnline = ref(false);
 const singleCard = toRef(props, "card");
+const showForward = toRef(props, "openForward");
 const checkForward = ref(false);
 
 // GLOBAL STATE
@@ -212,7 +210,7 @@ onMounted(() => {
 });
 
 onMounted(() => {
-   if(!showForward) return
+   if(!showForward.value) return
    if(forwardsState.state.value.has(singleCard.value.id)) {
     checkForward.value = true
    }
@@ -220,7 +218,7 @@ onMounted(() => {
 
 // ONUPDATE
 onUpdated(() => {
-  if(!showForward) return
+  if(!showForward.value) return
   if(forwardsState.state.value.has(singleCard.value.id)) {
     checkForward.value = true
     return
@@ -242,7 +240,7 @@ watch(
 );
 
 watch(
-  () => props.openForward,
+  () => showForward.value,
   (item) => {
      if(!item) {
       forwardsState.methods.clear()
@@ -311,7 +309,7 @@ function clickCard(id: string) {
   if (msgsSelected == null) {
     window.history.pushState(titlePage, "/chats#" + id);
     //selected.value = !selected.value;
-    !showForward && openChat(id);
+    !showForward.value && openChat(id);
   } else {
     const checkbox = document.getElementById(
       "fwd-checkbox-" + id

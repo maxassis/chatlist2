@@ -42,7 +42,7 @@ export const inputsHidden = {
 export const whatsNumber = ref("")
 export const scrollList = ref(false);
 export const hasFilter = ref(false);
-export const user = ref("");
+// export const user = "";
 export const hiddenObserver = ref(true);
 export const loadingDots = ref(false);
 export const showForward = ref(false)
@@ -71,9 +71,9 @@ export const incomingFunnels = (funnels: Array<string>) => {
 };
 
 export function tokenFilter(token: tokenType) {
-  user.value = token.user_type;
+  const user = token.user_type;
 
-  const is_admin_or_super = user.value === "admin" || user.value === "super";
+  const is_admin_or_super = user === "admin" || user === "super";
 
   if (
     token.account_features.includes("FUNNEL") &&

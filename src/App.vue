@@ -352,6 +352,26 @@ window.addEventListener("webSocketEvent", (e) => {
   }
 });
 
+window.addEventListener("chatlistEvents", (e) => {
+  // eslint-disable-next-line
+  // @ts-ignore
+  const dt = e.detail;
+
+  if(dt.target === 'openForward') {
+    console.log(dt.target);
+    showForward.value = true
+    // eslint-disable-next-line
+    // @ts-ignore
+    document.getElementById(`msgs-forward-${dt.target}`).checked = true; 
+  }
+
+  
+});
+
+
+
+
+
 // REQUEST
 const devices = fetchDevices();
 
