@@ -154,7 +154,6 @@ export const schemaOnline = z.object({
 export type OnlineType = z.infer<typeof schemaOnline>;
 
 export function fetchOnline() {
-  const dt = ref<OnlineType>();
   const url =
     enviroment === "DEV"
       ? "https://run.mocky.io/v3/7c9c2989-e157-4cca-9d61-fe22bba4ce0f"
@@ -164,9 +163,7 @@ export function fetchOnline() {
     .then((response) => {
       onlineUsers.value = response;
     })
-    .catch((error) => console.log(error));
-
-  
+    .catch((error) => console.log(error)); 
 }
 
 fetchOnline()
@@ -254,6 +251,7 @@ export function fetchChatsMonolito() {
 export function fetchCard() {
   return enviroment === "DEV" ? fetchChatsMock() : fetchChatsMonolito();
 }
+fetchCard()
 
 // REQUISIÇAO CARDS NO SCROLL
 export function fetchChatsOnScroll() {

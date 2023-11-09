@@ -4,7 +4,7 @@
     class="card__single-card"
     :class="{
       'card--darken':
-        (!showForward && singleCard.id == IDSelected) ||
+        (!showForward && singleCard.id == IDSelected ) ||
         (showForward && checkForward === true),
       'card--toggleHover': singleCard.id != IDSelected && !checkForward,
       'card__checkbox--show': showForward,
@@ -175,14 +175,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, toRef, watch } from "vue";
-import type { singleCardType } from "../types";
-import type { OnlineType } from "../functions/requests";
-import { tokenInfo } from "../functions/requests";
+import { ref, onMounted, toRef, watch, onUpdated } from "vue";
+import type { singleCardType } from "@/types";
+import type { OnlineType } from "@/functions/requests";
+import { tokenInfo } from "@/functions/requests";
 import { showForward } from "@/functions/app-functions";
+import { dateCalc, hours } from "@/functions/card-functions";
+import { onlineUsers } from "@/functions/requests";
+import forwardsState from "@/state/forward"
 import { cardSelected } from "../state/cardSelected";
-import { dateCalc, hours } from "../functions/card-functions";
-import { onlineUsers } from "../functions/requests";
 
 // PROPS
 // eslint-disable-next-line
@@ -210,20 +211,53 @@ onMounted(() => {
   }
 });
 
-// WATCH
+onMounted(() => {
+   if(!showForward) return
+   if(forwardsState.state.value.has(singleCard.value.id)) {
+    checkForward.value = true
+   }
+});
+
+// ONUPDATE
+onUpdated(() => {
+  if(!showForward) return
+  if(forwardsState.state.value.has(singleCard.value.id)) {
+    checkForward.value = true
+    return
+  }
+  checkForward.value = false
+})
+
 watch(
   () => props.checkAllForward,
-  () => {
-    checkForward.value = props.checkAllForward;
+  (item) => {
+    if (!item) {
+      checkForward.value = false
+      forwardsState.methods.clear()
+    } else {
+      checkForward.value = true;
+      forwardsState.methods.addItem(singleCard.value.id)
+    }
   }
 );
 
 watch(
   () => props.openForward,
-  () => {
-    checkForward.value = false    
+  (item) => {
+     if(!item) {
+      forwardsState.methods.clear()
+      checkForward.value = false
+    }     
   }
 );
+
+watch(checkForward, (newX) => {
+  if(newX) {
+    forwardsState.methods.addItem(IDSelected.value)
+    return
+  }
+    forwardsState.methods.removeItem(IDSelected.value)
+})
 
 // FUNCTIONS
 function openChat(id: string) {

@@ -354,14 +354,11 @@ window.addEventListener("webSocketEvent", (e) => {
 
 // REQUEST
 const devices = fetchDevices();
-// const online = fetchOnline();
-fetchCard();
 
 // REFS
 const TagComponent = ref<InstanceType<typeof Tags> | null>(null);
 const DptComponent = ref<InstanceType<typeof Department> | null>(null);
 const FunnelComponent = ref<InstanceType<typeof Funnel> | null>(null);
-// const CardComponent = ref<InstanceType<typeof Card> | null>(null);  
 const el = ref(null);
 const size = ref("");
 const observer = ref(null);

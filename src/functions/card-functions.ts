@@ -8,10 +8,6 @@ import { zonedTimeToUtc, utcToZonedTime } from "date-fns-tz";
 //REFS
 export const hours = ref(false);
 
-
-
-
-
 export function dateCalc(dt: string, timezone: string) {
     // ESSE DATEFORMATTED É NECESSÁRIO PARA FUNCIONAR NO SAFARI
     const dateFormatted = dt.replace(/\s/, "T");
