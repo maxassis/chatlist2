@@ -1,4 +1,6 @@
 <template>
+  {{ forwardState.getSize }}
+
   <div class="container-chatlist">
     <section class="search-box" @click="showForward = !showForward">
       <span class="search-box__search search-message-modal-open">
@@ -250,14 +252,14 @@
           <div
             class="list__forward"
           >
-            <button class="list__forward-btn-green">Encaminhar mensagem</button>
-            <button class="list__forward-btn-red" @click="close">Cancelar</button>
+            <button class="list__forward-btn-green" id="btn_fwd_messages">Encaminhar mensagem</button>
+            <button class="list__forward-btn-red" @click="close" id="btn_cancel_fwd_messages">Cancelar</button>
             <div class="list__forward-counter-wrapper">
               <label>
-                <input type="checkbox" v-model="checkAllForward" />
+                <input type="checkbox" v-model="checkAllForward" id="select-all-chats" />
                 Selecionar todos
               </label>
-              <span>Selecionados: <span>(60)</span></span>
+              <span>Selecionados: ({{ forwardState.getters.getSize }}) <span></span></span>
             </div>
           </div>
         </div>
@@ -337,6 +339,7 @@ import {
 import { fetchCard } from "./functions/requests";
 import { fullCards, fetchDevices } from "./functions/requests";
 import { schemaWebsockets } from "./types";
+import forwardState from "./state/forward"
 
 // EVENT LISTENER
 window.addEventListener("webSocketEvent", (e) => {
@@ -358,14 +361,16 @@ window.addEventListener("chatlistEvents", (e) => {
   const dt = e.detail;
 
   if(dt.target === 'openForward') {
-    console.log(dt.target);
+    console.log(dt.target, dt.data);
     showForward.value = true
     // eslint-disable-next-line
     // @ts-ignore
-    document.getElementById(`msgs-forward-${dt.target}`).checked = true; 
+    document.getElementById(`msgs-forward-${dt.data}`).checked = true; 
   }
 
-  
+  if(dt.target === 'closeForward') {
+    showForward.value = false 
+  } 
 });
 
 

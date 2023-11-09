@@ -4,17 +4,17 @@
     class="card__single-card"
     :class="{
       'card--darken':
-        (!showForward && singleCard.id == IDSelected ) ||
-        (showForward && checkForward === true),
+        (!openForward && singleCard.id == IDSelected ) ||
+        (openForward && checkForward === true),
       'card--toggleHover': singleCard.id != IDSelected && !checkForward,
-      'card__checkbox--show': showForward,
+      'card__checkbox--show': openForward,
     }"
     @click="
       clickCard(singleCard.id)
     "
   >
     <div class="card__checkbox">
-      <input type="checkbox" v-model="checkForward" />
+      <input class="chat-forward" :value="singleCard.id" type="checkbox" v-model="checkForward" :id="'fwd-checkbox-' + singleCard.id" />
     </div>
     <div class="card__infos">
       <img
@@ -194,7 +194,7 @@ const props = defineProps<{
 const userOnline = ref(false);
 const groupOnline = ref(false);
 const singleCard = toRef(props, "card");
-const showForward = toRef(props, "openForward");
+// const showForward = toRef(props, "openForward");
 const checkForward = ref(false);
 
 // GLOBAL STATE
@@ -210,7 +210,7 @@ onMounted(() => {
 });
 
 onMounted(() => {
-   if(!showForward.value) return
+   if(!props.openForward) return
    if(forwardsState.state.value.has(singleCard.value.id)) {
     checkForward.value = true
    }
@@ -218,7 +218,7 @@ onMounted(() => {
 
 // ONUPDATE
 onUpdated(() => {
-  if(!showForward.value) return
+  if(!props.openForward) return
   if(forwardsState.state.value.has(singleCard.value.id)) {
     checkForward.value = true
     return
@@ -240,7 +240,7 @@ watch(
 );
 
 watch(
-  () => showForward.value,
+  () => props.openForward,
   (item) => {
      if(!item) {
       forwardsState.methods.clear()
@@ -298,7 +298,7 @@ function checkStatus(online: OnlineType | undefined) {
 function clickCard(id: string) {
   selectID(id);
 
-  if (showForward.value === true) {
+  if (props.openForward === true) {
     checkForward.value = !checkForward.value;
   }
 
@@ -309,7 +309,7 @@ function clickCard(id: string) {
   if (msgsSelected == null) {
     window.history.pushState(titlePage, "/chats#" + id);
     //selected.value = !selected.value;
-    !showForward.value && openChat(id);
+    !props.openForward && openChat(id);
   } else {
     const checkbox = document.getElementById(
       "fwd-checkbox-" + id
