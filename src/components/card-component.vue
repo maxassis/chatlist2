@@ -229,6 +229,7 @@ onUpdated(() => {
 watch(
   () => props.checkAllForward,
   (item) => {
+    if(!props.openForward) return
     if (!item) {
       checkForward.value = false
       forwardsState.methods.clear()
@@ -242,6 +243,7 @@ watch(
 watch(
   () => props.openForward,
   (item) => {
+    if(!props.openForward) return
      if(!item) {
       forwardsState.methods.clear()
       checkForward.value = false
@@ -250,6 +252,7 @@ watch(
 );
 
 watch(checkForward, (newX) => {
+  if(!props.openForward) return
   if(newX) {
     forwardsState.methods.addItem(IDSelected.value)
     return

@@ -1,8 +1,6 @@
 <template>
-  {{ forwardState.getSize }}
-
   <div class="container-chatlist">
-    <section class="search-box" @click="showForward = !showForward">
+    <section class="search-box">
       <span class="search-box__search search-message-modal-open">
         <Icon icon="lupa" />
         <span>Pesquisar mensagem</span>
@@ -256,7 +254,7 @@
             <button class="list__forward-btn-red" @click="close" id="btn_cancel_fwd_messages">Cancelar</button>
             <div class="list__forward-counter-wrapper">
               <label>
-                <input type="checkbox" v-model="checkAllForward" id="select-all-chats" />
+                <input type="checkbox" v-model="checkAllForward"/>
                 Selecionar todos
               </label>
               <span>Selecionados: ({{ forwardState.getters.getSize }}) <span></span></span>
@@ -370,12 +368,9 @@ window.addEventListener("chatlistEvents", (e) => {
 
   if(dt.target === 'closeForward') {
     showForward.value = false 
+    checkAllForward.value = false
   } 
 });
-
-
-
-
 
 // REQUEST
 const devices = fetchDevices();
