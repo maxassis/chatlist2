@@ -315,11 +315,7 @@ import Card from "./components/card-component.vue";
 import Icon from "./components/icon-component.vue";
 import LoadingDots from "./components/loadingDots-component.vue";
 import CardNotFound from "./components/card-notFound.vue";
-import {
-  useResizeObserver,
-  useDebounceFn,
-  useIntersectionObserver,
-} from "@vueuse/core";
+import { useResizeObserver, useDebounceFn, useIntersectionObserver } from "@vueuse/core";
 import {
   fields,
   scrollList,
@@ -334,20 +330,23 @@ import {
   showForward,
   checkAllForward
 } from "./functions/app-functions";
-import { fetchCard } from "./functions/requests";
-import { fullCards, fetchDevices } from "./functions/requests";
-import { schemaWebsockets } from "./types";
+import { fetchCard, fullCards, fetchDevices } from "./functions/requests";
+import { schemaSingleCard } from "./types";
 import forwardState from "./state/forward"
+import { updateCard } from "./functions/websocket-filters";
 
 // EVENT LISTENER
 window.addEventListener("webSocketEvent", (e) => {
   // eslint-disable-next-line
   // @ts-ignore
   const data = e.detail;
-  const parsedData = schemaWebsockets.safeParse(data);
+  data.favorite = false
+  
+  const parsedData = schemaSingleCard.safeParse(data);
 
   if (parsedData.success) {
-    console.log(parsedData.data);
+    //console.log(parsedData.data);
+    updateCard(parsedData.data);
   } else {
     console.log(parsedData.error);
   }

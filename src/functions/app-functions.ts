@@ -42,7 +42,6 @@ export const inputsHidden = {
 export const whatsNumber = ref("")
 export const scrollList = ref(false);
 export const hasFilter = ref(false);
-// export const user = "";
 export const hiddenObserver = ref(true);
 export const loadingDots = ref(false);
 export const showForward = ref(false)

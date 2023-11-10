@@ -57,9 +57,9 @@ export const schemaDpt = z.object({
   ),
 });
 
-export type Dpt = z.infer<typeof schemaDpt>;
+export type DptType = z.infer<typeof schemaDpt>;
 export function fetchDpt() {
-  const dt = ref<Dpt | undefined>(undefined);
+  const dt = ref<DptType | undefined>(undefined);
   const url =
     enviroment === "DEV"
       ? "https://run.mocky.io/v3/e2053a35-39e2-4b02-b9c3-7908267d3612"
@@ -67,7 +67,7 @@ export function fetchDpt() {
 
   fetcher(schemaDpt, url)
     .then((response) => {
-      dt.value = response;
+       dt.value = response;
     })
     .catch((error) => console.log(error));
 
@@ -88,10 +88,10 @@ export const schemaFunnels = z.array(
   })
 );
 
-export type Funis = z.infer<typeof schemaFunnels>;
+export type FunnelType = z.infer<typeof schemaFunnels>;
 
 export function fetchFunnels() {
-  const dt = ref<Funis | []>([]);
+  const dt = ref<FunnelType>([] as FunnelType);
   const url =
     enviroment === "DEV"
       ? "https://run.mocky.io/v3/8586f883-b690-4365-8989-b6ee66dea738"
@@ -113,10 +113,10 @@ export const schemaDevices = z.array(
   })
 );
 
-export type Devices = z.infer<typeof schemaDevices>;
+export type DevicesType = z.infer<typeof schemaDevices>;
 
 export function fetchDevices() {
-  const dt = ref<Devices>([]);
+  const dt = ref<DevicesType>([] as DevicesType);
   const url =
     enviroment === "DEV"
       ? "https://run.mocky.io/v3/9ec958b0-004f-4cea-a2b3-c8ba266d5064"
@@ -130,7 +130,7 @@ export function fetchDevices() {
 }
 
 // REQUISIÇÂO ONLINE
-export const onlineUsers = ref<OnlineType>();
+export const onlineUsers = ref<OnlineType>({} as OnlineType);
 
 export const schemaOnline = z.object({
   groups: z.array(
@@ -169,7 +169,7 @@ export function fetchOnline() {
 fetchOnline()
 
 // REQUISIÇÂO CHATS
-export const fullCards = ref<Chats>();
+export const fullCards = ref<ChatsType>({} as ChatsType);
 
 export const schemaChats = z
   .object({
@@ -207,7 +207,7 @@ export const schemaChats = z
   })
   .transform(({ chats }) => chats);
 
-export type Chats = z.infer<typeof schemaChats>;
+export type ChatsType = z.infer<typeof schemaChats>;
 export function fetchChatsMock() {
   const url = "https://run.mocky.io/v3/eae31c54-ae3d-41f7-9586-ce3e4d8e20b9";
 
