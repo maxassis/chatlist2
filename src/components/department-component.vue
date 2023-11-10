@@ -75,18 +75,18 @@
 
           <div
             class="dpt__single-item"
+            :class="[
+                  departmentSelected && !noDelegatedSelected
+                    ? 'dpt__single-item--disabled'
+                    : null,
+                ]"
             v-for="department in groupsSelectFiltered"
             :key="department.id"
           >
             <label>
               <input
                 type="checkbox"
-                class="dpt__input"
-                :class="[
-                  departmentSelected && !noDelegatedSelected
-                    ? 'dpt__single-item--disabled'
-                    : null,
-                ]"
+                class="dpt__input"               
                 v-model="checkedItems.groups"
                 :value="department.id"
                 @change="
@@ -104,6 +104,11 @@
 
           <div
             class="dpt__single-item"
+            :class="[
+                  departmentSelected && !noDelegatedSelected
+                    ? 'dpt__single-item--disabled'
+                    : null,
+                ]"
             v-for="user in usersSelectFiltered"
             :key="user.id"
           >
@@ -111,11 +116,6 @@
               <input
                 type="checkbox"
                 class="dpt__input"
-                :class="[
-                  departmentSelected && !noDelegatedSelected
-                    ? 'dpt__single-item--disabled'
-                    : null,
-                ]"
                 v-model="checkedItems.users"
                 :value="user.id"
                 @change="
