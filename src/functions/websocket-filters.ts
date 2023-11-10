@@ -115,39 +115,36 @@ function removeBecauseOfUserOrDepartment(dt: singleCardType) {
 }
 
 function removeBecauseOfTags(dt: singleCardType) {
-    // if(fields.allTags === "") {
-    //     return false;
-    // }
-
-    // Colocar as tags do chat em um array
-    const objToArray = <T, K extends keyof T>(objs: T[], property: K): T[K][] => {
+     // Colocar as tags do chat em um array
+     const objToArray = <T, K extends keyof T>(objs: T[], property: K): T[K][] => {
         return objs.map((obj) => obj[property]);
       };
-    
-      const arrTagsUser = objToArray(dt.tags, "text");
+     
+     const arrTagsUser = objToArray(dt.tags, "text");
 
-    // Se possui qualquer uma das tags
-    if (fields.allTags === "" && fields.allTags.length > 0) {
-        if (getIntersection(arrTagsUser, fields.tags).length === 0) {
-            // não encontrou nenhuma tag
-            return true;
-        }
-    }
-    // Se possui todas as tags
-    else if (fields.allTags === "and") {
-        if (getIntersection(arrTagsUser, fields.tags).length < fields.tags.length) {
-            // Se a intersection é meno que o total de tags do usuário então é pq não encontrou todas as tags
-            return true;
-        }
-    }
-    // Se não possui nenhuma das tags:
-    else if (fields.allTags === "ne") {
-        if (getIntersection(arrTagsUser, fields.tags).length > 0) {
-            // encontrou pelo menos 1 tag
-            return true;
-        }
-    }
-    return false;
+
+     // Se possui qualquer uma das tags
+     if (fields.allTags === "" && fields.tags.length > 0) {
+         if (getIntersection(arrTagsUser, fields.tags).length === 0) {
+             // não encontrou nenhuma tag
+             return true;
+         }
+     }
+     // Se possui todas as tags
+     else if (fields.allTags === "and") {
+         if (getIntersection(arrTagsUser, fields.tags).length < fields.tags.length) {
+             // Se a intersection é meno que o total de tags do usuário então é pq não encontrou todas as tags
+             return true;
+         }
+     }
+     // Se não possui nenhuma das tags:
+     else if (fields.allTags === "ne") {
+         if (getIntersection(arrTagsUser, fields.tags).length > 0) {
+             // encontrou pelo menos 1 tag
+             return true;
+         }
+     }
+     return false;
 }
 
 function removeBecauseOfNewMessages(dt: singleCardType) {
