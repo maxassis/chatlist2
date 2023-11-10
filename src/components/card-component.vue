@@ -276,7 +276,7 @@ function checkStatus(online: OnlineType | undefined) {
   userOnline.value = false;
 
   if (singleCard?.value.users_delegated_ids.length > 0) {
-    online?.users.forEach((item) => {
+    online?.users?.forEach((item) => {
       if (
         item.is_online &&
         singleCard.value.users_delegated_ids.includes(item.id)
@@ -288,7 +288,7 @@ function checkStatus(online: OnlineType | undefined) {
 
   groupOnline.value = false;
   if (singleCard?.value.groups_delegated_ids.length > 0) {
-    online?.groups.forEach((item) => {
+    online?.groups?.forEach((item) => {
       if (item.is_online) {
         if (singleCard.value.groups_delegated_ids.includes(item.id)) {
           groupOnline.value = true;
