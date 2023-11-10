@@ -246,21 +246,34 @@
         >
       </div>
 
-      <div :class="['list__forward-wrapper', {'list__forward-wrapper--hidden': !showForward}]">
-          <div
-            class="list__forward"
+      <div
+        :class="[
+          'list__forward-wrapper',
+          { 'list__forward-wrapper--hidden': !showForward },
+        ]"
+      >
+        <div class="list__forward">
+          <button class="list__forward-btn-green" id="btn_fwd_messages">
+            Encaminhar mensagem
+          </button>
+          <button
+            class="list__forward-btn-red"
+            @click="close"
+            id="btn_cancel_fwd_messages"
           >
-            <button class="list__forward-btn-green" id="btn_fwd_messages">Encaminhar mensagem</button>
-            <button class="list__forward-btn-red" @click="close" id="btn_cancel_fwd_messages">Cancelar</button>
-            <div class="list__forward-counter-wrapper">
-              <label>
-                <input type="checkbox" v-model="checkAllForward"/>
-                Selecionar todos
-              </label>
-              <span>Selecionados: ({{ forwardState.getters.getSize }}) <span></span></span>
-            </div>
+            Cancelar
+          </button>
+          <div class="list__forward-counter-wrapper">
+            <label>
+              <input type="checkbox" v-model="checkAllForward" />
+              Selecionar todos
+            </label>
+            <span
+              >Selecionados: ({{ forwardState.getters.getSize }}) <span></span
+            ></span>
           </div>
         </div>
+      </div>
 
       <section
         class="list__wrapper-cards"
@@ -277,11 +290,11 @@
         <CardNotFound v-show="fullCards?.length == 0" />
 
         <Card
-           v-for="card in fullCards"
+          v-for="card in fullCards"
           :card="card"
           :key="card.id"
-          :checkAllForward= "checkAllForward"
-          :openForward = "showForward"
+          :checkAllForward="checkAllForward"
+          :openForward="showForward"
           ref="CardComponent"
         />
 
@@ -315,7 +328,11 @@ import Card from "./components/card-component.vue";
 import Icon from "./components/icon-component.vue";
 import LoadingDots from "./components/loadingDots-component.vue";
 import CardNotFound from "./components/card-notFound.vue";
-import { useResizeObserver, useDebounceFn, useIntersectionObserver } from "@vueuse/core";
+import {
+  useResizeObserver,
+  useDebounceFn,
+  useIntersectionObserver,
+} from "@vueuse/core";
 import {
   fields,
   scrollList,
@@ -328,20 +345,21 @@ import {
   morePages,
   loadingDots,
   showForward,
-  checkAllForward
+  checkAllForward,
 } from "./functions/app-functions";
 import { fetchCard, fullCards, fetchDevices } from "./functions/requests";
 import { schemaSingleCard } from "./types";
-import forwardState from "./state/forward"
+import forwardState from "./state/forward";
 import { updateCard } from "./functions/websocket-filters";
+import { cardSelected } from './state/cardSelected';
 
 // EVENT LISTENER
 window.addEventListener("webSocketEvent", (e) => {
   // eslint-disable-next-line
   // @ts-ignore
   const data = e.detail;
-  data.favorite = false
-  
+  data.favorite = false;
+
   const parsedData = schemaSingleCard.safeParse(data);
 
   if (parsedData.success) {
@@ -357,19 +375,26 @@ window.addEventListener("chatlistEvents", (e) => {
   // @ts-ignore
   const dt = e.detail;
 
-  if(dt.target === 'openForward') {
+  if (dt.target === "openForward") {
     console.log(dt.target, dt.data);
-    showForward.value = true
+    showForward.value = true;
     // eslint-disable-next-line
     // @ts-ignore
-    document.getElementById(`msgs-forward-${dt.data}`).checked = true; 
+    document.getElementById(`msgs-forward-${dt.data}`).checked = true;
   }
 
-  if(dt.target === 'closeForward') {
-    showForward.value = false 
-    checkAllForward.value = false
-  } 
+  if (dt.target === "closeForward") {
+    showForward.value = false;
+    checkAllForward.value = false;
+  }
+
+  if (dt.target === "deselectChat") {
+    deselectChat()
+  }
 });
+
+// GLOBAL STATE
+const { selectID } = cardSelected();
 
 // REQUEST
 const devices = fetchDevices();
@@ -425,10 +450,14 @@ useIntersectionObserver(observer, ([{ isIntersecting }]) => {
 });
 
 function close() {
-  showForward.value = !showForward.value 
-  checkAllForward.value = false
+  showForward.value = !showForward.value;
+  checkAllForward.value = false;
 }
 
+function deselectChat() {
+  selectID("")
+  window.history.replaceState(null, "", "/chats");
+}
 </script>
 
 <style lang="scss" scoped>
@@ -754,7 +783,6 @@ function close() {
     grid-template-rows: 36px 38px;
     border-block-end: 1.12px solid #f2f2f2;
     overflow: hidden;
-    
   }
 
   &__forward-wrapper {
