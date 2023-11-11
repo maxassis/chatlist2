@@ -483,12 +483,15 @@ function clickCard(id: string) {
   }
 
   &--darken {
-    background-color: darken(#f6f6f6, 5%);
+    background-color: var(--card-select);
+    .card__user-name {
+      color: var(--card-name);
+    }
   }
 
   &--toggleHover {
     &:hover {
-      background-color: #faf9f9;
+      background-color: var(--card--hover);
       opacity: 0.9;
     }
   }

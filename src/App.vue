@@ -461,7 +461,6 @@ function deselectChat() {
 </script>
 
 <style lang="scss" scoped>
-.cg-chatlist {
   
   .container-chatlist {
     inline-size: 100%;
@@ -526,6 +525,7 @@ function deselectChat() {
       display: grid;
       grid-auto-flow: row;
       grid-template-columns: 70% 30%;
+      gap: 2px
     }
 
     &__departments-wrapper {
@@ -593,7 +593,7 @@ function deselectChat() {
     gap: 5.5px;
     background-color: var(--input-color);
     border-radius: 7px;
-    border: var(--inoput-border);
+    border: var(--input-border);
     accent-color: #1ba779;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
   }
@@ -851,5 +851,4 @@ function deselectChat() {
       }
     }
   }
-}
 </style>

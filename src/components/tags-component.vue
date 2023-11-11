@@ -102,7 +102,7 @@ onClickOutside(target, () => (open.value = false));
 .tags {
   display: flex;
   align-items: center;
-  border: var(--inoput-border);
+  border: var(--input-border);
   border-radius: 7px;
   inline-size: 100%;
   block-size: 28.8px;
