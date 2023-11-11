@@ -94,6 +94,9 @@ onClickOutside(target, () => (open.value = false));
 </script>
 
 <style scoped lang="scss">
+
+.cg-chatlist {
+  
 .tags-wrapper {
   position: relative;
   block-size: 28.8px;
@@ -211,5 +214,6 @@ onClickOutside(target, () => (open.value = false));
   &__input {
     accent-color: #1ba779;
   }
+}
 }
 </style>

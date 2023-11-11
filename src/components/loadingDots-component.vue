@@ -5,6 +5,9 @@
 </template>
 
 <style lang="scss" scoped>
+
+.cg-chatlist {
+  
 .loading-dots {
   display: flex;
   justify-content: center;
@@ -73,5 +76,7 @@
   25% {
     transform: translateX(15px);
   }
+}
+
 }
 </style>

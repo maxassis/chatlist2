@@ -223,6 +223,9 @@ onClickOutside(target, () => (open.value = false));
 </script>
 
 <style lang="scss" scoped>
+
+.cg-chatlist {
+
 .department-wrapper {
   position: relative;
   block-size: 28.8px;
@@ -360,5 +363,7 @@ onClickOutside(target, () => (open.value = false));
       font-size: 14px;
     }
   }
+}
+
 }
 </style>

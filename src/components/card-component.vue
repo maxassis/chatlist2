@@ -327,6 +327,9 @@ function clickCard(id: string) {
 </script>
 
 <style lang="scss" scoped>
+
+.cg-chatlist {
+  
 .card {
   &__single-card {
     display: grid;
@@ -503,5 +506,7 @@ function clickCard(id: string) {
       fill: #dc2e56;
     }
   }
+}
+
 }
 </style>

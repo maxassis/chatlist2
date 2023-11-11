@@ -131,6 +131,9 @@ onClickOutside(target, () => (open.value = false));
 </script>
 
 <style lang="scss" scoped>
+
+.cg-chatlist {
+  
 .funnel-wrapper {
   position: relative;
   block-size: 28.8px;
@@ -263,5 +266,7 @@ onClickOutside(target, () => (open.value = false));
   &__input {
     accent-color: #1ba779;
   }
+}
+
 }
 </style>
