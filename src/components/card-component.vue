@@ -327,12 +327,13 @@ function clickCard(id: string) {
 </script>
 
 <style lang="scss" scoped>
+
 .card {
   &__single-card {
     display: grid;
     grid-template-columns: 0 1fr;
     grid-template-rows: 1fr;
-    border-block-end: 1.12px solid #f2f2f2;
+    border-block-end: var(--input-border-card);
     block-size: 68px;
     transition: grid-template-columns 0.5s ease;
   }
@@ -384,7 +385,7 @@ function clickCard(id: string) {
 
   &__user-name {
     white-space: nowrap;
-    color: #000;
+    color: var(--font-color);
     text-overflow: ellipsis;
     font-size: 14px !important;
     font-weight: 600 !important;
@@ -504,4 +505,5 @@ function clickCard(id: string) {
     }
   }
 }
+
 </style>

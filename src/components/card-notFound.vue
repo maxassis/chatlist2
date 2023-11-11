@@ -15,6 +15,7 @@ import smile from "../../assets/smile3.json";
 </script>
 
 <style lang="scss" scoped>
+
 .noCard {
   &__container {
     inline-size: 90%;
@@ -39,8 +40,5 @@ import smile from "../../assets/smile3.json";
   }
 
 }
-
-
-
 
 </style>

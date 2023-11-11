@@ -131,6 +131,7 @@ onClickOutside(target, () => (open.value = false));
 </script>
 
 <style lang="scss" scoped>
+
 .funnel-wrapper {
   position: relative;
   block-size: 28.8px;
@@ -139,16 +140,17 @@ onClickOutside(target, () => (open.value = false));
 .funnel {
   display: flex;
   align-items: center;
-  border: 1.6px solid #dfe1e5;
+  border: var(--input-border);
   border-radius: 7px;
   inline-size: 100%;
   block-size: 28.8px;
   font-size: 12px;
   padding-inline-start: 15px;
-  background-color: #fff;
+  background-color: var(--input-color);
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
+  color: var(--font-color);
 
   > span {
     font-size: 12px;
@@ -264,4 +266,5 @@ onClickOutside(target, () => (open.value = false));
     accent-color: #1ba779;
   }
 }
+
 </style>

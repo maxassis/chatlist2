@@ -5,6 +5,7 @@
 </template>
 
 <style lang="scss" scoped>
+  
 .loading-dots {
   display: flex;
   justify-content: center;
@@ -74,4 +75,5 @@
     transform: translateX(15px);
   }
 }
+
 </style>

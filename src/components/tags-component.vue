@@ -102,16 +102,17 @@ onClickOutside(target, () => (open.value = false));
 .tags {
   display: flex;
   align-items: center;
-  border: 1.6px solid #dfe1e5;
+  border: var(--inoput-border);
   border-radius: 7px;
   inline-size: 100%;
   block-size: 28.8px;
   font-size: 12px;
   padding-inline-start: 15px;
-  background-color: #fff;
+  background-color: var(--input-color);
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
+  color: var(--font-color);
 
   > span {
     font-size: 12px;
@@ -212,4 +213,5 @@ onClickOutside(target, () => (open.value = false));
     accent-color: #1ba779;
   }
 }
+
 </style>

@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import './styles/reset.scss'
+import './styles/main.scss'
 import Vue3Lottie from 'vue3-lottie'
 
 

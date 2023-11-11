@@ -227,7 +227,7 @@
           <path fill="none" d="M0 0h256v256H0z" />
           <path
             fill="none"
-            stroke="black"
+            stroke=""
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="16"
@@ -471,7 +471,7 @@ function deselectChat() {
   justify-content: space-between;
   align-items: center;
   block-size: 40px;
-  background-color: #ededed;
+  background-color: var(--color-search);
   padding-inline: 10px;
 
   &__search {
@@ -483,10 +483,12 @@ function deselectChat() {
     padding: 5px 10px;
     border-radius: 20px;
     cursor: pointer;
+    background-color: var(--button-search);
+    color: var(--font-color);
     gap: 3px;
     transition: background-color 0.3s ease;
     &:hover {
-      background-color: #e2e6ea;
+      background-color: var(--button-search-hover);
     }
 
     > img {
@@ -504,9 +506,10 @@ function deselectChat() {
     transition: all 0.3s ease;
     cursor: pointer;
     block-size: 29px;
+    background-color: var(--button-search);
 
     &:hover {
-      background-color: #e2e6ea;
+      background-color: var(--button-search-hover);
       padding-inline: 15px;
     }
   }
@@ -515,7 +518,7 @@ function deselectChat() {
   display: grid;
   gap: 4px;
   padding: 12px;
-  background-color: #f6f6f6;
+  background-color: var(--color-form);
 
   &__tags-wrapper {
     display: grid;
@@ -550,16 +553,17 @@ function deselectChat() {
 }
 
 .input {
-  border: 1.6px solid #dfe1e5;
+  border: var(--input-border);
   border-radius: 7px;
   inline-size: 100%;
   block-size: 28.8px;
-  font-size: 12px;
+  font-size: 12px !important;
+  color: var(--font-color);
   padding-inline-start: 15px;
-  background-color: #fff;
+  background-color: var(--input-color);
   &::placeholder {
-    color: black;
-    opacity: 1;
+    color: var(--font-color);
+    opacity: 1.5;
   }
 
   &--blue {
@@ -585,9 +589,9 @@ function deselectChat() {
     justify-content: center;
     font-size: 17.6px;
     gap: 5.5px;
-    background-color: #fff;
+    background-color: var(--input-color);
     border-radius: 7px;
-    border: 1.6px solid #dfe1e5;
+    border: var(--inoput-border);
     accent-color: #1ba779;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
   }
@@ -700,7 +704,7 @@ function deselectChat() {
 
   &__wrapper-cards {
     overflow: scroll;
-    background-color: #fff;
+    background-color: var(--color-background);
     transition: height 0.5s linear;
   }
 
@@ -710,19 +714,23 @@ function deselectChat() {
     place-content: center;
     grid-auto-flow: column;
     block-size: 27px;
-    border-block-end: 1.6px solid #dfe1e5;
-    border-block-start: 1.6px solid #dfe1e5;
+    border-block-end: var(--input-border-card);
+    border-block-start: var(--input-border-card);
     gap: 5px;
     font-size: 12px;
     cursor: pointer;
-    background-color: #fff;
+    background-color: var(--color-background);
 
     > span {
       font-size: 11px;
+      color: var(--font-color)
     }
 
     > svg {
       transition: 0.8s ease;
+      path {
+        stroke: var(--font-color);
+      }
     }
   }
 
@@ -735,8 +743,9 @@ function deselectChat() {
     align-items: center;
     block-size: 35px;
     font-size: 11px;
-    background-color: #fff;
+    background-color: var(--color-background);
     font-size: 13px;
+    color: var(--font-color);
   }
 
   &__quant-of-chats {
@@ -780,7 +789,7 @@ function deselectChat() {
     grid-auto-flow: column;
     grid-template-columns: 75% 25%;
     grid-template-rows: 36px 38px;
-    border-block-end: 1.12px solid #f2f2f2;
+    border-block-end: var(--input-border-card);
     overflow: hidden;
   }
 
@@ -788,7 +797,7 @@ function deselectChat() {
     block-size: 74px;
     overflow: hidden;
     transition: block-size 0.5s ease;
-    border-block-end: 1.12px solid #f2f2f2;
+    border-block-end: var(--input-border-card);
   }
 
   &__forward-wrapper--hidden {
@@ -829,7 +838,7 @@ function deselectChat() {
     grid-area: 2 / 1 / 3 / 3;
     padding-inline: 17px;
     font-size: 12px;
-    background-color: #fff;
+    background-color: var(--color-background);
 
     input {
       accent-color: #1ba779;
