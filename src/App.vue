@@ -695,14 +695,13 @@ function deselectChat() {
 
 .list {
   &__wrapper {
-    block-size: 100%;
-    z-index: 1;
     transition: all 0.5s linear;
   }
 
   &__wrapper-cards {
     overflow: scroll;
     background-color: #fff;
+    transition: height 0.5s linear;
   }
 
   &__hidden-list {
