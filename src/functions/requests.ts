@@ -162,6 +162,9 @@ export function fetchOnline() {
   fetcher(schemaOnline, url)
     .then((response) => {
       onlineUsers.value = response;
+      // eslint-disable-next-line
+      // @ts-ignore
+      window.testeVueJS = response
     })
     .catch((error) => console.log(error)); 
 }

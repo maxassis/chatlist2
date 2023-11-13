@@ -358,16 +358,11 @@ window.addEventListener("webSocketEvent", (e) => {
   // eslint-disable-next-line
   // @ts-ignore
   const data = e.detail;
-  data.favorite = false;
 
   const parsedData = schemaSingleCard.safeParse(data);
+  updateCard(data);
 
-  if (parsedData.success) {
-    //console.log(parsedData.data);
-    updateCard(parsedData.data);
-  } else {
-    console.log(parsedData.error);
-  }
+  !parsedData.success && console.log(parsedData.error);
 });
 
 window.addEventListener("chatlistEvents", (e) => {
@@ -705,7 +700,7 @@ function deselectChat() {
     }
 
   &__wrapper-cards {
-    overflow: scroll;
+    overflow-y: scroll;
     background-color: var(--color-background);
     transition: height 0.5s linear;
   }
