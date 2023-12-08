@@ -33,7 +33,7 @@
 
       <div class="card__user-info-wrapper">
         <div class="card__name-wrapper">
-          <span class="card__user-name">{{ singleCard.name }}</span>
+          <span data-cy="user-name" class="card__user-name">{{ singleCard.name }}</span>
         </div>
 
         <div class="card__user-msg" aria-label="teste" data-balloon-pos="up">
@@ -105,7 +105,7 @@
       <div class="card__attendance-wrapper">
         <div class="card__attendance">
           <div class="card__attendance-day">
-            <span
+            <span data-cy="status"
               class="card__attendance-status"
               :class="{
                 'card__status-red': singleCard.status === 'ABERTO',
