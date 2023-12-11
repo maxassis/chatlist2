@@ -266,6 +266,10 @@ function openChat(id: string) {
   // @ts-ignore
   window.open_chat(id);
 
+  dispatchEvent(new CustomEvent("UnresolvedEvents", {
+      detail : "stopFetch"
+  }))
+
   // if (window.stopFetch) {
   //   window.stopFetch();
   // }
