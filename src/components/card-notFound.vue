@@ -27,7 +27,7 @@ import smile from "../../assets/smile3.json";
   }
 
   &__smile {
-    inline-size: 40px;
+    inline-size: 35px;
     margin-inline: auto;
     margin-block-end: 10px;
   }
