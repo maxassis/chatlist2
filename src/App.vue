@@ -359,9 +359,8 @@ window.addEventListener("webSocketEvent", (e) => {
   // @ts-ignore
   const data = e.detail;
 
-  const parsedData = schemaSingleCard.safeParse(data);
   updateCard(data);
-
+  const parsedData = schemaSingleCard.safeParse(data);
   !parsedData.success && console.log(parsedData.error);
 });
 
@@ -371,7 +370,7 @@ window.addEventListener("chatlistEvents", (e) => {
   const dt = e.detail;
 
   if (dt.target === "openForward") {
-    console.log(dt.target, dt.data);
+    //console.log(dt.target, dt.data);
     showForward.value = true;
     // eslint-disable-next-line
     // @ts-ignore
@@ -386,6 +385,10 @@ window.addEventListener("chatlistEvents", (e) => {
   if (dt.target === "deselectChat") {
     deselectChat();
   }
+
+   if (dt.target === "unresolved") {
+     filterByUnresolved(dt.status, dt.obj)
+   }
 });
 
 // GLOBAL STATE
@@ -404,7 +407,7 @@ const observer = ref(null);
 const targetIsVisible = ref(false);
 
 // FUNCTIONS
-function clearForm() {
+function clearForm(fetch = true) {
   (fields.name = ""),
     (fields.phone = ""),
     (fields.allTags = ""),
@@ -424,7 +427,7 @@ function clearForm() {
   DptComponent.value?.clearDptInput();
   FunnelComponent.value?.clearFunnelInput();
 
-  fetchCard();
+  fetch && fetchCard();
 }
 
 useResizeObserver(el, (entries) => {
@@ -453,6 +456,15 @@ function deselectChat() {
   selectID("");
   window.history.replaceState(null, "", "/chats");
 }
+
+function filterByUnresolved(status: string, obj : {users: string[], groups: string[], noDelegated: boolean}) {
+  clearForm(false);
+  // loading = true;  
+  fields.departments = obj
+  fields.status = status
+  DptComponent.value?.changeInputs(obj);
+}
+
 </script>
 
 <style lang="scss" scoped>

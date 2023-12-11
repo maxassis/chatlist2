@@ -150,7 +150,7 @@ const open = ref(false);
 const noDelegatedSelected = ref(false);
 const departmentSelected = ref(false);
 const userSearch = ref("");
-const checkedItems = reactive<checkedDptItems>({
+let checkedItems = reactive<checkedDptItems>({
   groups: [],
   users: [],
   noDelegated: false,
@@ -215,8 +215,17 @@ const clearDptInput = () => {
     (checkedItems.users = []),
     (checkedItems.noDelegated = false);
 };
+
 // eslint-disable-next-line
-defineExpose({ clearDptInput });
+function changeInputs(obj: checkedDptItems) {
+    checkedItems.groups = obj.groups
+    checkedItems.users = obj.users
+    checkedItems.noDelegated = obj.noDelegated
+    emit('sendDepartments', checkedItems)
+}
+
+// eslint-disable-next-line
+defineExpose({ clearDptInput, changeInputs });
 
 // fecha ao clicar fora
 onClickOutside(target, () => (open.value = false));
