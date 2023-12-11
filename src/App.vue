@@ -320,7 +320,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import Tags from "./components/tags-component.vue";
 import Department from "./components/department-component.vue";
 import Funnel from "./components/funnel-component.vue";
@@ -346,6 +346,7 @@ import {
   loadingDots,
   showForward,
   checkAllForward,
+  close
 } from "./functions/app-functions";
 import { fetchCard, fullCards, fetchDevices } from "./functions/requests";
 import { schemaSingleCard } from "./types";
@@ -386,9 +387,9 @@ window.addEventListener("chatlistEvents", (e) => {
     deselectChat();
   }
 
-   if (dt.target === "unresolved") {
-     filterByUnresolved(dt.status, dt.obj)
-   }
+  if (dt.target === "unresolved") {
+    filterByUnresolved(dt.status, dt.obj);
+  }
 });
 
 // GLOBAL STATE
@@ -405,6 +406,35 @@ const el = ref(null);
 const size = ref("");
 const observer = ref(null);
 const targetIsVisible = ref(false);
+
+// MOUNTED
+onMounted(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const status = urlParams.get("status") as string; 
+    const delegated = urlParams.get("delegated") as string;
+    const undelegated = urlParams.get("undelegated") as string;
+    const type = urlParams.get("type") as string;
+
+    if (urlParams.has("status")) {
+    const interval = setInterval(() => {
+      if (DptComponent.value) {
+        searchUrlUser(status, delegated, type, undelegated)
+        clearInterval(interval)
+      }
+    }, 50)
+    }
+      else {
+      fetchCard();
+    }
+
+    let hash = window.location.hash;
+    if (hash) {
+      // eslint-disable-next-line
+      // @ts-ignore
+      window.open_chat(hash.substring(1));
+      selectID(hash.substring(1))
+    }
+});
 
 // FUNCTIONS
 function clearForm(fetch = true) {
@@ -447,32 +477,41 @@ useIntersectionObserver(observer, ([{ isIntersecting }]) => {
   }
 });
 
-function close() {
-  showForward.value = !showForward.value;
-  checkAllForward.value = false;
-}
-
 function deselectChat() {
   selectID("");
   window.history.replaceState(null, "", "/chats");
 }
 
-function filterByUnresolved(status: string, obj : {users: string[], groups: string[], noDelegated: boolean}) {
+function filterByUnresolved(
+  status: string,
+  obj: { users: string[]; groups: string[]; noDelegated: boolean }
+) {
   clearForm(false);
-  // loading = true;  
-  fields.departments = obj
-  fields.status = status
+  // loading = true;
+  fields.departments = obj;
+  fields.status = status;
   DptComponent.value?.changeInputs(obj);
 }
 
+function searchUrlUser(status: string, delegated: string, type: string, undelegated: string) {
+    fields.status = status
+    const obj: {users: string[]; groups: string[]; noDelegated: boolean} = {users: [], groups: [], noDelegated: false}
+    undelegated = undelegated ?? false
+
+    if (undelegated) obj.noDelegated = true
+    else if(type === "U" ) obj.users.push(delegated)
+    else if (type === "G") obj.groups.push(delegated)
+
+    fields.departments = obj
+    DptComponent.value?.changeInputs(obj)
+  }
 </script>
 
 <style lang="scss" scoped>
-  
-  .container-chatlist {
-    inline-size: 100%;
-    max-block-size: calc(100dvh - 45px);
-  }
+.container-chatlist {
+  inline-size: 100%;
+  max-block-size: calc(100dvh - 45px);
+}
 
 .search-box {
   display: flex;
@@ -499,14 +538,14 @@ function filterByUnresolved(status: string, obj : {users: string[], groups: stri
       background-color: var(--button-search-hover);
     }
 
-      > img {
-        inline-size: 20px;
-      }
-
-      > span {
-        font-size: 12px;
-      }
+    > img {
+      inline-size: 20px;
     }
+
+    > span {
+      font-size: 12px;
+    }
+  }
 
   &__add {
     padding: 5px 10px;
@@ -528,38 +567,38 @@ function filterByUnresolved(status: string, obj : {users: string[], groups: stri
   padding: 12px;
   background-color: var(--color-form);
 
-    &__tags-wrapper {
-      display: grid;
-      grid-auto-flow: row;
-      grid-template-columns: 70% 30%;
-      gap: 2px
-    }
+  &__tags-wrapper {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 70% 30%;
+    gap: 2px;
+  }
 
-    &__departments-wrapper {
-      @extend .form__tags-wrapper;
-    }
+  &__departments-wrapper {
+    @extend .form__tags-wrapper;
+  }
 
-    &__status-wrapper {
-      @extend .form__tags-wrapper;
-      grid-template-columns: 50% 50%;
-    }
+  &__status-wrapper {
+    @extend .form__tags-wrapper;
+    grid-template-columns: 50% 50%;
+  }
 
-    &__clear {
-      inline-size: fit-content;
-      text-decoration: underline;
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 14px;
-      color: #6e6b6d;
-      cursor: pointer;
-      margin: 11px 0 2px 0;
-      transition: 0.2s ease;
+  &__clear {
+    inline-size: fit-content;
+    text-decoration: underline;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 14px;
+    color: #6e6b6d;
+    cursor: pointer;
+    margin: 11px 0 2px 0;
+    transition: 0.2s ease;
 
-      &:hover {
-        color: darken(#bab8b9, 60%);
-      }
+    &:hover {
+      color: darken(#bab8b9, 60%);
     }
   }
+}
 
 .input {
   border: var(--input-border);
@@ -575,19 +614,19 @@ function filterByUnresolved(status: string, obj : {users: string[], groups: stri
     opacity: 1.5;
   }
 
-    &--blue {
-      background-color: #ccdbfd;
-      border-color: #abc4ff;
-    }
+  &--blue {
+    background-color: #ccdbfd;
+    border-color: #abc4ff;
   }
-  .select {
-    &__wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-block-start: 6.4px;
-      gap: 1px;
-    }
+}
+.select {
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block-start: 6.4px;
+    gap: 1px;
+  }
 
   &__single-item {
     max-inline-size: 55.2px;
@@ -605,111 +644,111 @@ function filterByUnresolved(status: string, obj : {users: string[], groups: stri
     box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
   }
 
-    &__mail-icon {
-      inline-size: 18px;
-    }
-
-    &__tooltips {
-      position: relative;
-    }
-
-    &__tooltips::after {
-      background-color: #333;
-      border-radius: 4px;
-      color: #f1f1f1;
-      font-size: 12.8px;
-      display: none;
-      padding: 3px 6px;
-      position: absolute;
-      text-align: center;
-      z-index: 999;
-    }
-
-    &__tooltips::before {
-      background-color: #333;
-      content: " ";
-      display: none;
-      position: absolute;
-      inline-size: 15px;
-      block-size: 15px;
-      z-index: 999;
-    }
-
-    &__tooltips:hover::after {
-      display: block;
-    }
-
-    &__tooltips:hover::before {
-      display: block;
-    }
-
-    &__tooltips.unread::after {
-      content: "Mostrar chats não lidos";
-      inline-size: 100px;
-    }
-
-    &__tooltips.archived::after {
-      content: "Mostrar chats arquivados";
-      inline-size: 170px;
-    }
-
-    &__tooltips.broadcast::after {
-      content: "Mostrar apenas broadcasts (Listas de transmissão)";
-      inline-size: 170px;
-    }
-
-    &__tooltips.scheduled::after {
-      content: "Mostrar chats agendados";
-      inline-size: 100px;
-    }
-
-    &__tooltips.favorited::after {
-      content: "Mostrar chats favoritados";
-      inline-size: 100px;
-    }
-
-    &__tooltips.clear::after {
-      content: "Limpar filtros";
-      inline-size: 100px;
-    }
-
-    &__tooltips.archived::after,
-    &__tooltips.broadcast::after,
-    &__tooltips.favorited::after,
-    &__tooltips.clear::after {
-      inset-block-start: 0;
-      inset-inline-start: 50%;
-      transform: translate(-50%, calc(-100% - 10px));
-    }
-
-    &__tooltips.scheduled::after {
-      inset-block-start: 0;
-      inset-inline-start: 29%;
-      transform: translate(-50%, calc(-100% - 10px));
-    }
-
-    &__tooltips.unread::after {
-      inset-block-start: 0;
-      inset-inline-start: 72%;
-      transform: translate(-50%, calc(-100% - 10px));
-    }
-
-    &__tooltips.unread::before,
-    &__tooltips.archived::before,
-    &__tooltips.broadcast::before,
-    &__tooltips.favorited::before,
-    &__tooltips.clear::before,
-    &__tooltips.scheduled::before {
-      inset-block-start: 0;
-      inset-inline-start: 50%;
-      transform: translate(-50%, calc(-100% - 5px)) rotate(45deg);
-    }
+  &__mail-icon {
+    inline-size: 18px;
   }
 
-  .list {
-    &__wrapper {
-      transition: all 0.5s linear;
-    }
+  &__tooltips {
+    position: relative;
+  }
+
+  &__tooltips::after {
+    background-color: #333;
+    border-radius: 4px;
+    color: #f1f1f1;
+    font-size: 12.8px;
+    display: none;
+    padding: 3px 6px;
+    position: absolute;
+    text-align: center;
+    z-index: 999;
+  }
+
+  &__tooltips::before {
+    background-color: #333;
+    content: " ";
+    display: none;
+    position: absolute;
+    inline-size: 15px;
+    block-size: 15px;
+    z-index: 999;
+  }
+
+  &__tooltips:hover::after {
+    display: block;
+  }
+
+  &__tooltips:hover::before {
+    display: block;
+  }
+
+  &__tooltips.unread::after {
+    content: "Mostrar chats não lidos";
+    inline-size: 100px;
+  }
+
+  &__tooltips.archived::after {
+    content: "Mostrar chats arquivados";
+    inline-size: 170px;
+  }
+
+  &__tooltips.broadcast::after {
+    content: "Mostrar apenas broadcasts (Listas de transmissão)";
+    inline-size: 170px;
+  }
+
+  &__tooltips.scheduled::after {
+    content: "Mostrar chats agendados";
+    inline-size: 100px;
+  }
+
+  &__tooltips.favorited::after {
+    content: "Mostrar chats favoritados";
+    inline-size: 100px;
+  }
+
+  &__tooltips.clear::after {
+    content: "Limpar filtros";
+    inline-size: 100px;
+  }
+
+  &__tooltips.archived::after,
+  &__tooltips.broadcast::after,
+  &__tooltips.favorited::after,
+  &__tooltips.clear::after {
+    inset-block-start: 0;
+    inset-inline-start: 50%;
+    transform: translate(-50%, calc(-100% - 10px));
+  }
+
+  &__tooltips.scheduled::after {
+    inset-block-start: 0;
+    inset-inline-start: 29%;
+    transform: translate(-50%, calc(-100% - 10px));
+  }
+
+  &__tooltips.unread::after {
+    inset-block-start: 0;
+    inset-inline-start: 72%;
+    transform: translate(-50%, calc(-100% - 10px));
+  }
+
+  &__tooltips.unread::before,
+  &__tooltips.archived::before,
+  &__tooltips.broadcast::before,
+  &__tooltips.favorited::before,
+  &__tooltips.clear::before,
+  &__tooltips.scheduled::before {
+    inset-block-start: 0;
+    inset-inline-start: 50%;
+    transform: translate(-50%, calc(-100% - 5px)) rotate(45deg);
+  }
+}
+
+.list {
+  &__wrapper {
+    transition: all 0.5s linear;
+  }
 
   &__wrapper-cards {
     overflow-y: scroll;
@@ -732,7 +771,7 @@ function filterByUnresolved(status: string, obj : {users: string[], groups: stri
 
     > span {
       font-size: 11px;
-      color: var(--font-color)
+      color: var(--font-color);
     }
 
     > svg {
@@ -743,9 +782,9 @@ function filterByUnresolved(status: string, obj : {users: string[], groups: stri
     }
   }
 
-    &__svgRotate {
-      transform: rotate(180deg);
-    }
+  &__svgRotate {
+    transform: rotate(180deg);
+  }
 
   &__count {
     display: flex;
@@ -757,41 +796,41 @@ function filterByUnresolved(status: string, obj : {users: string[], groups: stri
     color: var(--font-color);
   }
 
-    &__quant-of-chats {
-      padding-inline-start: 16px;
-      font-style: italic;
-      padding-inline-start: 12px;
-    }
+  &__quant-of-chats {
+    padding-inline-start: 16px;
+    font-style: italic;
+    padding-inline-start: 12px;
+  }
 
-    &__counter {
-      color: #229954;
+  &__counter {
+    color: #229954;
+    font-weight: bold;
+  }
+
+  &__intersection-observer {
+    pointer-events: none;
+    position: relative;
+    z-index: -1;
+    inset-block-start: -420px;
+    block-size: 0.5px;
+  }
+
+  &__noMoreMessages {
+    inline-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eaeaea;
+    color: white;
+    block-size: 35px;
+
+    span {
+      font-size: 15px;
+      color: black;
+      opacity: 0.7;
       font-weight: bold;
     }
-
-    &__intersection-observer {
-      pointer-events: none;
-      position: relative;
-      z-index: -1;
-      inset-block-start: -420px;
-      block-size: 0.5px;
-    }
-
-    &__noMoreMessages {
-      inline-size: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #eaeaea;
-      color: white;
-      block-size: 35px;
-
-      span {
-        font-size: 15px;
-        color: black;
-        opacity: 0.7;
-        font-weight: bold;
-      }
-    }
+  }
 
   &__forward {
     display: grid;
@@ -809,36 +848,36 @@ function filterByUnresolved(status: string, obj : {users: string[], groups: stri
     border-block-end: var(--input-border-card);
   }
 
-    &__forward-wrapper--hidden {
-      block-size: 0;
+  &__forward-wrapper--hidden {
+    block-size: 0;
+  }
+
+  &__forward-btn-green {
+    grid-area: 1/1;
+    background-color: #1cc88a;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.5s ease;
+    font-size: 13.5px;
+
+    &:hover {
+      background-color: darken(#1cc88a, 6%);
     }
+  }
 
-    &__forward-btn-green {
-      grid-area: 1/1;
-      background-color: #1cc88a;
-      cursor: pointer;
-      color: #fff;
-      transition: background-color 0.5s ease;
-      font-size: 13.5px;
+  &__forward-btn-red {
+    grid-area: 1/2;
+    background-color: #e74a3b;
+    cursor: pointer;
+    color: #fff;
+    opacity: 0.9;
+    transition: background-color 0.5s ease;
+    font-size: 13.5px;
 
-      &:hover {
-        background-color: darken(#1cc88a, 6%);
-      }
+    &:hover {
+      background-color: darken(#e74a3b, 5%);
     }
-
-    &__forward-btn-red {
-      grid-area: 1/2;
-      background-color: #e74a3b;
-      cursor: pointer;
-      color: #fff;
-      opacity: 0.9;
-      transition: background-color 0.5s ease;
-      font-size: 13.5px;
-
-      &:hover {
-        background-color: darken(#e74a3b, 5%);
-      }
-    }
+  }
 
   &__forward-counter-wrapper {
     display: flex;
@@ -849,13 +888,13 @@ function filterByUnresolved(status: string, obj : {users: string[], groups: stri
     font-size: 12px;
     background-color: var(--color-background);
 
-      input {
-        accent-color: #1ba779;
-      }
+    input {
+      accent-color: #1ba779;
+    }
 
-      label {
-        margin-block-end: 0;
-      }
+    label {
+      margin-block-end: 0;
     }
   }
+}
 </style>

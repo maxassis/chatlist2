@@ -154,4 +154,8 @@ export const morePages = () => {
   fetchChatsOnScroll();
 };
 
+export function close() {
+  showForward.value = !showForward.value;
+  checkAllForward.value = false;
+}
 
