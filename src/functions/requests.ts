@@ -5,7 +5,8 @@ import {
   fields,
   tokenFilter,
   hiddenObserver,
-  loadingDots
+  loadingDots,
+  loading
 } from "./app-functions";
 
 //const enviroment: "DEV" | "PROD" = "DEV";
@@ -219,7 +220,10 @@ export function fetchChatsMock() {
       fullCards.value = response;
       // console.log(dt.value)
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.log(error))
+    .finally(() => {
+      loading.value = false;
+  });
 }
 
 export function fetchChatsMonolito() {
@@ -248,7 +252,10 @@ export function fetchChatsMonolito() {
     headers: { "Content-type": "application/json; charset=UTF-8" },
   })
     .then((response) => (fullCards.value = response))
-    .catch((error) => console.log(error));
+    .catch((error) => console.log(error))
+    .finally(() => {
+      loading.value = false;
+  })
 }
 
 export function fetchCard() {
