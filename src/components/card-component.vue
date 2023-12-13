@@ -462,11 +462,13 @@ function clickCard(id: string) {
   &__icon1 {
     inline-size: 13px;
     block-size: 13px;
+    margin: 0;
   }
 
   &__icon2 {
     inline-size: 14px;
     block-size: 14px;
+    margin: 0;
   }
 
   &__status-red {
