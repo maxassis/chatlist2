@@ -119,7 +119,7 @@ onClickOutside(target, () => (open.value = false));
   }
 
   &--blue {
-    background-color: #ccdbfd;
+    background-color: var(--background-blue);
     border-color: #abc4ff;
   }
 
@@ -136,13 +136,13 @@ onClickOutside(target, () => (open.value = false));
     max-inline-size: 250px;
     inline-size: 100%;
     block-size: 320px;
-    background-color: #fff;
+    background-color: var(--component-background);
     inset-block-start: 36.8px;
     inset-inline-start: 9.6px;
     z-index: 1;
     border-radius: 9.6px;
     box-shadow: 0 40px 80px -19.2px rgba(0, 0, 0, 0.25);
-    border: 0.8px solid #dee2e6;
+    // border: 0.8px solid #dee2e6;
     overflow: hidden;
   }
 
@@ -152,11 +152,11 @@ onClickOutside(target, () => (open.value = false));
     justify-content: center;
     inline-size: 100%;
     block-size: 48px;
-    background-color: #e5e5e5;
+    background-color:  var(--component-header);
   }
 
   &__icon {
-    background-color: #fff;
+    background-color: var(--input-color);
     display: flex;
     block-size: 33.6px;
     border-inline-end: 0;
@@ -183,6 +183,8 @@ onClickOutside(target, () => (open.value = false));
     border-inline-start-color: rgb(223, 225, 229);
     border-inline-start: none;
     outline: none;
+    background-color: var(--input-color);
+    color: var(--font-color)
   }
 
   &__items {
@@ -194,13 +196,14 @@ onClickOutside(target, () => (open.value = false));
     text-align: center;
     font-size: 12px;
     margin-block-start: 15px;
+    color: var(--font-color);
   }
 
   &__single-item {
     display: flex;
     align-items: center;
     block-size: 30px;
-    border-block-end: 1.6px solid #f8f8ff;
+    border-block-end: 1.6px solid var(--component-item-border);
     padding-inline-start: 15px;
     font-size: 12px;
 
